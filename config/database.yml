@@ -26,7 +26,7 @@ development:
   username: postgres
   database: postgres
   password: postgres
-  host: localhost
+  host: <%= ENV['IP'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
