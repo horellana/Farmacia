@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  date: 2016-12-04 00:53:39
+  net_amount: 1
+  iva: 1.5
+  discount: 1
+  total_amount: 1
+  client_rut: MyString
+
+two:
+  kind: MyString
+  date: 2016-12-04 00:53:39
+  net_amount: 1
+  iva: 1.5
+  discount: 1
+  total_amount: 1
+  client_rut: MyString
