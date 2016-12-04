@@ -14,11 +14,16 @@
 	<%= link_to 'Farmacia', '#' %>
       </div>
 
-      <div class="navbar-right">
+      <div class="navbar-left">
 	<ul class="nav navbar-nav">
+	  <% if user_signed_in? %>
 	  <li>
-	    <%= link_to 'Iniciar sesion', '#' %>
+	    <%= link_to 'Venta', new_transaction_path %>
 	  </li>
+	  <% end %>
+	</ul>
+      </div>
+
       <div class="navbar-right">
 	<ul class="nav navbar-nav">
 	  <% if user_signed_in? %>
