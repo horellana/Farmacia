@@ -16,9 +16,8 @@ class ProductController < ApplicationController
   def create
 #insert intro
         @product = Cliente.new(nombre: params[:product][:nombre],
-                        telefono: params[:product][:telefono],
-                        mail: params[:product][:mail],
-                        contraseña: params[:product][:contraseña])
+                        description: params[:product][:description],
+                        )
         if @product.save
                 redirect_to @product
         else
