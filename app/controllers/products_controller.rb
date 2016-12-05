@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   autocomplete :product, :name
 
-
   def new
     @product = Product.new
   end
@@ -14,13 +13,17 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def create
-    @product = Product.new( params.require(:product).permit(:name, :price, :category_id) )
 
-    if @product.save
-      redirect_to @product, notice: 'El producto ha sido creado.'
-    else
-      render :new
-    end
+  def create
+#insert intro
+        @product = Cliente.new(nombre: params[:product][:nombre],
+                        description: params[:product][:description],
+                        )
+        if @product.save
+                redirect_to @product
+        else
+                render :new
+        end
   end
+
 end
