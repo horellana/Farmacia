@@ -15,4 +15,7 @@
  *= require bootstrap
  *= require bootstrap-theme
  *= require style
+ *= require jquery-ui
+ *= require jquery-ui.structure
+ *= require jquery-ui.theme
  */
