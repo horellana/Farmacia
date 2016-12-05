@@ -1,0 +1,83 @@
+<table class="table">
+  <thead>
+    <th>
+      Codigo
+    </th>
+
+    <th>
+      Nombre
+    </th>
+
+    <th>
+      BE
+    </th>
+
+    <th>
+      Cantidad
+    </th>
+
+    <th>
+      Precio Unitario
+    </th>
+
+    <th>
+      Sub Total
+    </th>
+
+    <th>
+      Descuento
+    </th>
+
+    <th>
+      Total
+    </th>
+
+    <th>
+      Quitar
+    </th>
+  </thead>
+
+  <tbody>
+    <% products.each do |product| %>
+      <tr>
+	<td>
+	  <%= product.id %>
+	</td>
+
+	<td>
+	  <%= product.name %>
+	</td>
+
+	<td>
+	  <%= product.be %>
+	</td>
+
+	<td>
+	  ???
+	</td>
+
+	<td>
+	  <%= product.sale_price %>
+	</td>
+
+	<td>
+	  ???
+	</td>
+
+	<td>
+	  0
+	</td>
+
+	<td>
+	  <%= (product.sale_price - 0) * 1 %>
+	</td>
+
+	<td>
+	  <span class="glyphicon glyphicon-remove">
+	  </span>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

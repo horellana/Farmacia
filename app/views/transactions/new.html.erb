@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      Venta
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+	<th>
+	  N° de Venta
+	</th>
+	<th>
+	  Fecha
+	</th>
+      </thead>
+
+      <tbody>
+	<tr>
+	  <td>
+	    <%= Transaction.last.id + 1 %>
+	  </td>
+
+	  <td>
+	    <%= Time.now.to_formatted_s(:db) %>
+	  </td>
+	</tr>
+      </tbody>
+
+      <div class="row">
+      </div>
+    </table>
+
+    <%= render 'partials/transactions/cart', products: [] %>
+
+  </div>
+</div>

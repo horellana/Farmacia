@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'farmacia#index'
 
   resources :user
-  resources :transaction
+  resources :transactions
 
   scope :devise do
     devise_for :user
