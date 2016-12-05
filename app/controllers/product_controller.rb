@@ -1,4 +1,4 @@
-class ArticlesController < ApplicationController
+class ProductController < ApplicationController
  
   def new
     @product = Product.new
@@ -12,11 +12,18 @@ class ArticlesController < ApplicationController
     @product = Product.find(params[:id])
   end
  
+ 
   def create
-    @product = Product.new( params.require(:product).permit(:name, :price, :category_id) )
-
-    if @product.save
-      redirect_to @product, notice: 'El producto ha sido creado.'
-    else
-      render :new
+#insert intro
+        @product = Cliente.new(nombre: params[:product][:nombre],
+                        telefono: params[:product][:telefono],
+                        mail: params[:product][:mail],
+                        contraseña: params[:product][:contraseña])
+        if @product.save
+                redirect_to @product
+        else
+                render :new
+        end
   end
+  
+end

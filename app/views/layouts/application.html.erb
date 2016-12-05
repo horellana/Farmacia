@@ -1,62 +1,61 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Farmacia</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <div class="navbar navbar-default navbar-fixed-top navbar-collapse">
-      <div class="navbar-brand">
-	<%= link_to 'Farmacia', '#' %>
-	    <li>
-	      <%= link_to 'crear producto', new_user_session_path %>
-	    </li>
-	  <% end %>
-      </div>
-
-      <div class="navbar-left">
-	<ul class="nav navbar-nav">
-	  <% if user_signed_in? %>
-	  <li>
-	    <%= link_to 'Venta', new_transaction_path %>
-	  </li>
-	  <% end %>
-	</ul>
-      </div>
-
-      <div class="navbar-right">
-	<ul class="nav navbar-nav">
-	  <% if user_signed_in? %>
-	    <li>
-	      <%= link_to current_user.rut, user_path(current_user) %>
-	    </li>
-	  <% else %>
-	    <li>
-	      <%= link_to 'Iniciar sesion', new_user_session_path %>
-	    </li>
-	  <% end %>
-	</ul>
-      </div>
-    </div>
-
-    <div class="container">
-      <% if notice %>
-	<div class="alert alert-success">
-	  <%= notice %>
-	</div>
-      <% end %>
-
-      <% if alert %>
-	<div class="alert alert-danger">
-	  <%= alert %>
-	</div>
-      <% end %>
-
-      <%= yield %>
-    </div>
-  </body>
-</html>
+	<!DOCTYPE html>
+	<html>
+	  <head>
+	    <title>Farmacia</title>
+	    <%= csrf_meta_tags %>
+	
+	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	  </head>
+	
+	  <body>
+	    <div class="navbar navbar-default navbar-fixed-top navbar-collapse">
+	      <div class="navbar-brand">
+		<%= link_to 'Farmacia', '#' %>
+		    <li>
+		      <%= link_to 'crear producto', new_product_path  %>
+		    </li>
+	      </div>
+	
+	      <div class="navbar-left">
+		<ul class="nav navbar-nav">
+		  <% if user_signed_in? %>
+		  <li>
+		    <%= link_to 'Venta', new_transaction_path %>
+		  </li>
+		  <% end %>
+		</ul>
+	      </div>
+	
+	      <div class="navbar-right">
+		<ul class="nav navbar-nav">
+		  <% if user_signed_in? %>
+		    <li>
+		      <%= link_to current_user.rut, user_path(current_user) %>
+		    </li>
+		  <% else %>
+		    <li>
+		      <%= link_to 'Iniciar sesion', new_user_session_path %>
+		    </li>
+		  <% end %>
+		</ul>
+	      </div>
+	    </div>
+	
+	    <div class="container">
+	      <% if notice %>
+		<div class="alert alert-success">
+		  <%= notice %>
+		</div>
+	      <% end %>
+	
+	      <% if alert %>
+		<div class="alert alert-danger">
+		  <%= alert %>
+		</div>
+	      <% end %>
+	
+	      <%= yield %>
+	    </div>
+	  </body>
+	</html>
