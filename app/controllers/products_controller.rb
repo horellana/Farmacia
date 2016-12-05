@@ -1,5 +1,6 @@
-class ProductController < ApplicationController
- 
+class ProductsController < ApplicationController
+  autocomplete :product, :name
+
   def new
     @product = Product.new
   end
@@ -7,12 +8,12 @@ class ProductController < ApplicationController
   def index
     @product = Product.all
   end
- 
+
   def show
     @product = Product.find(params[:id])
   end
- 
- 
+
+
   def create
 #insert intro
         @product = Cliente.new(nombre: params[:product][:nombre],
@@ -24,5 +25,5 @@ class ProductController < ApplicationController
                 render :new
         end
   end
-  
+
 end
