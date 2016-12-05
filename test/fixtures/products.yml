@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyString
+  id: 1
+  name: Paracetamol
   provider: one
-  sale_price: 1
+  sale_price: 1000
   purchase_price: 1
   exempt: MyString
   commission: 1
@@ -15,9 +16,10 @@ one:
   discount: 1
 
 two:
-  description: MyString
+  id: 2
+  name: Ibuprofeno
   provider: two
-  sale_price: 1
+  sale_price: 666
   purchase_price: 1
   exempt: MyString
   commission: 1

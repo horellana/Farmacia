@@ -6,6 +6,12 @@
   </div>
 
   <div class="panel-body">
+    <%= form_tag(shopping_cart_path(@shopping_cart), method: 'put') do %>
+      <%= label_tag(:q, 'Buscar producto') %>
+      <%= text_field_tag(:search_product_field) %>
+      <%= submit_tag('Agregar') %>
+    <% end %>
+
     <table class="table">
       <thead>
 	<th>
@@ -32,7 +38,15 @@
       </div>
     </table>
 
-    <%= render 'partials/transactions/cart', products: [] %>
+    <%= render 'partials/shopping_cart/shopping_cart', shopping_cart: @shopping_cart %>
 
   </div>
 </div>
+
+<script>
+ $('#search_product_field')
+   .autocomplete({
+     source: "<%= autocomplete_product_name_products_path %>",
+     minLength: 3
+   });
+</script>
