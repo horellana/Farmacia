@@ -1,2 +1,0 @@
-class MedicinalIngredient < ApplicationRecord
-end

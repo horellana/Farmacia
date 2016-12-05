@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :user
   resources :transaction
+  resources :product
+
 
   scope :devise do
     devise_for :user
