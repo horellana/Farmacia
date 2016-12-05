@@ -11,19 +11,18 @@
   <body>
     <div class="navbar navbar-default navbar-fixed-top navbar-collapse">
       <div class="navbar-brand">
-	<%= link_to 'Farmacia', '#' %>
-	    <li>
-	      <%= link_to 'crear producto', new_user_session_path %>
-	    </li>
-	  <% end %>
+	<%= link_to 'Farmacia', root_path %>
       </div>
 
       <div class="navbar-left">
 	<ul class="nav navbar-nav">
 	  <% if user_signed_in? %>
-	  <li>
-	    <%= link_to 'Venta', new_transaction_path %>
-	  </li>
+	    <li>
+	      <%= link_to 'crear producto', new_user_session_path %>
+	    </li>
+	    <li>
+	      <%= link_to 'Venta', new_transaction_path %>
+	    </li>
 	  <% end %>
 	</ul>
       </div>
