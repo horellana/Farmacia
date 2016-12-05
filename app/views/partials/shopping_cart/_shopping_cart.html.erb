@@ -1,0 +1,84 @@
+<table class="table">
+  <thead>
+    <th>
+      Codigo
+    </th>
+
+    <th>
+      Precio Unitario
+    </th>
+
+    <th>
+      Sub Total
+    </th>
+
+    <th>
+      Descuento
+    </th>
+
+    <th>
+      Total
+    </th>
+
+    <th>
+      Cantidad
+    </th>
+
+    <th>
+      Quitar
+    </th>
+  </thead>
+
+  <tbody>
+    <% shopping_cart.shopping_cart_items.each do |product| %>
+      <tr>
+	<td>
+	  <%= product.id %>
+	</td>
+
+	<td>
+	  <%= product.price %>
+	</td>
+
+	<td>
+	  <%= product.price %>
+	</td>
+
+	<td>
+	  0
+	</td>
+
+	<td>
+	  <%= (product.price - 0) * 1 %>
+	</td>
+
+	<td>
+	  <%= product.quantity %>
+	</td>
+
+	<td>
+	  <%= link_to raw('<i class="glyphicon glyphicon-remove"></i>'), '#' %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+
+    <td>
+      <b>Total:</b> <%= shopping_cart.total %>
+    </td>
+  </tfoot>
+</table>
+
