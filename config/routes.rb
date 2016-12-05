@@ -3,7 +3,15 @@ Rails.application.routes.draw do
   root 'farmacia#index'
 
   resources :user
-  resources :transactions
+  # resources :transactions
+
+  resources :shopping_cart
+
+  # get 'search#products', to: :search_product, controller: 'search', action: :products, as: 'search_products'
+
+  resources :products do
+    get :autocomplete_product_name, :on => :collection
+  end
 
   scope :devise do
     devise_for :user

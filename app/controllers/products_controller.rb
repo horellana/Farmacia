@@ -1,5 +1,7 @@
-class ArticlesController < ApplicationController
- 
+class ProductsController < ApplicationController
+  autocomplete :product, :name
+
+
   def new
     @product = Product.new
   end
@@ -7,11 +9,11 @@ class ArticlesController < ApplicationController
   def index
     @product = Product.all
   end
- 
+
   def show
     @product = Product.find(params[:id])
   end
- 
+
   def create
     @product = Product.new( params.require(:product).permit(:name, :price, :category_id) )
 
@@ -19,4 +21,6 @@ class ArticlesController < ApplicationController
       redirect_to @product, notice: 'El producto ha sido creado.'
     else
       render :new
+    end
   end
+end

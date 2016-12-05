@@ -53,3 +53,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'pundit'
+gem 'acts_as_shopping_cart'
+gem 'rails-jquery-autocomplete'
