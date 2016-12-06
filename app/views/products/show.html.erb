@@ -1,1 +1,23 @@
-<%= @product.name %>
+<table class="table">
+    <thead>
+        <th>
+            Nombre
+        </th>
+        
+        <th>
+            Precio
+        </th>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td>
+                <%= @product.name %>
+            </td>
+
+            <td>
+                <%= @product.sale_price %>
+            </td>
+        </tr>
+    </tbody>
+</table>
