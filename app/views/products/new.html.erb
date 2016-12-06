@@ -1,0 +1,93 @@
+<div class="panel panel-default">
+  
+  <div class="panel-heading">
+    Crear producto
+  </div>
+  
+  <div class="panel-body">
+    <div class="row">
+      
+         <div class="col-md-4">
+      <%= form_for @product do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :sale_price %><br>
+    <%= f.text_field :sale_price %>
+  </p>
+  <p>
+    <%= f.label :purchase_price %><br>
+    <%= f.text_field :purchase_price %>
+  </p>
+  <p>
+    <%= f.label :exempt %><br>
+    <%= f.text_field :exempt %>
+  </p>
+  <p>
+    <%= f.label :commission %><br>
+    <%= f.text_field :commission %>
+  </p>
+    
+   <p>  
+    <%= label_tag(:product_be, "Es bio equivalente") %>
+    <%= check_box_tag(:product_be) %>
+  </p>
+    
+    
+    <p>
+   <%= label_tag(:isp, "Instituto de Salud Pública de Chile") %>
+    <%= check_box_tag(:isp) %>
+    </p>
+    </div>
+     
+     <div class="col-md-4">
+           <%= f.label :discount %><br>
+    <%= f.text_field :discount %>
+  </p>
+ 
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+  
+  <p>
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity %>
+  </p>
+  
+  <p>
+    <%= f.label :medicinal_ingredient %> <br>
+    <%= f.text_field :medicinal_ingredient %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+     </div>
+    <p>
+
+<% end %>
+    </div>
+ 
+  </div>
+ 
+
+<script>
+ $('#product_medicinal_ingredient')
+   .autocomplete({
+     source: "<%= autocomplete_medicinal_ingredient_name_medicinal_ingredient_index_path %>",
+     minLength: 2
+   });
+</script>
+</div>
+
+
+
+<%#
+provider_id
+medicinal_ingredient_id
+dose_id
+category_id
+%>
