@@ -15,14 +15,13 @@ class ProductsController < ApplicationController
 
 
   def create
-#insert intro
-        @product = Cliente.new(nombre: params[:product][:nombre],
+        @product = Product.new(name: params[:product][:name],
                         description: params[:product][:description],
                         )
         if @product.save
-                redirect_to @product
+              redirect_to @product
         else
-                render :new
+              render 'new'
         end
   end
 
