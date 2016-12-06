@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   autocomplete :product, :name
+  before_action :authenticate_user!
 
   def new
     @product = Product.new
@@ -17,6 +18,13 @@ class ProductsController < ApplicationController
   def create
         @product = Product.new(name: params[:product][:name],
                         description: params[:product][:description],
+                        sale_price: params[:product][:sale_price],
+                        purchase_price: params[:product][:purchase_price],
+                        exempt: params[:product][:exempt],
+                        commission: params[:product][:commission],
+                        be: params[:product][:be],
+                        isp: params[:product][:isp],
+                        discount: params[:product][:discount]
                         )
         if @product.save
               redirect_to @product
