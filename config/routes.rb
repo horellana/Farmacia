@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :user
   resources :shopping_cart
   resources :providers
+  resources :clients
 
   # get 'search#products', to: :search_product, controller: 'search', action: :products, as: 'search_products'
 

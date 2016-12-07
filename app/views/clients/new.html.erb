@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  
+  <div class="panel-heading">
+    Crear Cliente
+  </div>
+  
+  <div class="panel-body">
+    <div class="row">
+           
+    <div class="col-md-4">
+           <%= form_for @client do |f| %>
+       <p>
+         <%= f.label :name %><br>
+         <%= f.text_field :name %>
+       </p>
+       <p>
+         <%= f.label :lastname %><br>
+         <%= f.text_field :lastname %>
+       </p>
+       <p>
+         <%= f.label :rut %><br>
+         <%= f.text_field :rut %>
+       </p>
+       <p>
+         <%= f.label :gender %><br>
+         <%= radio_button_tag(:gender, "gender M") %>
+          <%= label_tag(:gender, "M") %>
+          <%= radio_button_tag(:gender, "gender F") %>
+          <%= label_tag(:gender, "F") %>
+       </p>
+       <p>
+         <%= f.label :email %><br>
+         <%= f.text_field :email %>
+       </p>
+
+      <p>
+    <%= f.submit %>
+  </p>
+    </div>
+ 
+<% end %>
+  </div>
+  </div>
+     
+ 
+
+</div>
