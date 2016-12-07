@@ -1,23 +1,97 @@
 <table class="table">
     <thead>
-        <th>
-            Nombre
-        </th>
-        
-        <th>
-            Precio
-        </th>
-    </thead>
-    
-    <tbody>
-        <tr>
-            <td>
-                <%= @product.name %>
-            </td>
+	<th>
+	    Nombre
+	</th>
 
-            <td>
-                <%= @product.sale_price %>
-            </td>
-        </tr>
+	<th>
+	  Categoria
+	</th>
+
+	<th>
+	  Bioequivalente
+	</th>
+
+	<th>
+	  Principio Activo
+	</th>
+
+	<th>
+	  ISP
+	</th>
+
+	<th>
+	  Comision
+	</th>
+
+	<th>
+	  Precio Compra
+	</th>
+
+	<th>
+	  Precio Venta
+	</th>
+
+	<th>
+	  Descuento
+	</th>
+
+	<th>
+	  Ganancia
+	</th>
+
+    </thead>
+    <tbody>
+	<tr>
+	    <td>
+		<%= @product.name %>
+	    </td>
+
+	    <td>
+	      <%= @product.category.description %>
+	    </td>
+
+	    <td>
+	      <%= @product.be %>
+	    </td>
+
+	    <td>
+	      <%= @product.medicinal_ingredient.name %>
+	    </td>
+
+	    <td>
+	      <%= @product.isp %>
+	    </td>
+
+	    <td>
+	      $ <%= @product.commission %>
+	    </td>
+
+	    <td>
+	      $ <%= @product.purchase_price %>
+	    </td>
+
+	    <td>
+	      $ <%= @product.sale_price %>
+	    </td>
+
+	    <td>
+	      $ <%= @product.discount %>
+	    </td>
+
+	    <td>
+	      $ <%= @product.profit %>
+	    </td>
+	</tr>
     </tbody>
 </table>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Descripcion
+    </div>
+
+    <div class="panel-body">
+      <%= @product.description %>
+    </div
+</div>
