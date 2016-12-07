@@ -1,14 +1,14 @@
 <div class="panel panel-default">
-  
+
   <div class="panel-heading">
     Crear Cliente
   </div>
-  
+
   <div class="panel-body">
+    <%= form_for @client do |f| %>
     <div class="row">
-           
+
     <div class="col-md-4">
-           <%= form_for @client do |f| %>
        <p>
          <%= f.label :name %><br>
          <%= f.text_field :name %>
@@ -37,11 +37,11 @@
     <%= f.submit %>
   </p>
     </div>
- 
+
 <% end %>
   </div>
   </div>
-     
- 
+
+
 
 </div>
