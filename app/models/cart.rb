@@ -18,7 +18,7 @@ class Cart < ApplicationRecord
   end
 
   def items
-    cart_items
+    cart_items.order id: :desc
   end
 
   def total
