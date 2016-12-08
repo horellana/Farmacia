@@ -11,7 +11,7 @@ class ShoppingCartController < ApplicationController
   def update
     product = Product.find_by name: params[:search_product_field]
     puts "FOUND: #{product}"
-    @shopping_cart.add(product, product.sale_price)
+    @shopping_cart.add(Product, product.sale_price)
     redirect_to shopping_cart_path
   end
 
