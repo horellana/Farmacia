@@ -6,17 +6,17 @@
   </div>
 
   <div class="panel-body">
-    <%= form_tag(shopping_cart_path(@shopping_cart), method: 'put') do %>
-      <%= label_tag(:q, 'Buscar producto') %>
-      <%= text_field_tag(:search_product_field) %>
-      <%= submit_tag('Agregar') %>
-    <% end %>
 
     <table class="table">
       <thead>
 	<th>
 	  N° de Venta
 	</th>
+
+	<th>
+	  Vendedor
+	</th>
+
 	<th>
 	  Fecha
 	</th>
@@ -29,6 +29,10 @@
 	  </td>
 
 	  <td>
+	    <%= current_user.rut %>
+	  </td>
+
+	  <td>
 	    <%= Time.now.to_formatted_s(:db) %>
 	  </td>
 	</tr>
@@ -38,7 +42,15 @@
       </div>
     </table>
 
-    <%= render 'partials/shopping_cart/shopping_cart', shopping_cart: @shopping_cart %>
+    <%= form_tag(cart_path(@cart), method: 'put', remote: true) do %>
+      <%= label_tag(:q, 'Buscar producto') %>
+      <%= text_field_tag(:search_product_field) %>
+      <%= submit_tag('Agregar') %>
+    <% end %>
+
+    <br>
+
+    <%= render 'partials/cart/cart', cart: @cart %>
 
   </div>
 </div>
