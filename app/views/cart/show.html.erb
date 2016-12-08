@@ -54,9 +54,17 @@
 
     <br>
 
-    <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
-      <%= submit_tag('Limpiar') %>
-    <% end %>
+    <div class="col-xs-1">
+      <%= form_tag(cart_path(@cart), remote: true) do %>
+	<%= submit_tag('Vender') %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-1">
+      <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
+	<%= submit_tag('Limpiar') %>
+      <% end %>
+    </div>
   </div>
 </div>
 
