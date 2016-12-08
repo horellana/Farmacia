@@ -10,9 +10,13 @@ class CartController < ApplicationController
   end
 
   def update
-    query = params[:search_product_field]
-    product = Product.find_by name: query
-    @cart.add(product)
+    if params[:remove_product_id]
+      @cart.remove(params[:remove_product_id])
+    else
+      query = params[:search_product_field]
+      product = Product.find_by name: query
+      @cart.add(product)
+    end
 
     redirect_to @cart
   end

@@ -57,7 +57,10 @@
 	</td>
 
 	<td>
-	  <%= link_to raw('<i class="glyphicon glyphicon-remove"></i>'), '#' %>
+	  <%= form_tag(cart_path(cart), method: :put, remote: true) do %>
+	    <%= hidden_field_tag(:remove_product_id, item.product.id) %>
+	    <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-remove' %>
+	  <% end %>
 	</td>
       </tr>
     <% end %>

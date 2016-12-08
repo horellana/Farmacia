@@ -6,4 +6,13 @@ class CartItem < ApplicationRecord
     self.quantity = self.quantity + 1
     self.save!
   end
+
+  def decrease_quantity
+    self.quantity = self.quantity - 1
+    self.save!
+
+    if self.quantity <= 0
+      self.destroy!
+    end
+  end
 end
