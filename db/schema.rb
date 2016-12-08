@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20161205150329) do
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 
-  create_table "providers", force: :cascade do |t|
+  create_table "p", force: :cascade do |t|
     t.string   "rut"
     t.string   "name"
     t.string   "business_name"
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20161205150329) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
-  add_foreign_key "products", "providers"
+  add_foreign_key "products", "p"
   add_foreign_key "quotations", "checkouts"
   add_foreign_key "users", "job_titles"
 end
