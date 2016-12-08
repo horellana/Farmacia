@@ -17,6 +17,11 @@ class CartController < ApplicationController
     redirect_to @cart
   end
 
+  def destroy
+    session[:cart_id] = nil
+    redirect_to new_cart_path
+  end
+
   private
 
   def setup_cart

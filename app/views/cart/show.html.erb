@@ -6,7 +6,6 @@
   </div>
 
   <div class="panel-body">
-
     <table class="table">
       <thead>
 	<th>
@@ -48,10 +47,16 @@
       <%= submit_tag('Agregar') %>
     <% end %>
 
+
     <br>
 
     <%= render 'partials/cart/cart', cart: @cart %>
 
+    <br>
+
+    <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
+      <%= submit_tag('Limpiar') %>
+    <% end %>
   </div>
 </div>
 
