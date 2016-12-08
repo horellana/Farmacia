@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   resources :products do
     get :autocomplete_product_name, on: :collection
   end
-  
+
   resources :medicinal_ingredient do
     get :autocomplete_medicinal_ingredient_name, on: :collection
   end
-  
+
   resources :transactions
   resources :products
 
