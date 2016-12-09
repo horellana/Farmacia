@@ -95,8 +95,15 @@ ActiveRecord::Schema.define(version: 20161208193258) do
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "quantity"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.integer  "price_cents",             default: 0,     null: false
+    t.string   "price_currency",          default: "USD", null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "name"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree

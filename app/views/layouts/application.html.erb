@@ -26,12 +26,21 @@
 	      <%= link_to 'Venta', new_cart_path %>
 	    </li>
 
+
 	    <li role="presentation" class="dropdown">
 	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Productos	</a>
-	      <ul class="dropdown-menu">
-		<li> <%= link_to 'Crear producto', new_product_path %>   </li>
-		<li> <%= link_to 'Buscar Producto', '#' %>   </li>
-		<li> <%= link_to 'Editar Producto', new_product_path %>   </li>
+	    	<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+						<li> <%= link_to 'Crear producto', new_product_path %>   </li>
+						<li> <%= link_to 'Buscar Producto', '#' %>   </li>
+						<li> <%= link_to 'Editar Producto', new_product_path %>   </li>
+			         <li class="divider"></li>
+	              <li class="dropdown-submenu">
+	                <a tabindex="-1" href="#">Otras componentes</a>
+	              	 	<li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
+          </ul>
+      </li>
+
+
 	      </ul>
 	    </li>
 
@@ -53,7 +62,7 @@
 	      </ul>
 	    </li>
 
-      <li role="presentation" class="dropdown">
+<!--      <li role="presentation" class="dropdown">
 	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Informes	</a>
 	      <ul class="dropdown-menu">
 		<li> <%= link_to 'Inventario', new_provider_path %>   </li>
@@ -63,7 +72,7 @@
     <li> <%= link_to 'Historico proveedores', new_provider_path %>   </li>
 	      </ul>
 	    </li>
-
+-->
 
 	  <% end %>
 	</ul>
