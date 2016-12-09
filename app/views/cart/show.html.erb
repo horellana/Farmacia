@@ -36,30 +36,26 @@
 	  </td>
 	</tr>
       </tbody>
-
-      <div class="row">
-      </div>
     </table>
 
     <br>
 
-    <% if @cart.items.length > 0 %>
+    <div id="cart_item_list">
       <%= render 'partials/cart/cart', cart: @cart %>
+    </div>
 
-      <br>
+    <br>
+    <div class="col-xs-1">
+      <%= form_tag(cart_path(@cart), remote: true) do %>
+	<%= submit_tag('Vender', class: 'btn btn-success') %>
+      <% end %>
+    </div>
 
-      <div class="col-xs-1">
-	<%= form_tag(cart_path(@cart), remote: true) do %>
-	  <%= submit_tag('Vender', class: 'btn btn-success') %>
-	<% end %>
-      </div>
-
-      <div class="col-xs-1">
-	<%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
-	  <%= submit_tag('Limpiar', class: 'btn btn-danger') %>
-	<% end %>
-      </div>
-    <% end %>
+    <div class="col-xs-1">
+      <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
+	<%= submit_tag('Limpiar', class: 'btn btn-danger') %>
+      <% end %>
+    </div>
 
   </div>
 </div>
