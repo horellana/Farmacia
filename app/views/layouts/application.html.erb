@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Farmacia</title>
+    <title>
+      Farmacia
+    </title>
+
+    <link rel="shortcut icon" href="/images/favicon.png">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -19,7 +23,7 @@
 	  <% if user_signed_in? %>
 
 	    <li>
-	      <%= link_to 'Venta', new_shopping_cart_path %>
+	      <%= link_to 'Venta', new_cart_path %>
 	    </li>
 
 	    <li role="presentation" class="dropdown">

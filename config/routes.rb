@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'farmacia#index'
 
   resources :user
-  resources :shopping_cart
+  resources :cart
   resources :providers
   resources :clients
 

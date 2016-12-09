@@ -1,0 +1,87 @@
+<table class="table">
+  <thead>
+    <th>
+      Codigo
+    </th>
+
+    <th>
+      Nombre
+    </th>
+
+    <th>
+      Precio Unitario
+    </th>
+
+    <th>
+      Descuento
+    </th>
+
+    <th>
+      Cantidad
+    </th>
+
+    <th>
+      Total
+    </th>
+
+    <th>
+      Quitar
+    </th>
+  </thead>
+
+  <tbody>
+   <% cart.items.each do |item| %>
+      <tr>
+	<td>
+	  <%= item.product.id %>
+	</td>
+
+	<td>
+	  <%= link_to item.product.name, item.product %>
+	</td>
+
+	<td>
+	  $<%= item.product.sale_price %>
+	</td>
+
+	<td>
+	  $<%= item.product.discount %>
+	</td>
+
+	<td>
+	  <%= item.quantity %>
+	</td>
+
+	<td>
+	  $<%= item.product.price * item.quantity %>
+	</td>
+
+	<td>
+	  <%= form_tag(cart_path(cart), method: :put, remote: true) do %>
+	    <%= hidden_field_tag(:remove_product_id, item.product.id) %>
+	    <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-remove' %>
+	  <% end %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+
+    <td>
+      <b>Total:</b> $<%= cart.total %>
+    </td>
+  </tfoot>
+</table>
