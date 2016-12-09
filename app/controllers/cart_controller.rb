@@ -22,7 +22,7 @@ class CartController < ApplicationController
       flash[:alert] = 'Producto no encontrado'
     end
 
-    redirect_to @cart
+    respond_to :js
   end
 
   def destroy
