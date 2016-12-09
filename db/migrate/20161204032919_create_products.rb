@@ -14,8 +14,6 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.references :category, foreign_key: true
       t.integer :discount
 
-      t.shopping_cart_item_fields
-
       t.timestamps
     end
   end

@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">
+      Venta
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+	<th>
+	  N° de Venta
+	</th>
+
+	<th>
+	  Vendedor
+	</th>
+
+	<th>
+	  Fecha
+	</th>
+      </thead>
+
+      <tbody>
+	<tr>
+	  <td>
+	    <%= Transaction.last.id + 1 %>
+	  </td>
+
+	  <td>
+	    <%= current_user.rut %>
+	  </td>
+
+	  <td>
+	    <%= Time.now.to_formatted_s(:db) %>
+	  </td>
+	</tr>
+      </tbody>
+
+      <div class="row">
+      </div>
+    </table>
+
+    <%= form_tag(cart_path(@cart), method: 'put', remote: true) do %>
+      <%= label_tag(:q, 'Buscar producto') %>
+      <%= text_field_tag(:search_product_field) %>
+      <%= submit_tag('Agregar') %>
+    <% end %>
+
+
+    <br>
+
+    <%= render 'partials/cart/cart', cart: @cart %>
+
+    <br>
+
+    <div class="col-xs-1">
+      <%= form_tag(cart_path(@cart), remote: true) do %>
+	<%= submit_tag('Vender', class: 'btn btn-success') %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-1">
+      <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
+	<%= submit_tag('Limpiar', class: 'btn btn-danger') %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+ $('#search_product_field')
+   .autocomplete({
+     source: "<%= autocomplete_product_name_products_path %>",
+     minLength: 3
+   });
+</script>
