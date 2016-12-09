@@ -1,6 +1,10 @@
 class Cart < ApplicationRecord
   has_many :cart_items
 
+  def empty?
+    items.length == 0
+  end
+
   def add(product)
     item = CartItem.find_by cart: self, product: product
 
