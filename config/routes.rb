@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :cart
   resources :providers
   resources :clients
+  resources :medicinal_ingredients
+
+
+
 
   resources :products do
     get :autocomplete_product_name, on: :collection
