@@ -6,4 +6,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :rut
     devise_parameter_sanitizer.for(:sign_in) << :rut
   end
+
+  def setup_cart
+    begin
+      @cart = Cart.find session[:cart_id]
+    rescue ActiveRecord::RecordNotFound
+      @cart = Cart.create!
+      session[:cart_id] = @cart.id
+    end
+  end
 end
