@@ -1,20 +1,16 @@
 class TransactionsController < ApplicationController
-  before_action :setup_shopping_cart
+  before_action :setup_cart
 
-  def new
-    @transaction = Transaction.new
+  def create
+    avoid_emtpy_cart
   end
 
   private
 
-  def setup_shopping_cart
-    if session[:shopping_cart_id]
-    then
-      @shopping_cart = shopping_cart.find session[:shopping_cart_id]
-    else
-      @shopping_cart = shopping_cart.create
+  def avoid_empty_cart
+    if @cart.empty?
+      flash[:alert] = 'El carrito esta vacio!'
+      redirect_to :back
     end
-
-    session[:shopping_cart_id] = @shopping_cart.id
   end
 end
