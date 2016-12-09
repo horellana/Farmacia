@@ -10,14 +10,17 @@ class CartController < ApplicationController
   end
 
   def update
-    if params[:remove_product_id]
-      @cart.remove(params[:remove_product_id])
-    else
-      query = params[:search_product_field]
-      product = Product.find_by name: query
-      @cart.add(product)
+    begin
+      if params[:remove_product_id]
+        @cart.remove(params[:remove_product_id])
+      else
+        query = params[:search_product_field]
+        product = Product.find_by name: query
+        @cart.add(product)
+      end
+    rescue ActiveRecord::RecordInvalid
+      flash[:alert] = 'Producto no encontrado'
     end
-
     redirect_to @cart
   end
 
