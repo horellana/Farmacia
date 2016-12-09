@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20161208193258) do
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 
-  create_table "p", force: :cascade do |t|
+  create_table "providers", force: :cascade do |t|
     t.string   "rut"
     t.string   "name"
     t.string   "business_name"
@@ -129,6 +129,11 @@ ActiveRecord::Schema.define(version: 20161208193258) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -175,7 +180,7 @@ ActiveRecord::Schema.define(version: 20161208193258) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
-  add_foreign_key "products", "p"
+  add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
   add_foreign_key "users", "job_titles"
 end
