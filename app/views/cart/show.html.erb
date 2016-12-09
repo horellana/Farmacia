@@ -66,7 +66,8 @@
   </div>
   <div class="panel-body">
     <%= form_tag(search_products_path, method: :get, remote: true) do %>
-      <%= text_field_tag(:search_product_field) %>
+      <%= autocomplete_field_tag :search_product_field, '', autocomplete_product_name_products_path %>
+      <%#= text_field_tag(:search_product_field) %>
       <%= submit_tag('Buscar') %>
     <% end %>
 
@@ -76,12 +77,3 @@
     </div>
   </div>
 </div>
-
-
-<script>
- $('#search_product_field')
-   .autocomplete({
-     source: "<%= autocomplete_product_name_products_path %>",
-     minLength: 3
-   });
-</script>
