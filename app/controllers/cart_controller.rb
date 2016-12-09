@@ -18,25 +18,15 @@ class CartController < ApplicationController
         product = Product.find_by name: query
         @cart.add(product)
       end
-    rescue ActiveRecord::RecordInvalid
+    rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotFound
       flash[:alert] = 'Producto no encontrado'
     end
+
     redirect_to @cart
   end
 
   def destroy
     session[:cart_id] = nil
     redirect_to new_cart_path
-  end
-
-  private
-
-  def setup_cart
-    begin
-      @cart = Cart.find session[:cart_id]
-    rescue ActiveRecord::RecordNotFound
-      @cart = Cart.create!
-      session[:cart_id] = @cart.id
-    end
   end
 end

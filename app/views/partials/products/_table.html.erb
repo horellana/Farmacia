@@ -1,0 +1,53 @@
+<table class="table">
+    <thead>
+	<th>
+	    Nombre
+	</th>
+
+	<th>
+	  Categoria
+	</th>
+
+	<th>
+	  Bioequivalente
+	</th>
+
+	<th>
+	  Principio Activo
+	</th>
+
+	<th>
+	  ISP
+	</th>
+
+	<th>
+	  Comision
+	</th>
+
+	<th>
+	  Precio Compra
+	</th>
+
+	<th>
+	  Precio Venta
+	</th>
+
+	<th>
+	  Descuento
+	</th>
+
+	<th>
+	  Ganancia
+	</th>
+
+	<th>
+	  Agregar al carro
+	</th>
+
+    </thead>
+    <tbody>
+      <% for product in products do %>
+	<%= render 'partials/products/table/row', product: product %>
+      <% end %>
+    </tbody>
+</table>

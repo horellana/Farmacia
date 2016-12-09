@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   autocomplete :product, :name
   before_action :authenticate_user!
+  before_action :setup_cart
 
   def new
     @product = Product.new

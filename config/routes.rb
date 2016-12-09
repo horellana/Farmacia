@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search_product/index'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'
 
@@ -6,8 +8,6 @@ Rails.application.routes.draw do
   resources :cart
   resources :providers
   resources :clients
-
-  # get 'search#products', to: :search_product, controller: 'search', action: :products, as: 'search_products'
 
   resources :products do
     get :autocomplete_product_name, on: :collection
@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   scope :devise do
     devise_for :user
   end
+
+  get 'search/products', to: 'search_product#index', as: 'search_products'
 end
