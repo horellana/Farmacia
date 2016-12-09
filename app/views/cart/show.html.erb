@@ -41,32 +41,46 @@
       </div>
     </table>
 
-    <%= form_tag(cart_path(@cart), method: 'put', remote: true) do %>
-      <%= label_tag(:q, 'Buscar producto') %>
-      <%= text_field_tag(:search_product_field) %>
-      <%= submit_tag('Agregar') %>
+    <br>
+
+    <% if @cart.items.length > 0 %>
+      <%= render 'partials/cart/cart', cart: @cart %>
+
+      <br>
+
+      <div class="col-xs-1">
+	<%= form_tag(cart_path(@cart), remote: true) do %>
+	  <%= submit_tag('Vender', class: 'btn btn-success') %>
+	<% end %>
+      </div>
+
+      <div class="col-xs-1">
+	<%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
+	  <%= submit_tag('Limpiar', class: 'btn btn-danger') %>
+	<% end %>
+      </div>
     <% end %>
 
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar productos
+  </div>
+  <div class="panel-body">
+    <%= form_tag(search_products_path, method: :get, remote: true) do %>
+      <%= text_field_tag(:search_product_field) %>
+      <%= submit_tag('Buscar') %>
+    <% end %>
 
     <br>
 
-    <%= render 'partials/cart/cart', cart: @cart %>
-
-    <br>
-
-    <div class="col-xs-1">
-      <%= form_tag(cart_path(@cart), remote: true) do %>
-	<%= submit_tag('Vender', class: 'btn btn-success') %>
-      <% end %>
-    </div>
-
-    <div class="col-xs-1">
-      <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
-	<%= submit_tag('Limpiar', class: 'btn btn-danger') %>
-      <% end %>
+    <div id="search_product_result">
     </div>
   </div>
 </div>
+
 
 <script>
  $('#search_product_field')
