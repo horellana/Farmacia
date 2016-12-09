@@ -131,6 +131,11 @@ ActiveRecord::Schema.define(version: 20161208193258) do
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
   end
 
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string   "kind"
     t.datetime "date"
