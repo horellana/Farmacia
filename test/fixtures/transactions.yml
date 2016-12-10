@@ -8,6 +8,8 @@ one:
   discount: 1
   total_amount: 1
   client_rut: MyString
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
 
 two:
   kind: MyString
@@ -17,3 +19,5 @@ two:
   discount: 1
   total_amount: 1
   client_rut: MyString
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>

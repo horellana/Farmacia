@@ -1,5 +1,8 @@
 class TransactionDetail < ApplicationRecord
-  # Rails define un metodo llamado 'transaction'
-  belongs_to :transactionn
+  belongs_to :transactionn,
+             class_name: 'Transaction',
+             foreign_key: 'transaction_id'
+
   belongs_to :product
+  belongs_to :user
 end
