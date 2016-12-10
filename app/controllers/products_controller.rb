@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @product = Product.all
+    @products = Product.all
   end
 
   def show
@@ -27,11 +27,7 @@ class ProductsController < ApplicationController
                         isp: params[:product][:isp],
                         discount: params[:product][:discount]
                         )
-        if @product.save
-              redirect_to @product
-        else
-              render 'new'
-        end
+        @product.save!
   end
 
 end

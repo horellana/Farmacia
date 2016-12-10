@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Crear Principio activo
+  </div>
+
+  <div class="panel-body">
+    <%= form_for @medicinal_ingredient do |f| %>
+      <div class="row">
+
+        <div class="col-md-4">
+          <p>
+            <%= f.label :nombre %><br>
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.submit %>
+          </p>
+        </div>
+
+      </div>
+
+  </div>
+    <% end %>
+</div>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'foo/login'
+
+  get 'foo/index'
+
   get 'search_product/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,6 +12,10 @@ Rails.application.routes.draw do
   resources :cart
   resources :providers
   resources :clients
+  resources :medicinal_ingredients
+
+
+
 
   resources :products do
     get :autocomplete_product_name, on: :collection
