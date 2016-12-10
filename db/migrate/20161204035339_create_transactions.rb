@@ -1,6 +1,6 @@
 class CreateTransactions < ActiveRecord::Migration[5.0]
   def change
-    create_table :transactions do |t|
+    create_table :transactionns do |t|
       t.string :kind
       t.datetime :date
       t.integer :net_amount

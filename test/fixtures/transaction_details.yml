@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction: one
+  product: one
+  quantity: 1
+  unit_price: 1
+  net_price: 1
+  discount: 1
+  return: MyString
+  update_time: 2016-12-09 13:23:34
+
+two:
+  transaction: two
+  product: two
+  quantity: 1
+  unit_price: 1
+  net_price: 1
+  discount: 1
+  return: MyString
+  update_time: 2016-12-09 13:23:34
