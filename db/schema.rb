@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210025810) do
+ActiveRecord::Schema.define(version: 20161209194823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20161210025810) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_carts_on_client_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -95,8 +97,15 @@ ActiveRecord::Schema.define(version: 20161210025810) do
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "quantity"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.integer  "price_cents",             default: 0,     null: false
+    t.string   "price_currency",          default: "USD", null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "name"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree
@@ -131,21 +140,9 @@ ActiveRecord::Schema.define(version: 20161210025810) do
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
   end
 
-  create_table "transaction_details", force: :cascade do |t|
-    t.integer  "transaction_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
-    t.integer  "unit_price"
-    t.integer  "net_price"
-    t.string   "devolution"
-    t.integer  "user_id"
-    t.integer  "discount"
-    t.datetime "update_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["product_id"], name: "index_transaction_details_on_product_id", using: :btree
-    t.index ["transaction_id"], name: "index_transaction_details_on_transaction_id", using: :btree
-    t.index ["user_id"], name: "index_transaction_details_on_user_id", using: :btree
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -189,13 +186,11 @@ ActiveRecord::Schema.define(version: 20161210025810) do
 
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "carts", "clients"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
-  add_foreign_key "transaction_details", "products"
-  add_foreign_key "transaction_details", "transactions"
-  add_foreign_key "transaction_details", "users"
   add_foreign_key "users", "job_titles"
 end
