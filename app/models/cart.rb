@@ -1,4 +1,5 @@
 class Cart < ApplicationRecord
+  belongs_to :client
   has_many :cart_items
 
   def empty?
