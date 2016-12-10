@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Crear Dosis
+  </div>
+
+  <div class="panel-body">
+    <%= form_for @dose do |f| %>
+      <div class="row">
+
+        <div class="col-md-4">
+          <p>
+            <%= f.label :kind %><br>
+            <%= f.text_field :kind %>
+          </p>
+          <p>
+            <%= f.label :quantity %><br>
+            <%= f.text_field :quantity %>
+          </p>
+            <%= f.submit %>
+          </p>
+        </div>
+
+      </div>
+
+  </div>
+    <% end %>
+</div>

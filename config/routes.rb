@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :clients
   resources :medicinal_ingredients
   resources :categories
+  resources :doses
 
 
 
