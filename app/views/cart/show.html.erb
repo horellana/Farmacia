@@ -46,8 +46,8 @@
 
     <br>
     <div class="col-xs-1">
-      <%= form_tag(cart_path(@cart), remote: true) do %>
-	<%= submit_tag('Vender', class: 'btn btn-success') %>
+      <%= form_for(:transaction, url: '/transactions') do %>
+	<% submit_tag('Vender', class: 'btn btn-success') %>
       <% end %>
     </div>
 
