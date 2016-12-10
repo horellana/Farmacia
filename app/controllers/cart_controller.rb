@@ -18,7 +18,7 @@ class CartController < ApplicationController
         product = Product.find_by name: query
         @cart.add(product)
       end
-    rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordInvalid
       flash[:alert] = 'Producto no encontrado'
     end
 
