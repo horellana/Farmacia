@@ -1,21 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  transaction: one
+  transactionn: one
   product: one
   quantity: 1
   unit_price: 1
   net_price: 1
+  devolution: MyString
+  user: one
   discount: 1
-  return: MyString
-  update_time: 2016-12-09 13:23:34
+  update_time: 2016-12-09 23:58:53
 
 two:
-  transaction: two
+  transactionn: two
   product: two
   quantity: 1
   unit_price: 1
   net_price: 1
+  devolution: MyString
+  user: two
   discount: 1
-  return: MyString
-  update_time: 2016-12-09 13:23:34
+  update_time: 2016-12-09 23:58:53
