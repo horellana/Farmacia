@@ -17,6 +17,12 @@ class CategoriesController < ApplicationController
 
   def create
         @category = Category.new(description: params[:category][:description],)
-        @category.save!
-  end
+           if @category.save
+            flash[:notice] = "Categoria Creada."
+            redirect_to @category
+          else
+            render :action => 'new'
+          end
+   end
+ 
 end
