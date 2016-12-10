@@ -28,27 +28,51 @@
 
 
 	    <li role="presentation" class="dropdown">
-	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">
-		Productos
-	      </a>
-	      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-		<li>
-		  <%= link_to 'Crear producto', new_product_path %>
-		</li>
-		<li>
-		  <%= link_to 'Buscar Producto', '#' %>
-		</li>
-		<li>
-		  <%= link_to 'Editar Producto', '#' %>
-		</li>
-		<li class="divider"></li>
-		<li class="dropdown-submenu">
-		  <a tabindex="-1" href="#">Otras componentes</a>
-		  <li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path%>   </li>
+	       <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">
+					Productos
+	       </a>
+	         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+							<li>
+							  <%= link_to 'Crear producto', new_product_path %>
+							</li>
+							<li>
+							  <%= link_to 'Buscar Producto', '#' %>
+							</li>
+							<li>
+							  <%= link_to 'Editar Producto', '#' %>
+							</li>
+                <li class="divider"></li>
+									 <li class="dropdown-submenu">
+									    <a tabindex="-1" href="#">Otras componentes</a>
+									    <ul class="dropdown-menu">
+									       <li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path%>   </li>
 
-		</li>
-	      </ul>
-
+									    </ul>
+									  </li>                
+				   </ul>
+		  </li>
+		
+	
+   <!--
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                  <li><a tabindex="-1" href="#">Action</a></li>
+                  <li><a tabindex="-1" href="#">Another action</a></li>
+                  <li><a tabindex="-1" href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">More options</a>
+                    <ul class="dropdown-menu">
+                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                      <li><a tabindex="-1" href="#">Second level link</a></li>
+                    </ul>
+                  </li>
+                </ul>
+  	-->
+	   
+	   
 
 	    </li>
 
@@ -72,17 +96,15 @@
 	      </ul>
 	    </li>
 
-      <li role="presentation" class="dropdown">
-	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Informes	</a>
-	      <ul class="dropdown-menu">
-		<li> <%= link_to 'Inventario','#'  %>   </li>
-		<li> <%= link_to 'Merma', '#' %>   </li>
-		<li> <%= link_to 'Lista z del dia', '#'  %>   </li>
-    <li> <%= link_to 'Historico precios',   '#'%>   </li>
-    <li> <%= link_to 'Historico proveedores', '#' %>   </li>
+   <!--  
+					<li> <%= link_to 'Inventario','#'  %>   </li>
+					<li> <%= link_to 'Merma', '#' %>   </li>
+					<li> <%= link_to 'Lista z del dia', '#'  %>   </li>
+			    <li> <%= link_to 'Historico precios',   '#'%>   </li>
+			    <li> <%= link_to 'Historico proveedores', '#' %>   </li>
 	      </ul>
 	    </li>
-
+   -->
 
 	  <% end %>
 	  </ul>
