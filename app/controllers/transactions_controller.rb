@@ -14,13 +14,12 @@ class TransactionsController < ApplicationController
     @transaction.iva = 0.19
 
     if session[:client_rut]
-      puts "CLIENTE #{params[:client_rut]}"
       begin
         client = Client.find_by! rut: session[:client_rut]
         client.transactions << @transaction
       rescue ActiveRecord::RecordNotFound
         client = Client.new
-        client.rut = params[:client_rut]
+        client.rut = session[:client_rut]
         client.save!
         @transaction.client = client
       end
