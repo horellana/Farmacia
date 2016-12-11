@@ -89,15 +89,27 @@
 
 <script>
  $('#client_rut_input').on('input', function() {
-   var rut = $('#client_rut_input').val()
+   var old_rut = $('#client_rut_input').val();
 
-   $.ajax({
-     url: "<%= cart_path(@cart) %>",
-     type: 'PUT',
-     data: { set_rut: rut }
-   });
+   var f = function() {
+     var new_rut = $('#client_rut_input').val();
 
-   /* $.put("<%= cart_path(@cart) %>", {set_rut: rut});*/
+     if (old_rut != new_rut) {
+       return;
+     }
+
+     if (new_rut === '') {
+       return;
+     }
+
+     $.ajax({
+       url: "<%= cart_path(@cart) %>",
+       type: 'PUT',
+       data: { set_rut: new_rut }
+     });
+   };
+
+   setTimeout(f, 1000);
  });
 </script>
 
