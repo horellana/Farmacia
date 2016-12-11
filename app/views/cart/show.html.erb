@@ -34,10 +34,6 @@
 	</th>
 
 	<th>
-	  Rut cliente
-	</th>
-
-	<th>
 	  Fecha
 	</th>
       </thead>
@@ -50,10 +46,6 @@
 
 	  <td>
 	    <%= current_user.rut %>
-	  </td>
-
-	  <td>
-
 	  </td>
 
 	  <td>
@@ -80,7 +72,7 @@
 
       <%= form_for(:transaction, url: '/transactions') do %>
 	<%= submit_tag('Vender', class: 'btn btn-success') %>
-	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete %>
+	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete, remote: true %>
       <% end %>
     </div>
   </div>
