@@ -17,9 +17,7 @@ class TransactionsController < ApplicationController
       @transaction.add_product(item.product, item.quantity)
     end
 
-    # el carrito de compras ya no es necesario
     clean_cart
-
     redirect_to @transaction
   end
 
@@ -46,10 +44,5 @@ class TransactionsController < ApplicationController
       flash[:alert] = 'El carrito esta vacio!'
       return redirect_to :back
     end
-  end
-
-  def clean_cart
-    session[:cart_id] = nil
-    session[:client_rut] = nil
   end
 end
