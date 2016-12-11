@@ -13,22 +13,17 @@ class TransactionsController < ApplicationController
     @transaction.date = now
     @transaction.iva = 0.19
 
-    if params[:client_rut]
+    if session[:client_rut]
       puts "CLIENTE #{params[:client_rut]}"
       begin
-        puts "SETEANDO CLIENTE"
-        client = Client.find_by! rut: params[:client_rut]
+        client = Client.find_by! rut: session[:client_rut]
         client.transactions << @transaction
       rescue ActiveRecord::RecordNotFound
-        puts "CLIENTE NO ENCONTRADO"
         client = Client.new
         client.rut = params[:client_rut]
-        puts "GRABANDO NUEVO CLIENTE"
         client.save!
         @transaction.client = client
       end
-
-      puts "EL CLIENTE ES: #{@transaction.client}"
     end
 
     @transaction.save!
@@ -49,6 +44,7 @@ class TransactionsController < ApplicationController
 
     # el carrito de compras ya no es necesario
     session[:cart_id] = nil
+    session[:client_rut] = nil
 
     redirect_to @transaction
   end

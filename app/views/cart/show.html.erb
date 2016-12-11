@@ -70,23 +70,34 @@
       <%= render 'partials/cart/cart', cart: @cart %>
     </div>
 
+
+
     <div class="col-xs-8">
+      <label>Rut cliente</label>
+      <input type="text" id="client_rut_input" value="<%= session[:client_rut] %>">
+
+      <br>
+      <br>
+
       <%= form_for(:transaction, url: '/transactions') do %>
-	<%= label_tag 'Rut cliente' %>
-	<%= text_field_tag :client_rut %>
-
-	<br>
-	<br>
-
 	<%= submit_tag('Vender', class: 'btn btn-success') %>
-	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'),
-	  cart_path(@cart),
-	method: :delete %>
+	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete %>
       <% end %>
     </div>
   </div>
-
-  <br>
-
 </div>
+
+<script>
+ $('#client_rut_input').on('input', function() {
+   var rut = $('#client_rut_input').val()
+
+   $.ajax({
+     url: "<%= cart_path(@cart) %>",
+     type: 'PUT',
+     data: { set_rut: rut }
+   });
+
+   /* $.put("<%= cart_path(@cart) %>", {set_rut: rut});*/
+ });
+</script>
 
