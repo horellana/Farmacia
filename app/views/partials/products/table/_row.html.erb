@@ -1,10 +1,10 @@
 <tr>
   <td>
-    <%= product.name %>
+    <%= link_to product.name, product_path(product) %>
   </td>
 
   <td>
-    <%= product.category.description %>
+    <%= link_to product.category.description, category_path(product.category) %>
   </td>
 
   <td>
@@ -12,7 +12,7 @@
   </td>
 
   <td>
-    <%= product.medicinal_ingredient.name %>
+    <%= link_to product.medicinal_ingredient.name, medicinal_ingredient_path(product.medicinal_ingredient) %>
   </td>
 
   <td>
