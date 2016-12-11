@@ -16,18 +16,17 @@ class ProductsController < ApplicationController
   end
 
 
+  def product_param
+      params.require(:product).permit(:name, :description, :sale_price, :purchase_price, :exempt, :commission, :be,
+                                      :isp, :discount, :description, :dose_id, :category_id, :medicinal_ingredient_id, :provider_id )
+  end
+
   def create
-        @product = Product.new(name: params[:product][:name],
-                        description: params[:product][:description],
-                        sale_price: params[:product][:sale_price],
-                        purchase_price: params[:product][:purchase_price],
-                        exempt: params[:product][:exempt],
-                        commission: params[:product][:commission],
-                        be: params[:product][:be],
-                        isp: params[:product][:isp],
-                        discount: params[:product][:discount]
-                        )
+        @product = Product.new(product_param)
         @product.save!
   end
+  
+  
+
 
 end
