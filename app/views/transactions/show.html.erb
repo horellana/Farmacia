@@ -3,22 +3,122 @@
     Venta
   </div>
 
-  <table class="table">
-    <thead>
-      <th>
-	#
-      </th>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+	<th>
+	  #
+	</th>
 
-      <th>
-	Fecha
-      </th>
+	<th>
+	  Rut cliente
+	</th>
 
-      <th>
-	Vendedor
-      </th>
+	<th>
+	  Fecha
+	</th>
 
-      <th>
-      </th>
-    </thead>
-  </table>
+	<th>
+	  Vendedor
+	</th>
+
+	<th>
+	  IVA
+	</th>
+
+	<th>
+	  Total
+	</th>
+      </thead>
+
+      <tbody>
+	<tr>
+	  <td>
+	    <%= @transaction.id %>
+	  </td>
+
+	  <td>
+	    <%= @transaction.client.rut %>
+	  </td>
+
+	  <td>
+	    <%= @transaction.date %>
+	  </td>
+
+	  <td>
+	    ???
+	  </td>
+
+	  <td>
+	    <%= @transaction.iva %>
+	  </td>
+
+	  <td>
+	    <%= @transaction.total %>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+    <h3>
+      Lista de productos
+    </h3>
+
+    <table class="table">
+      <thead>
+	<th>
+	  #
+	</th>
+
+	<th>
+	  Producto
+	</th>
+
+	<th>
+	  Cantidad
+	</th>
+
+	<th>
+	  Precio Bruto
+	</th>
+
+	<th>
+	  Precio Neto
+	</th>
+
+	<th>
+	  Devolucion
+	</th>
+      </thead>
+
+      <tbody>
+	<% for td in @transaction.details do %>
+	  <tr>
+	    <td>
+	      <%= td.product.id %>
+	    </td>
+
+	    <td>
+	      <%= td.product.name %>
+	    </td>
+
+	    <td>
+	      <%= td.quantity %>
+	    </td>
+
+	    <td>
+	      <%= td.unit_price %>
+	    </td>
+
+	    <td>
+	      <%= td.net_price %>
+	    </td>
+
+	    <td>
+	      <%= td.devolution %>
+	    </td>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
