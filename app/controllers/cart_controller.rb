@@ -10,16 +10,23 @@ class CartController < ApplicationController
   end
 
   def update
-    begin
-      if params[:remove_product_id]
-        @cart.remove(params[:remove_product_id])
-      else
+    if params[:remove_product_id]
+      @cart.remove(params[:remove_product_id])
+    end
+
+    if params[:set_rut]
+      puts "sesion[:client_rut] = #{params[:set_rut]}"
+      session[:client_rut] = params[:set_rut]
+    end
+
+    if params[:search_product_field]
+      begin
         query = params[:search_product_field]
         product = Product.find_by name: query
         @cart.add(product)
+      rescue ActiveRecord::RecordInvalid
+        flash[:alert] = 'Producto no encontrado'
       end
-    rescue ActiveRecord::RecordInvalid
-      flash[:alert] = 'Producto no encontrado'
     end
 
     respond_to :js
@@ -27,6 +34,7 @@ class CartController < ApplicationController
 
   def destroy
     session[:cart_id] = nil
+    session[:client_rut] = nil
     redirect_to new_cart_path
   end
 end

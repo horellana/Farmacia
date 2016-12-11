@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209194823) do
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -155,6 +153,8 @@ ActiveRecord::Schema.define(version: 20161209194823) do
     t.string   "client_rut"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
   end
 
   create_table "turns", force: :cascade do |t|
@@ -192,5 +192,9 @@ ActiveRecord::Schema.define(version: 20161209194823) do
   add_foreign_key "products", "medicinal_ingredients"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
+  add_foreign_key "transaction_details", "products"
+  add_foreign_key "transaction_details", "transactions"
+  add_foreign_key "transaction_details", "users"
+  add_foreign_key "transactions", "clients"
   add_foreign_key "users", "job_titles"
 end
