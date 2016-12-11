@@ -1,5 +1,5 @@
 class Transaction < ApplicationRecord
-  belongs_to :client
+  belongs_to :client, required: false
   has_many :details, class_name: 'TransactionDetail'
 
   def total

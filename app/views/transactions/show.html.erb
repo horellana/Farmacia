@@ -10,9 +10,11 @@
 	  #
 	</th>
 
-	<th>
-	  Rut cliente
-	</th>
+	<% if @transaction.client %>
+	  <th>
+	    Rut cliente
+	  </th>
+	<% end %>
 
 	<th>
 	  Fecha
@@ -37,9 +39,11 @@
 	    <%= @transaction.id %>
 	  </td>
 
-	  <td>
-	    <%= @transaction.client.rut %>
-	  </td>
+	  <% if @transaction.client %>
+	    <td>
+	      <%= @transaction.client.rut %>
+	    </td>
+	  <% end %>
 
 	  <td>
 	    <%= @transaction.date %>

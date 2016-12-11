@@ -7,7 +7,6 @@ class CreateTransactions < ActiveRecord::Migration[5.0]
       t.float :iva
       t.integer :discount
       t.integer :total_amount
-      t.string :client_rut
 
       t.timestamps
     end
