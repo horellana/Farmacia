@@ -8,11 +8,23 @@ class TransactionsController < ApplicationController
 
   def create
     now = Time.now
-    @transaction = Transaction.new
+    @transaction = Transaction.new date: now, iva: 0.19
 
-    @transaction.date = now
-    @transaction.iva = 0.19
+    set_transaction_client
 
+    @cart.items.each do |item|
+      @transaction.add_product(item.product, item.quantity, current_user, now)
+    end
+
+    # el carrito de compras ya no es necesario
+    clean_cart
+
+    redirect_to @transaction
+  end
+
+  private
+
+  def set_transaction_client
     if session[:client_rut]
       begin
         client = Client.find_by! rut: session[:client_rut]
@@ -26,34 +38,17 @@ class TransactionsController < ApplicationController
     end
 
     @transaction.save!
-
-    @cart.items.each do |item|
-      td = TransactionDetail.new
-      td.product = item.product
-      td.quantity = item.quantity
-      td.unit_price = item.product.price
-      td.net_price = item.product.price - (item.product.price * 0.19)
-      td.discount = item.product.discount
-      td.devolution = 'no'
-      td.update_time = now
-      td.user = current_user
-      td.transactionn = @transaction
-      td.save!
-    end
-
-    # el carrito de compras ya no es necesario
-    session[:cart_id] = nil
-    session[:client_rut] = nil
-
-    redirect_to @transaction
   end
-
-  private
 
   def avoid_empty_cart
     if @cart.empty?
       flash[:alert] = 'El carrito esta vacio!'
       return redirect_to :back
     end
+  end
+
+  def clean_cart
+    session[:cart_id] = nil
+    session[:client_rut] = nil
   end
 end
