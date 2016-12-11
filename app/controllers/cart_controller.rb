@@ -34,6 +34,7 @@ class CartController < ApplicationController
 
   def destroy
     session[:cart_id] = nil
+    session[:client_rut] = nil
     redirect_to new_cart_path
   end
 end
