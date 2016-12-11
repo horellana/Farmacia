@@ -1,11 +1,16 @@
-<h1>Products</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar producto
+  </div>
 
-  <body>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-      </tr>
+  <div class="panel-body">
+    <%= form_tag(search_products_path, method: :get, remote: true) do %>
+      <%= autocomplete_field_tag(:search_product_field, '', autocomplete_product_name_products_path) %>
+      <%= submit_tag('Buscar', class: 'btn btn-default') %>
     <% end %>
-  </body>
 
+    <div id="search_product_result">
+    </div>
+
+  </div>
+</div>
