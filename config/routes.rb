@@ -16,9 +16,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :doses
 
-
-
-
   resources :products do
     get :autocomplete_product_name, on: :collection
   end
