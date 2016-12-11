@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210025810) do
+ActiveRecord::Schema.define(version: 20161210230247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20161210025810) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_carts_on_client_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -158,6 +160,8 @@ ActiveRecord::Schema.define(version: 20161210025810) do
     t.string   "client_rut"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
   end
 
   create_table "turns", force: :cascade do |t|
@@ -189,6 +193,7 @@ ActiveRecord::Schema.define(version: 20161210025810) do
 
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "carts", "clients"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
@@ -197,5 +202,6 @@ ActiveRecord::Schema.define(version: 20161210025810) do
   add_foreign_key "transaction_details", "products"
   add_foreign_key "transaction_details", "transactions"
   add_foreign_key "transaction_details", "users"
+  add_foreign_key "transactions", "clients"
   add_foreign_key "users", "job_titles"
 end
