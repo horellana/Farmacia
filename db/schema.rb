@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210025810) do
+ActiveRecord::Schema.define(version: 20161210230247) do
+
+  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cart_items", force: :cascade do |t|
@@ -129,23 +131,6 @@ ActiveRecord::Schema.define(version: 20161210025810) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
-  end
-
-  create_table "transaction_details", force: :cascade do |t|
-    t.integer  "transaction_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
-    t.integer  "unit_price"
-    t.integer  "net_price"
-    t.string   "devolution"
-    t.integer  "user_id"
-    t.integer  "discount"
-    t.datetime "update_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["product_id"], name: "index_transaction_details_on_product_id", using: :btree
-    t.index ["transaction_id"], name: "index_transaction_details_on_transaction_id", using: :btree
-    t.index ["user_id"], name: "index_transaction_details_on_user_id", using: :btree
   end
 
   create_table "transaction_details", force: :cascade do |t|
