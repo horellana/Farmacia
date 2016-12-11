@@ -27,9 +27,14 @@ Rails.application.routes.draw do
   resources :transactions
   resources :products
 
-  scope :devise do
+  scope :session do
     devise_for :user
   end
+
+
+  # scope :devise do
+  #   devise_for :user
+  # end
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
 end
