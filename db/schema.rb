@@ -97,8 +97,15 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "quantity"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.integer  "price_cents",             default: 0,     null: false
+    t.string   "price_currency",          default: "USD", null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "name"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree
@@ -131,6 +138,11 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transaction_details", force: :cascade do |t|

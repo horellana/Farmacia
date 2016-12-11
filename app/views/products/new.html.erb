@@ -58,9 +58,23 @@
       <%#  </p> %>
 
           <p>
-            <%= f.label :ingrediente_medicinal %> <br>
-            <%= f.text_field :medicinal_ingredient %>
+            <%= f.label :category_id %> <br>
+            <%= f.text_field :category_id %>
           </p>
+           <p>
+            <%= f.label :dose_id %> <br>
+            <%= f.text_field :dose_id %>
+          </p>
+          <p>
+            <%= f.label :medicinal_ingredient_id %> <br>
+            <%= f.text_field :medicinal_ingredient_id %>
+          </p>
+          
+         <p>
+            <%= f.label :provider_id %> <br>
+            <%= f.text_field :provider_id %>
+          </p>
+  
 
           <p>
             <%= f.submit %>
