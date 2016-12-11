@@ -7,13 +7,14 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    now = Time.now
-    @transaction = Transaction.new date: now, iva: 0.19
+    @transaction = Transaction.new iva: 0.19,
+                                   date: Time.now,
+                                   user: current_user
 
     set_transaction_client
 
     @cart.items.each do |item|
-      @transaction.add_product(item.product, item.quantity, current_user, now)
+      @transaction.add_product(item.product, item.quantity)
     end
 
     # el carrito de compras ya no es necesario
