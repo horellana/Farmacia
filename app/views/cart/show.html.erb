@@ -17,6 +17,10 @@
 	</th>
 
 	<th>
+	  Rut cliente
+	</th>
+
+	<th>
 	  Fecha
 	</th>
       </thead>
@@ -32,6 +36,10 @@
 	  </td>
 
 	  <td>
+
+	  </td>
+
+	  <td>
 	    <%= Time.now.to_formatted_s(:db) %>
 	  </td>
 	</tr>
@@ -44,20 +52,24 @@
       <%= render 'partials/cart/cart', cart: @cart %>
     </div>
 
-    <br>
-    <div class="col-xs-1">
+    <div class="col-xs-8">
       <%= form_for(:transaction, url: '/transactions') do %>
-	<% submit_tag('Vender', class: 'btn btn-success') %>
+	<%= label_tag 'Rut cliente' %>
+	<%= text_field_tag :client_rut %>
+
+	<br>
+	<br>
+
+	<%= submit_tag('Vender', class: 'btn btn-success') %>
+	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'),
+	  cart_path(@cart),
+	method: :delete %>
       <% end %>
     </div>
-
-    <div class="col-xs-1">
-      <%= form_tag(cart_path(@cart), method: 'delete', remote: true) do %>
-	<%= submit_tag('Limpiar', class: 'btn btn-danger') %>
-      <% end %>
-    </div>
-
   </div>
+
+  <br>
+
 </div>
 
 <div class="panel panel-default">
