@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'foo/login'
-
-  get 'foo/index'
-
   get 'search_product/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -30,11 +26,6 @@ Rails.application.routes.draw do
   scope :session do
     devise_for :user
   end
-
-
-  # scope :devise do
-  #   devise_for :user
-  # end
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comuna: 
+  address: MyString
+  phone: MyString
+  sii_code: MyString
+  time_in: 2016-12-11 23:15:56
+  time_out: 2016-12-11 23:15:56
+
+two:
+  comuna: 
+  address: MyString
+  phone: MyString
+  sii_code: MyString
+  time_in: 2016-12-11 23:15:56
+  time_out: 2016-12-11 23:15:56

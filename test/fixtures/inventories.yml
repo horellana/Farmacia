@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subsidiary: one
+  product: one
+  stock: 1
+  minimum_stock: 1
+
+two:
+  subsidiary: two
+  product: two
+  stock: 1
+  minimum_stock: 1
