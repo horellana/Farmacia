@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212030345) do
+ActiveRecord::Schema.define(version: 20161212040141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "box_movements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "box_id"
+    t.integer  "open_amount"
+    t.integer  "close_amount"
+    t.datetime "ope_date"
+    t.datetime "close_time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["box_id"], name: "index_box_movements_on_box_id", using: :btree
+    t.index ["user_id"], name: "index_box_movements_on_user_id", using: :btree
+  end
 
   create_table "boxes", force: :cascade do |t|
     t.boolean  "active"
@@ -231,6 +244,8 @@ ActiveRecord::Schema.define(version: 20161212030345) do
     t.index ["rut"], name: "index_users_on_rut", unique: true, using: :btree
   end
 
+  add_foreign_key "box_movements", "boxes"
+  add_foreign_key "box_movements", "users"
   add_foreign_key "boxes", "subsidiaries"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
