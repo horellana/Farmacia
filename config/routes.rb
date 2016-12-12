@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :medicinal_ingredients
   resources :categories
   resources :doses
+  resources :box
 
   resources :products do
     get :autocomplete_product_name, on: :collection
