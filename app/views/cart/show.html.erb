@@ -55,7 +55,7 @@
       <br>
       <br>
 
-      <%= form_for(:transaction, url: '/transactions') do %>
+      <%= form_for(:transaction, url: '/transactions', remote: true) do %>
 	<%= submit_tag('Vender', class: 'btn btn-success') %>
 	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete, remote: true %>
       <% end %>
