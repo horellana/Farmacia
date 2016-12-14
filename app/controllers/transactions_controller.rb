@@ -7,9 +7,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new iva: 0.19,
-                                   date: Time.now,
-                                   user: current_user
+    @transaction = Transaction.new user: current_user
 
     set_transaction_client
 
@@ -17,6 +15,7 @@ class TransactionsController < ApplicationController
       @transaction.add_product(item.product, item.quantity)
     end
 
+    @transaction.save!
     clean_cart
     redirect_to @transaction
   end
@@ -25,18 +24,8 @@ class TransactionsController < ApplicationController
 
   def set_transaction_client
     if session[:client_rut]
-      begin
-        client = Client.find_by! rut: session[:client_rut]
-        client.transactions << @transaction
-      rescue ActiveRecord::RecordNotFound
-        client = Client.new
-        client.rut = session[:client_rut]
-        client.save!
-        @transaction.client = client
-      end
+      @transaction.client = Client.from_rut(session[:client_rut])
     end
-
-    @transaction.save!
   end
 
   def avoid_empty_cart
