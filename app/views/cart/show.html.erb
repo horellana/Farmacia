@@ -74,10 +74,6 @@
        return;
      }
 
-     if (new_rut === '') {
-       return;
-     }
-
      $.ajax({
        url: "<%= cart_path(@cart) %>",
        type: 'PUT',
