@@ -17,16 +17,12 @@ class ProductsController < ApplicationController
 
 
   def product_param
-      params.require(:product).permit(:name, :description, :sale_price, :purchase_price, :exempt, :commission, :be,
-                                      :isp, :discount, :description, :dose_id, :category_id, :medicinal_ingredient_id, :provider_id )
+    params.require(:product).permit(:name, :description, :sale_price, :purchase_price, :exempt, :commission, :be,
+                                    :isp, :discount, :description, :dose_id, :category_id, :medicinal_ingredient_id, :provider_id )
   end
 
   def create
-        @product = Product.new(product_param)
-        @product.save!
+    @product = Product.new(product_param)
+    @product.save!
   end
-  
-  
-
-
 end
