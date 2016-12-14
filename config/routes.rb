@@ -11,10 +11,13 @@ Rails.application.routes.draw do
   resources :user
   resources :cart
   resources :providers
-  resources :clients
-  resources :medicinal_ingredients
   resources :categories
   resources :doses
+  resources :transactions
+
+  resources :clients do
+    get :autocomplete_client_rut, on: :collection
+  end
 
   resources :products do
     get :autocomplete_product_name, on: :collection
@@ -24,17 +27,9 @@ Rails.application.routes.draw do
     get :autocomplete_medicinal_ingredient_name, on: :collection
   end
 
-  resources :transactions
-  resources :products
-
   scope :session do
     devise_for :user
   end
-
-
-  # scope :devise do
-  #   devise_for :user
-  # end
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
 end

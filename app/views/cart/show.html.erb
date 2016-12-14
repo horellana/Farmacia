@@ -50,8 +50,11 @@
 
     <div class="col-xs-8">
       <label>Rut cliente</label>
-      <input type="text" id="client_rut_input" value="<%= session[:client_rut] %>">
 
+      <%= autocomplete_field_tag :client_rut_input, '', autocomplete_client_rut_clients_path %>
+
+      <!-- <input type="text" id="client_rut_input" value="<%= session[:client_rut] %>">
+	 -->
       <br>
       <br>
 
