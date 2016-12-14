@@ -8,90 +8,82 @@
     <%= form_for @product do |f| %>
       <div class="row">
 
-        <div class="col-md-4">
-          <p>
-            <%= f.label :nombre %><br>
-            <%= f.text_field :name %>
-          </p>
-          <p>
-            <%= f.label :precio_de_venta %><br>
-            <%= f.text_field :sale_price %>
-          </p>
-          <p>
-            <%= f.label :precio_de_compra %><br>
-            <%= f.text_field :purchase_price %>
-          </p>
-          <p>
-            <%= f.label :exempt %><br>
-            <%= f.text_field :exempt %>
-          </p>
-          <p>
-            <%= f.label :commision %><br>
-            <%= f.text_field :commission %>
-          </p>
+	<div class="col-md-4">
+	  <p>
+	    <%= f.label :nombre %><br>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label :precio_de_venta %><br>
+	    <%= f.text_field :sale_price %>
+	  </p>
+	  <p>
+	    <%= f.label :precio_de_compra %><br>
+	    <%= f.text_field :purchase_price %>
+	  </p>
+	  <p>
+	    <%= f.label :exempt %><br>
+	    <%= f.text_field :exempt %>
+	  </p>
+	  <p>
+	    <%= f.label :commision %><br>
+	    <%= f.text_field :commission %>
+	  </p>
 
-          <p>
-            <%= label_tag(:product_be, "Es bio equivalente") %>
-            <%= check_box_tag(:product_be) %>
-          </p>
+	  <p>
+	    <%= label_tag(:product_be, "Es bio equivalente") %>
+	    <%= check_box_tag(:product_be) %>
+	  </p>
 
 
-          <p>
-            <%= label_tag(:isp, "Instituto de Salud Pública de Chile") %>
-            <%= check_box_tag(:isp) %>
-          </p>
-        </div>
+	  <p>
+	    <%= label_tag(:isp, "Instituto de Salud Pública de Chile") %>
+	    <%= check_box_tag(:isp) %>
+	  </p>
+	</div>
 
-        <div class="col-md-4">
-          <%= f.label :descuento %><br>
-          <%= f.text_field :discount %>
-          </p>
+	<div class="col-md-4">
+	  <%= f.label :descuento %><br>
+	  <%= f.text_field :discount %>
+	  </p>
 
-          <p>
-            <%= f.label :descripcion %><br>
-            <%= f.text_area :description %>
-          </p>
+	  <p>
+	    <%= f.label :descripcion %><br>
+	    <%= f.text_area :description %>
+	  </p>
 
       <%#     <p>
-           <%= f.label :quantity %><br>
-        <%#    <%= f.text_field :quantity %>
+	   <%= f.label :quantity %><br>
+	<%#    <%= f.text_field :quantity %>
       <%#  </p> %>
 
-          <p>
-            <%= f.label :category_id %> <br>
-            <%= f.text_field :category_id %>
-          </p>
-           <p>
-            <%= f.label :dose_id %> <br>
-            <%= f.text_field :dose_id %>
-          </p>
-          <p>
-            <%= f.label :medicinal_ingredient_id %> <br>
-            <%= f.text_field :medicinal_ingredient_id %>
-          </p>
-          
-         <p>
-            <%= f.label :provider_id %> <br>
-            <%= f.text_field :provider_id %>
-          </p>
-  
+	  <p>
+	    <%= f.label :category_id %> <br>
+	    <%= f.text_field :category_id %>
+	  </p>
+	   <p>
+	    <%= f.label :dose_id %> <br>
+	    <%= f.text_field :dose_id %>
+	  </p>
+	  <p>
+	    <%= f.label :medicinal_ingredient_id %> <br>
+	    <%= f.autocomplete_field :medicinal_ingredient, autocomplete_medicinal_ingredient_name_medicinal_ingredient_index_path %>
+	  </p>
 
-          <p>
-            <%= f.submit %>
-          </p>
-        </div>
-        <p>
+	 <p>
+	    <%= f.label :provider_id %> <br>
+	    <%= f.text_field :provider_id %>
+	  </p>
+
+
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	</div>
+	<p>
 
       </div>
 
   </div>
     <% end %>
-
 </div>
-<script>
- $('#product_medicinal_ingredient')
-   .autocomplete({
-     source: "<%= autocomplete_medicinal_ingredient_name_medicinal_ingredient_index_path %>",
-     minLength: 2
-   });
-</script>
