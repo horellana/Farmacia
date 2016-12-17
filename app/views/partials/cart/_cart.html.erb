@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table" id="cart_table">
   <thead>
     <th>
       Codigo
@@ -57,8 +57,7 @@
 	</td>
 
 	<td>
-	  <%= form_tag(cart_path(cart), method: :put, remote: true) do %>
-	    <%= hidden_field_tag(:remove_product_id, item.product.id) %>
+	  <%= form_tag(cart_cart_item_path(cart, item), method: :delete, remote: true) do %>
 	    <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-remove' %>
 	  <% end %>
 	</td>

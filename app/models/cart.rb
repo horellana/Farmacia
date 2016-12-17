@@ -6,11 +6,10 @@ class Cart < ApplicationRecord
   end
 
   def add(product)
-    item = CartItem.find_by cart: self, product: product
-
-    if item
+    begin
+      item = CartItem.find_by! cart: self, product: product
       item.increase_quantity
-    else
+    rescue ActiveRecord::RecordNotFound
       CartItem.create! cart: self, product: product, quantity: 1
     end
   end
