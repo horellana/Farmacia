@@ -3,7 +3,7 @@ class SearchProductController < ApplicationController
 
   def index
     query = params[:search_product_field]
-    @products = Product.where('name ilike ?', "%#{query}%").order_by_profit
+    @products = Product.where('name ilike ?', "%#{query}%").ordered_by_profit
     respond_to :js
   end
 end

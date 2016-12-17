@@ -31,7 +31,7 @@ class TransactionsController < ApplicationController
   def avoid_empty_cart
     if @cart.empty?
       flash[:alert] = 'El carrito esta vacio!'
-      return redirect_to :back
+      redirect_to :back
     end
   end
 end
