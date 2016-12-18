@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   scope :session do
     devise_for :user
     put :rut, to: 'rut#update', as: 'set_rut'
+    put :name, to: 'name#update', as: 'set_name'
   end
 
   resources :cart do

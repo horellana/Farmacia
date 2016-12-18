@@ -23,8 +23,15 @@ class TransactionsController < ApplicationController
   private
 
   def set_transaction_client
-    if session[:client_rut]
-      @transaction.client = Client.from_rut(session[:client_rut])
+    rut = session[:client_rut]
+    name = session[:client_name]
+
+    if rut
+      @transaction.client = Client.from_rut(rut)
+
+      if name
+        @transaction.client.name = name
+      end
     end
   end
 
