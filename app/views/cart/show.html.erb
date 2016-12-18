@@ -1,3 +1,4 @@
+<%= render 'partials/cart/client_panel' %>
 <%= render 'partials/search_product/search_product' %>
 
 <div class="panel panel-default">
@@ -30,7 +31,7 @@
 	  </td>
 
 	  <td>
-	    <%= current_user.rut %>
+	    <%= current_user.name %>
 	  </td>
 
 	  <td>
@@ -49,9 +50,6 @@
 
 
     <div class="col-xs-8">
-      <label>Rut cliente</label>
-
-      <%= autocomplete_field_tag :client_rut_input, session[:client_rut], autocomplete_client_rut_clients_path %>
       <br>
       <br>
 
@@ -62,26 +60,3 @@
     </div>
   </div>
 </div>
-
-<script>
- $('#client_rut_input').on('input', function() {
-   var old_rut = $('#client_rut_input').val();
-
-   var f = function() {
-     var new_rut = $('#client_rut_input').val();
-
-     if (old_rut != new_rut) {
-       return;
-     }
-
-     $.ajax({
-       url: "<%= set_rut_path %>",
-       type: 'PUT',
-       data: { set_rut: new_rut }
-     });
-   };
-
-   setTimeout(f, 500);
- });
-</script>
-

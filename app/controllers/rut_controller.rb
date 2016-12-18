@@ -2,6 +2,7 @@ class RutController < ApplicationController
   before_action :authenticate_user!
 
   def update
-    session[:client_rut] = params[:set_rut]
+    rut = params[:data]
+    session[:client_rut] = rut == '' ? nil : rut
   end
 end
