@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+paracetamol:
   id: 1
   name: Paracetamol
   provider: one
@@ -15,7 +15,7 @@ one:
   category: one
   discount: 1
 
-two:
+ibuprofeno:
   id: 2
   name: Ibuprofeno
   provider: two
