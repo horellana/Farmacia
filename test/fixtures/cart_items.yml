@@ -2,8 +2,9 @@
 
 one:
   cart: one
-  product: one
+  quantity: 2
 
 two:
   cart: two
   product: two
+  quantity: 1

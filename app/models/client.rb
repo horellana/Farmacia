@@ -5,7 +5,7 @@ class Client < ApplicationRecord
     begin
       return Client.find_by! rut: rut
     rescue ActiveRecord::RecordNotFound
-      return Client.new rut: rut
+      return Client.create rut: rut
     end
   end
 end
