@@ -15,28 +15,6 @@ ActiveRecord::Schema.define(version: 20161218214756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "box_movements", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "box_id"
-    t.integer  "open_amount"
-    t.integer  "close_amount"
-    t.datetime "ope_date"
-    t.datetime "close_time"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["box_id"], name: "index_box_movements_on_box_id", using: :btree
-    t.index ["user_id"], name: "index_box_movements_on_user_id", using: :btree
-  end
-
-  create_table "boxes", force: :cascade do |t|
-    t.boolean  "active"
-    t.string   "description"
-    t.integer  "subsidiary_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["subsidiary_id"], name: "index_boxes_on_subsidiary_id", using: :btree
-  end
-
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
     t.integer  "product_id"
@@ -65,10 +43,6 @@ ActiveRecord::Schema.define(version: 20161218214756) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string   "rut"
     t.string   "name"
@@ -83,28 +57,11 @@ ActiveRecord::Schema.define(version: 20161218214756) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "communes", force: :cascade do |t|
-    t.integer "cities_id"
-    t.string  "name"
-    t.index ["cities_id"], name: "index_communes_on_cities_id", using: :btree
-  end
-
   create_table "doses", force: :cascade do |t|
     t.integer  "kind"
     t.string   "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "inventories", force: :cascade do |t|
-    t.integer  "subsidiary_id"
-    t.integer  "product_id"
-    t.integer  "stock"
-    t.integer  "minimum_stock"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["product_id"], name: "index_inventories_on_product_id", using: :btree
-    t.index ["subsidiary_id"], name: "index_inventories_on_subsidiary_id", using: :btree
   end
 
   create_table "job_titles", force: :cascade do |t|
@@ -174,18 +131,6 @@ ActiveRecord::Schema.define(version: 20161218214756) do
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
   end
 
-  create_table "subsidiaries", force: :cascade do |t|
-    t.integer  "commune_id"
-    t.string   "address"
-    t.string   "phone"
-    t.string   "sii_code"
-    t.datetime "time_in"
-    t.datetime "time_out"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["commune_id"], name: "index_subsidiaries_on_commune_id", using: :btree
-  end
-
   create_table "transaction_details", force: :cascade do |t|
     t.integer  "transaction_id"
     t.integer  "product_id"
@@ -245,14 +190,8 @@ ActiveRecord::Schema.define(version: 20161218214756) do
     t.index ["rut"], name: "index_users_on_rut", unique: true, using: :btree
   end
 
-  add_foreign_key "box_movements", "boxes"
-  add_foreign_key "box_movements", "users"
-  add_foreign_key "boxes", "subsidiaries"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
-  add_foreign_key "communes", "cities", column: "cities_id"
-  add_foreign_key "inventories", "products"
-  add_foreign_key "inventories", "subsidiaries"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"

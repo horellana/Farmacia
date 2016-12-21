@@ -21,8 +21,7 @@ class Transaction < ApplicationRecord
     td.net_price = product.price - (product.price * 0.19)
     td.discount = product.discount
     td.devolution = 'no'
-    td.transactionn = self
-    td.save!
+    self.details << td
   end
 
   private
