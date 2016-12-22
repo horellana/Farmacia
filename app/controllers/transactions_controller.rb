@@ -7,53 +7,38 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    now = Time.now
-    @transaction = Transaction.new
+    @transaction = Transaction.new user: current_user
 
-    @transaction.date = now
-    @transaction.iva = 0.19
+    set_transaction_client
 
-    if session[:client_rut]
-      begin
-        client = Client.find_by! rut: session[:client_rut]
-        client.transactions << @transaction
-      rescue ActiveRecord::RecordNotFound
-        client = Client.new
-        client.rut = session[:client_rut]
-        client.save!
-        @transaction.client = client
-      end
+    @cart.items.each do |item|
+      @transaction.add_product(item.product, item.quantity)
     end
 
     @transaction.save!
-
-    @cart.items.each do |item|
-      td = TransactionDetail.new
-      td.product = item.product
-      td.quantity = item.quantity
-      td.unit_price = item.product.price
-      td.net_price = item.product.price - (item.product.price * 0.19)
-      td.discount = item.product.discount
-      td.devolution = 'no'
-      td.update_time = now
-      td.user = current_user
-      td.transactionn = @transaction
-      td.save!
-    end
-
-    # el carrito de compras ya no es necesario
-    session[:cart_id] = nil
-    session[:client_rut] = nil
-
+    clean_cart
     redirect_to @transaction
   end
 
   private
 
+  def set_transaction_client
+    rut = session[:client_rut]
+    name = session[:client_name]
+
+    if rut
+      @transaction.client = Client.from_rut(rut)
+
+      if name
+        @transaction.client.name = name
+      end
+    end
+  end
+
   def avoid_empty_cart
     if @cart.empty?
       flash[:alert] = 'El carrito esta vacio!'
-      return redirect_to :back
+      redirect_to :back
     end
   end
 end

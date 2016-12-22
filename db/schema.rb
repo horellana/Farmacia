@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210230247) do
+ActiveRecord::Schema.define(version: 20161218214756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "box_movements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "box_id"
+    t.integer  "open_amount"
+    t.integer  "close_amount"
+    t.datetime "ope_date"
+    t.datetime "close_time"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["box_id"], name: "index_box_movements_on_box_id", using: :btree
+    t.index ["user_id"], name: "index_box_movements_on_user_id", using: :btree
+  end
+
+  create_table "boxes", force: :cascade do |t|
+    t.boolean  "active"
+    t.string   "description"
+    t.integer  "subsidiary_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["subsidiary_id"], name: "index_boxes_on_subsidiary_id", using: :btree
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
@@ -28,8 +50,6 @@ ActiveRecord::Schema.define(version: 20161210230247) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "client_id"
-    t.index ["client_id"], name: "index_carts_on_client_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -43,6 +63,10 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.boolean  "start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -59,11 +83,28 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "communes", force: :cascade do |t|
+    t.integer "cities_id"
+    t.string  "name"
+    t.index ["cities_id"], name: "index_communes_on_cities_id", using: :btree
+  end
+
   create_table "doses", force: :cascade do |t|
     t.integer  "kind"
     t.string   "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "subsidiary_id"
+    t.integer  "product_id"
+    t.integer  "stock"
+    t.integer  "minimum_stock"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["product_id"], name: "index_inventories_on_product_id", using: :btree
+    t.index ["subsidiary_id"], name: "index_inventories_on_subsidiary_id", using: :btree
   end
 
   create_table "job_titles", force: :cascade do |t|
@@ -97,15 +138,8 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.integer  "quantity"
-    t.integer  "item_id"
-    t.string   "item_type"
-    t.integer  "price_cents",             default: 0,     null: false
-    t.string   "price_currency",          default: "USD", null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "name"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree
@@ -140,9 +174,16 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
   end
 
-  create_table "shopping_carts", force: :cascade do |t|
+  create_table "subsidiaries", force: :cascade do |t|
+    t.integer  "commune_id"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "sii_code"
+    t.datetime "time_in"
+    t.datetime "time_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["commune_id"], name: "index_subsidiaries_on_commune_id", using: :btree
   end
 
   create_table "transaction_details", force: :cascade do |t|
@@ -154,7 +195,6 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.string   "devolution"
     t.integer  "user_id"
     t.integer  "discount"
-    t.datetime "update_time"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["product_id"], name: "index_transaction_details_on_product_id", using: :btree
@@ -169,11 +209,12 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.float    "iva"
     t.integer  "discount"
     t.integer  "total_amount"
-    t.string   "client_rut"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "client_id"
+    t.integer  "user_id"
     t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
 
   create_table "turns", force: :cascade do |t|
@@ -198,14 +239,20 @@ ActiveRecord::Schema.define(version: 20161210230247) do
     t.datetime "updated_at",                          null: false
     t.string   "description"
     t.integer  "job_title_id"
+    t.string   "name"
     t.index ["job_title_id"], name: "index_users_on_job_title_id", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["rut"], name: "index_users_on_rut", unique: true, using: :btree
   end
 
+  add_foreign_key "box_movements", "boxes"
+  add_foreign_key "box_movements", "users"
+  add_foreign_key "boxes", "subsidiaries"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
-  add_foreign_key "carts", "clients"
+  add_foreign_key "communes", "cities", column: "cities_id"
+  add_foreign_key "inventories", "products"
+  add_foreign_key "inventories", "subsidiaries"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
@@ -215,5 +262,6 @@ ActiveRecord::Schema.define(version: 20161210230247) do
   add_foreign_key "transaction_details", "transactions"
   add_foreign_key "transaction_details", "users"
   add_foreign_key "transactions", "clients"
+  add_foreign_key "transactions", "users"
   add_foreign_key "users", "job_titles"
 end

@@ -9,10 +9,7 @@ Rails.application.routes.draw do
   root 'farmacia#index'
 
   resources :user
-  resources :cart
   resources :providers
-  resources :clients
-  resources :medicinal_ingredients
   resources :categories
   resources :doses
   resources :transactions
@@ -29,6 +26,12 @@ Rails.application.routes.draw do
 
   scope :devise do
     devise_for :user
+    put :rut, to: 'rut#update', as: 'set_rut'
+    put :name, to: 'name#update', as: 'set_name'
+  end
+
+  resources :cart do
+    resources :cart_item
   end
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
