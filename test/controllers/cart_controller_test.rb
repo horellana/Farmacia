@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class CartControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "Manda al login si falta iniciar sesion" do
+    get new_cart_path
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
 end

@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Datos cliente
+  </div>
+
+  <div class="panel-body">
+    <%= label_tag 'Rut cliente' %>
+    <%= autocomplete_field_tag :client_rut_input, session[:client_rut], autocomplete_client_rut_clients_path %>
+
+    <%= label_tag 'Nombre cliente' %>
+    <%= text_field_tag :client_name_input, session[:client_name] %>
+  </div>
+</div>
+
+<script>
+ $(document).ready(function() {
+   var session_set = function(input, url) {
+     $(input).on('input', function() {
+       var old = $(input).val();
+
+       var f = function() {
+	 var neo = $(input).val();
+
+	 if (old != neo) {
+	   return;
+	 }
+
+	 $.ajax({
+	   url: url,
+	   type: 'PUT',
+	   data: { data: neo }
+	 });
+       };
+
+       setTimeout(f, 500);
+     });
+   }
+
+   session_set('#client_rut_input', "<%= set_rut_path %>");
+   session_set('#client_name_input', "<%= set_name_path %>");
+ });
+</script>
