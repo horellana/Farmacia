@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   resources :categories
   resources :doses
   resources :transactions
-  resources :products
 
+  resources :clients do
+    get :autocomplete_client_rut, on: :collection
+  end
 
   resources :products do
     get :autocomplete_product_name, on: :collection
@@ -24,7 +26,7 @@ Rails.application.routes.draw do
     get :autocomplete_medicinal_ingredient_name, on: :collection
   end
 
-  scope :devise do
+  scope :session do
     devise_for :user
     put :rut, to: 'rut#update', as: 'set_rut'
     put :name, to: 'name#update', as: 'set_name'
