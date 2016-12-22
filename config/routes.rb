@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :medicinal_ingredients
   resources :categories
   resources :doses
+  resources :transactions
+  resources :products
+
 
   resources :products do
     get :autocomplete_product_name, on: :collection
@@ -23,9 +26,6 @@ Rails.application.routes.draw do
   resources :medicinal_ingredient do
     get :autocomplete_medicinal_ingredient_name, on: :collection
   end
-
-  resources :transactions
-  resources :products
 
   scope :devise do
     devise_for :user
