@@ -16,9 +16,6 @@ class CartItemController < ApplicationController
   end
 
   def destroy
-    puts params[:id]
-    @cart_item = CartItem.find params[:id]
-    puts @cart_item
-    @cart_item.decrease_quantity
+    CartItem.find(params[:id]).decrease_quantity
   end
 end

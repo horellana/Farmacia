@@ -4,8 +4,12 @@ class Product < ApplicationRecord
   belongs_to :dose
   belongs_to :category
 
-  scope :ordered_by_profit, -> {
+  default_scope {
     select('*, sale_price - purchase_price as price').order('price desc')
+  }
+
+  scope :match_name, ->(name) {
+    where('name ilike ?', "%#{name}%")
   }
 
   def price
