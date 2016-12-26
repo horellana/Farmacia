@@ -1,4 +1,4 @@
-class MedicinalIngredientController < ApplicationController
+class MedicinalIngredientsController < ApplicationController
   autocomplete :medicinal_ingredient, :name
   before_action :authenticate_user!
 

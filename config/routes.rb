@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :doses
   resources :transactions
+  resources :products
 
   resources :clients do
     get :autocomplete_client_rut, on: :collection
