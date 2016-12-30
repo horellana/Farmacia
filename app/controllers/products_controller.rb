@@ -18,11 +18,17 @@ class ProductsController < ApplicationController
 
   def product_param
     params.require(:product).permit(:name, :description, :sale_price, :purchase_price, :exempt, :commission, :be,
-                                    :isp, :discount, :description, :dose_id, :category_id, :medicinal_ingredient_id, :provider_id )
+                                    :isp, :discount, :description)
   end
 
   def create
+    category = Category.create description: params[:category_description]
+    category.save!
+    
     @product = Product.new(product_param)
+    @product.category = category
     @product.save!
+    
+    redirect_to
   end
 end
