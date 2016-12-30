@@ -52,33 +52,33 @@
 	    <%= f.text_area :description %>
 	  </p>
 
-      <%#     <p>
-	   <%= f.label :quantity %><br>
-	<%#    <%= f.text_field :quantity %>
-      <%#  </p> %>
+	  <%#     <p>
+	    <%= f.label :quantity %><br>
+	    <%#    <%= f.text_field :quantity %>
+	    <%#  </p> %>
 
-	  <p>
-	    <%= f.label :category_id %> <br>
-	    <%= f.text_field :category_id %>
-	  </p>
-	   <p>
-	    <%= f.label :dose_id %> <br>
-	    <%= f.text_field :dose_id %>
-	  </p>
-	  <p>
-	    <%= f.label :medicinal_ingredient_id %> <br>
-	    <%= f.text_field :medicinal_ingredient_id %>
-	  </p>
+	    <p>
+	      <%= label_tag :category_description %> <br>
+	      <%= text_field_tag :category_description %>
+	    </p>
+	    <p>
+	      <%= label_tag :dose_kind %> <br>
+	      <%= text_field_tag :dose_kind %>
+	    </p>
+	    <p>
+	      <%= label_tag :medicinal_ingredient_name %> <br>
+	      <%= text_field_tag :medicinal_ingredient_name %>
+	    </p>
 
-	 <p>
-	    <%= f.label :provider_id %> <br>
-	    <%= f.text_field :provider_id %>
-	  </p>
+	    <p>
+	      <%= label_tag :provider_name %> <br>
+	      <%= text_field_tag :provider_name %>
+	    </p>
 
 
-	  <p>
-	    <%= f.submit %>
-	  </p>
+	    <p>
+	      <%= f.submit %>
+	    </p>
 	</div>
 	<p>
 
