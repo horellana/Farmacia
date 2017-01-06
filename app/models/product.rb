@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_one :inventory
   belongs_to :provider
   belongs_to :medicinal_ingredient
   belongs_to :dose
@@ -31,5 +32,13 @@ class Product < ApplicationRecord
 
   def profit
     sale_price - purchase_price - discount
+  end
+
+  def stock
+    inventory.stock
+  end
+
+  def minimum_stock
+    inventory.minimum_stock
   end
 end
