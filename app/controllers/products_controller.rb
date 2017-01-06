@@ -21,10 +21,6 @@ class ProductsController < ApplicationController
     provider = Provider.find_by name: params[:provider_name]
     dose = Dose.find_by kind: params[:dose_kind]
 
-    params[:product_be] ||= false
-    params[:product_isp] ||= false
-
-
     @product = Product.new name: params[:product][:name],
                            description: params[:product][:description],
                            sale_price: params[:product][:sale_price],
