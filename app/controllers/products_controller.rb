@@ -16,10 +16,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    category = Category.find_or_create_by! description: params[:category_description]
-    ingredient = MedicinalIngredient.find_or_create_by! name: params[:medicinal_ingredient_name]
-    provider = Provider.find_or_create_by! name: params[:provider_name]
-    dose = Dose.find_or_create_by! kind: params[:dose_kind]
+    category = Category.find_by description: params[:category_description]
+    ingredient = MedicinalIngredient.find_by name: params[:medicinal_ingredient_name]
+    provider = Provider.find_by name: params[:provider_name]
+    dose = Dose.find_by kind: params[:dose_kind]
+
+    params[:product_be] ||= false
+    params[:product_isp] ||= false
+
 
     @product = Product.new name: params[:product][:name],
                            description: params[:product][:description],
@@ -27,8 +31,8 @@ class ProductsController < ApplicationController
                            purchase_price: params[:product][:purchase_price],
                            exempt: params[:product][:exempt],
                            commission: params[:product][:commision],
-                           be: params[:product][:be],
-                           isp: params[:product][:isp],
+                           be: params[:product_be],
+                           isp: params[:product_isp],
                            discount: params[:product][:discount]
 
     @product.category = category
@@ -36,9 +40,11 @@ class ProductsController < ApplicationController
     @product.provider = provider
     @product.dose = dose
 
-    @product.save!
-
-    redirect_to @product
+    if @product.save
+      redirect_to @product
+    else
+      render :new
+    end
   end
 
   private

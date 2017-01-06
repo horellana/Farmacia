@@ -204,4 +204,3 @@ ActiveRecord::Schema.define(version: 20161218214756) do
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "job_titles"
 end
-
