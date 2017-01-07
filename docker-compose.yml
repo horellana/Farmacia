@@ -5,3 +5,8 @@ services:
     image: postgres:latest
     ports:
       - "5432:5432"
+
+  postgres_test:
+    image: postgres:latest
+    ports:
+      - "5433:5432"
