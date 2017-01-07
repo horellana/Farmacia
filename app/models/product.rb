@@ -41,4 +41,18 @@ class Product < ApplicationRecord
   def minimum_stock
     inventory.minimum_stock
   end
+
+  def decrease_stock
+    inventory.stock = inventory.stock - 1
+    inventory.save
+  end
+
+  def increase_stock
+    inventory.stock = inventory.stock + 1
+    inventory.save
+  end
+
+  def identifier
+    id.to_s + '_' + name
+  end
 end
