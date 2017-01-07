@@ -17,12 +17,6 @@ class Cart < ApplicationRecord
     end
   end
 
-  def remove(product)
-    CartItem
-      .find_by(cart: self, product: product)
-      .decrease_quantity
-  end
-
   def items
     cart_items.order id: :desc
   end
