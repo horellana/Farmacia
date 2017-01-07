@@ -2,6 +2,9 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :client, required: false
   has_many :details, class_name: 'TransactionDetail'
+  has_one :cart
+
+  validates :cart, presence: true
 
   before_save :default_values
 
@@ -27,6 +30,6 @@ class Transaction < ApplicationRecord
   private
 
   def default_values
-    iva ||= 0.19
+    self.iva ||= 0.19
   end
 end
