@@ -10,6 +10,8 @@ class CartItemController < ApplicationController
       @cart_item = @cart.add(product)
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = 'Producto no encontrado'
+    rescue ActiveRecord::RecordInvalid
+      flash[:alert] = 'El stock no puede ser menor a cero!'
     end
 
     respond_to :js

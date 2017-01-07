@@ -1,3 +1,11 @@
+class StockValidator < ActiveModel::Validator
+  def validate(record)
+    if record.stock < 0
+      record.errors[:stock] << 'El stock no puede ser menor a 0!'
+    end
+  end
+end
+
 class Product < ApplicationRecord
   has_one :inventory
   belongs_to :provider
@@ -18,6 +26,8 @@ class Product < ApplicationRecord
   validates :medicinal_ingredient, presence: true
   validates :provider, presence: true
 
+  validates_with StockValidator
+
   default_scope do
     select('*, sale_price - purchase_price as price').order('price desc')
   end
@@ -34,22 +44,14 @@ class Product < ApplicationRecord
     sale_price - purchase_price - discount
   end
 
-  def stock
-    inventory.stock
+  def decrease_stock(n=1)
+    self.stock -= n
+    save
   end
 
-  def minimum_stock
-    inventory.minimum_stock
-  end
-
-  def decrease_stock
-    inventory.stock = inventory.stock - 1
-    inventory.save
-  end
-
-  def increase_stock
-    inventory.stock = inventory.stock + 1
-    inventory.save
+  def increase_stock(n=1)
+    self.stock += n
+    save
   end
 
   def identifier

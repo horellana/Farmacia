@@ -28,4 +28,29 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal 2, Product.match_name('').length,
                  'Una busqueda vacia retorna todos los productos'
   end
+
+  test 'Se puede obtener el stock de un producto' do
+    assert_equal 7, products(:paracetamol).stock
+    assert_equal 5, products(:ibuprofeno).stock
+  end
+
+  test 'Se puede aumentar el stock de un producto' do
+    p = products(:paracetamol)
+
+    p.increase_stock
+    assert_equal 8, p.stock
+
+    p.increase_stock(3)
+    assert_equal 11, p.stock
+  end
+
+  test 'Se puede disminuir el stock de un producto' do
+    p = products(:paracetamol)
+
+    p.decrease_stock
+    assert_equal 6, p.stock
+
+    p.decrease_stock(3)
+    assert_equal 3, p.stock
+  end
 end
