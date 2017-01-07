@@ -2,19 +2,19 @@ class Cart < ApplicationRecord
   has_many :cart_items
 
   def empty?
-    items.length == 0
+    items.empty?
   end
 
   def add(product)
-    begin
-      item = CartItem.find_by! cart: self, product: product
-      item.increase_quantity
-      return item
-    rescue ActiveRecord::RecordNotFound
-      item = CartItem.create! cart: self, product: product, quantity: 1
-      item.product.decrease_stock
-      return item
-    end
+    @item =
+      begin
+        CartItem.find_by! cart: self, product: product
+      rescue ActiveRecord::RecordNotFound
+        CartItem.create! cart: self, product: product
+      end
+
+    @item.increase_quantity
+    @item
   end
 
   def items
@@ -25,5 +25,9 @@ class Cart < ApplicationRecord
     items
       .map { |item| item.product.price * item.quantity }
       .inject(0, :+)
+  end
+
+  def drop
+    items.each(&:drop)
   end
 end

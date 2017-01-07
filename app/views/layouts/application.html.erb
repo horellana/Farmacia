@@ -159,11 +159,14 @@
 	</div>
       <% end %>
 
-      <% if alert %>
-	<div class="alert alert-danger">
-	  <%= alert %>
-	</div>
-      <% end %>
+      <div id="alert">
+      </div>
+
+      <%# if alert %>
+      <!-- <div class="alert alert-danger"> -->
+	  <%#= alert %>
+      <!-- </div> -->
+      <%# end %>
 
       <%= yield %>
     </div>

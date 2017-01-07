@@ -11,8 +11,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  def get_cart(id)
-    Cart.find session[:cart_id]
+  def paracetamol
+    Product.find_by name: 'Paracetamol'
   end
 
   # Add more helper methods to be used by all tests here...
