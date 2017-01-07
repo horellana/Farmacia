@@ -9,8 +9,11 @@ class Cart < ApplicationRecord
     begin
       item = CartItem.find_by! cart: self, product: product
       item.increase_quantity
+      return item
     rescue ActiveRecord::RecordNotFound
-      CartItem.create! cart: self, product: product, quantity: 1
+      item = CartItem.create! cart: self, product: product, quantity: 1
+      item.product.decrease_stock
+      return item
     end
   end
 

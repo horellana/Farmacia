@@ -6,7 +6,12 @@ class CartItemTest < ActiveSupport::TestCase
     item.product = products(:paracetamol)
 
     item.increase_quantity
-    assert_equal 3, item.quantity
+
+    assert_equal 3, item.quantity,
+                 'Se aumenta la cantidad de productos a vender'
+
+    assert_equal 6, item.product.stock,
+                 'El stock del producto disminuye'
   end
 
   test "Se puede disminuir la cantidad de productos a vender" do
@@ -16,6 +21,7 @@ class CartItemTest < ActiveSupport::TestCase
 
     item.decrease_quantity
     assert_equal 1, item.quantity
+    assert_equal 8, product.stock
   end
 
   test "El item se elimina si su cantidad es cero" do
