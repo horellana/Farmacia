@@ -7,7 +7,6 @@ class StockValidator < ActiveModel::Validator
 end
 
 class Product < ApplicationRecord
-  has_one :inventory
   belongs_to :provider
   belongs_to :medicinal_ingredient
   belongs_to :dose

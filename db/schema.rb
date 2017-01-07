@@ -64,15 +64,6 @@ ActiveRecord::Schema.define(version: 20170107172600) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "inventories", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "stock"
-    t.integer  "minimum_stock"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["product_id"], name: "index_inventories_on_product_id", using: :btree
-  end
-
   create_table "job_titles", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -203,7 +194,6 @@ ActiveRecord::Schema.define(version: 20170107172600) do
 
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
-  add_foreign_key "inventories", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
