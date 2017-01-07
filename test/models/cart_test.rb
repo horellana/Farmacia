@@ -30,14 +30,6 @@ class CartTest < ActiveSupport::TestCase
     assert_equal 5, cart.items[0].product.stock
   end
 
-  test 'Se pueden quitar productos del carro' do
-    cart = Cart.new
-    cart.add(products(:paracetamol))
-    cart.remove(products(:paracetamol))
-
-    assert cart.empty?
-  end
-
   test 'Calcula el precio correctamente' do
     cart = Cart.new
     cart.add products(:paracetamol)
