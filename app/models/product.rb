@@ -15,10 +15,14 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :sale_price, presence: true
+  validates :sale_price, numericality: { only_integer: true }
   validates :purchase_price, presence: true
   validates :be, presence: true
   validates :isp, presence: true
   validates :discount, presence: true
+
+  validates :stock, presence: true
+  validates :stock, numericality: { only_integer: true }
 
   validates :category, presence: true
   validates :dose, presence: true
