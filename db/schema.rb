@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107172600) do
+ActiveRecord::Schema.define(version: 20170108174519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "box_movements", force: :cascade do |t|
+    t.integer  "box_id"
+    t.integer  "user_id"
+    t.datetime "start_date"
+    t.integer  "start_amount"
+    t.datetime "end_date"
+    t.integer  "end_amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["box_id"], name: "index_box_movements_on_box_id", using: :btree
+    t.index ["user_id"], name: "index_box_movements_on_user_id", using: :btree
+  end
+
+  create_table "boxes", force: :cascade do |t|
+    t.boolean  "active"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
@@ -62,6 +82,15 @@ ActiveRecord::Schema.define(version: 20170107172600) do
     t.string   "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "stock"
+    t.integer  "minimum_stock"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["product_id"], name: "index_inventories_on_product_id", using: :btree
   end
 
   create_table "job_titles", force: :cascade do |t|
@@ -166,6 +195,8 @@ ActiveRecord::Schema.define(version: 20170107172600) do
     t.datetime "updated_at",   null: false
     t.integer  "client_id"
     t.integer  "user_id"
+    t.integer  "cart_id"
+    t.index ["cart_id"], name: "index_transactions_on_cart_id", using: :btree
     t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
     t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
@@ -198,8 +229,11 @@ ActiveRecord::Schema.define(version: 20170107172600) do
     t.index ["rut"], name: "index_users_on_rut", unique: true, using: :btree
   end
 
+  add_foreign_key "box_movements", "boxes"
+  add_foreign_key "box_movements", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "inventories", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
@@ -208,6 +242,7 @@ ActiveRecord::Schema.define(version: 20170107172600) do
   add_foreign_key "transaction_details", "products"
   add_foreign_key "transaction_details", "transactions"
   add_foreign_key "transaction_details", "users"
+  add_foreign_key "transactions", "carts"
   add_foreign_key "transactions", "clients"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "job_titles"
