@@ -45,40 +45,9 @@
 		<li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
 		<li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
 		<li> <%= link_to 'Crear Dosis', new_dose_path %>   </li>
-
-
-
-		<!--
-		     <li class="dropdown-submenu">
-		     <a tabindex="-1" href="#">Otras componentes</a>
-		     <ul class="dropdown-menu">
-		     </ul>
-		   -->
-
 	    </li>
 	      </ul>
     </li>
-
-
-    <!--
-	 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-	 <li><a tabindex="-1" href="#">Action</a></li>
-	 <li><a tabindex="-1" href="#">Another action</a></li>
-	 <li><a tabindex="-1" href="#">Something else here</a></li>
-	 <li class="divider"></li>
-	 <li class="dropdown-submenu">
-	 <a tabindex="-1" href="#">More options</a>
-	 <ul class="dropdown-menu">
-	 <li><a tabindex="-1" href="#">Second level link</a></li>
-	 <li><a tabindex="-1" href="#">Second level link</a></li>
-	 <li><a tabindex="-1" href="#">Second level link</a></li>
-	 <li><a tabindex="-1" href="#">Second level link</a></li>
-	 <li><a tabindex="-1" href="#">Second level link</a></li>
-	 </ul>
-	 </li>
-	 </ul>
-       -->
-
 
 
     </li>
@@ -128,14 +97,18 @@
 
 	      <ul class="dropdown-menu">
 		<li>
-		  <%= link_to 'Abrir Caja', '#' %>
-		</li>
-
-		<li role="separator" class="divider">
+		  <%= link_to 'Perfil', edit_user_path(current_user) %>
 		</li>
 
 		<li>
-		  <%= link_to 'Perfil', edit_user_path(current_user) %>
+		  <% if box_open? %>
+		    <%= link_to 'Cerrar Caja', box_movement_path(current_box_movement), method: :delete %>
+		  <% else %>
+		    <%= link_to 'Abrir Caja', new_box_movement_path %>
+		  <% end %>
+		</li>
+
+		<li role="separator" class="divider">
 		</li>
 
 		<li>
@@ -159,14 +132,11 @@
 	</div>
       <% end %>
 
-      <div id="alert">
-      </div>
-
-      <%# if alert %>
-      <!-- <div class="alert alert-danger"> -->
-	  <%#= alert %>
-      <!-- </div> -->
-      <%# end %>
+      <% if alert %>
+	<div class="alert alert-danger">
+	  <%= alert %>
+	</div>
+      <% end %>
 
       <%= yield %>
     </div>

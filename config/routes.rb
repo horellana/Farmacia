@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  # get 'box_movement/index'
+
+  # get 'box_movement/new'
+
+  # get 'box_movement/create'
+
+  # get 'box_movement/destroy'
+
+  # get 'box_movement/show'
+
   get 'foo/login'
 
   get 'foo/index'
@@ -14,6 +24,7 @@ Rails.application.routes.draw do
   resources :doses
   resources :transactions
   resources :products
+  resources :box_movements
 
   resources :clients do
     get :autocomplete_client_rut, on: :collection
