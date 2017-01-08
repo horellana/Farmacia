@@ -27,6 +27,8 @@ class ProductsController < ApplicationController
                            purchase_price: params[:product][:purchase_price],
                            exempt: params[:product][:exempt],
                            commission: params[:product][:commision],
+                           stock: params[:product][:stock],
+                           minimum_stock: params[:product][:minimum_stock],
                            be: params[:product_be],
                            isp: params[:product_isp],
                            discount: params[:product][:discount]

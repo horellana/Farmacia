@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170107172600) do
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
     t.integer  "product_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "quantity"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
     t.index ["product_id"], name: "index_cart_items_on_product_id", using: :btree
   end
@@ -133,6 +133,11 @@ ActiveRecord::Schema.define(version: 20170107172600) do
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
   end
 
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transaction_details", force: :cascade do |t|
     t.integer  "transaction_id"
     t.integer  "product_id"
@@ -156,6 +161,7 @@ ActiveRecord::Schema.define(version: 20170107172600) do
     t.float    "iva"
     t.integer  "discount"
     t.integer  "total_amount"
+    t.string   "client_rut"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "client_id"
