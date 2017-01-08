@@ -3,7 +3,13 @@ class CartController < ApplicationController
   before_action :setup_cart, only: [:show, :destroy, :new]
 
   def new
-    redirect_to @cart
+    begin
+      authorize @cart
+      redirect_to @cart
+    rescue Pundit::NotAuthorizedError
+      flash[:alert] = 'Falta abrir la caja'
+      redirect_to root_path
+    end
   end
 
   def destroy
