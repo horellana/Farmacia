@@ -33,6 +33,8 @@ class ProductsController < ApplicationController
                            isp: params[:product_isp],
                            discount: params[:product][:discount]
 
+    @product.isp = false if not @product.isp
+
     @product.category = category
     @product.medicinal_ingredient = ingredient
     @product.provider = provider

@@ -25,6 +25,9 @@ class Product < ApplicationRecord
   validates :medicinal_ingredient, presence: true
   validates :provider, presence: true
 
+  validates :stock, presence: true
+  validates :minimum_stock, presence: true
+
   validates_with StockValidator
 
   default_scope do
