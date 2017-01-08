@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_for @box_movement, url: { action: :create } do |f| %>
+      <%= f.label(:monto_apertura, 'Monto apertura') %>
+      <%= f.number_field(:start_amount) %>
+      <%= f.submit 'Abrir caja' %>
+    <% end %>
+  </div>
+</div>

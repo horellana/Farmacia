@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) << :rut
   end
 
+
   def setup_cart
     begin
       @cart = Cart.find session[:cart_id]
@@ -17,6 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   def clean_cart
+    cart = Cart.find session[:cart_id]
+
+    # Restauro el stock de los productos
+    # si es que no se hizo una transaccion
+    cart.drop unless cart.transactionn
+
     session[:cart_id] = nil
     session[:client_rut] = nil
   end
