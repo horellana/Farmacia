@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class ProductControllerTest < ActionDispatch::IntegrationTest
-  test 'no funciona sin iniciar sesion' do
+  test 'no se puede crear un producto sin iniciar sesion' do
     get new_product_path
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+
+
+    post products_path
     assert_response :redirect
     assert_redirected_to new_user_session_path
   end

@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :setup_cart
   before_action :avoid_empty_cart, only: :create
 
@@ -7,15 +8,19 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new user: current_user
+    @transaction = Transaction.new user: current_user,
+                                   cart: @cart,
+                                   box_movement: BoxMovement.last
 
     set_transaction_client
+    @transaction.save!
 
     @cart.items.each do |item|
       @transaction.add_product(item.product, item.quantity)
     end
 
     @transaction.save!
+
     clean_cart
     redirect_to @transaction
   end
@@ -26,19 +31,15 @@ class TransactionsController < ApplicationController
     rut = session[:client_rut]
     name = session[:client_name]
 
-    if rut
-      @transaction.client = Client.from_rut(rut)
 
-      if name
-        @transaction.client.name = name
-      end
-    end
+    @transaction.client = Client.from_rut(rut) if rut
+    @transaction.client.name = name if name && rut
   end
 
   def avoid_empty_cart
     if @cart.empty?
       flash[:alert] = 'El carrito esta vacio!'
-      redirect_to :back
+      redirect_back(fallback_location: new_cart_path)
     end
   end
 end

@@ -25,7 +25,7 @@ class BoxMovementsController < ApplicationController
 
     if @box_movement.valid?
       @box_movement.save
-      redirect_to box_movement_path(@box_movement)
+      redirect_to box_movement_path(@box_movement), notice: 'Caja abierta'
     else
       render :new
     end
