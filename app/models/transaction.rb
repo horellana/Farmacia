@@ -1,6 +1,8 @@
 class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :client, required: false
+  belongs_to :box_movement
+
   has_many :details, class_name: 'TransactionDetail'
   has_one :cart
 

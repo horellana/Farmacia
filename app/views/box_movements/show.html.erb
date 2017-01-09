@@ -1,13 +1,53 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    Vendedor: <%= @box_movement.user.name %>
+    <table class="table">
+      <thead>
+	<th>
+	  Vendedor
+	</th>
 
-    <br>
+	<th>
+	  Fecha apertura
+	</th>
 
-    Fecha apertura: <%= @box_movement.start_date %>
+	<th>
+	  Monto apertura
+	</th>
 
-    <br>
+	<th>
+	  Ganancias
+	</th>
 
-    Monto Apertura: <%= @box_movement.start_amount %>
+	<th>
+	  Monto final
+	</th>
+      </thead>
+
+      <tbody>
+	<tr>
+	  <td>
+	    <%= @box_movement.user.name %>
+	  </td>
+
+	  <td>
+	    <%= @box_movement.start_date %>
+	  </td>
+
+	  <td>
+	    $<%= @box_movement.start_amount %>
+	  </td>
+
+	  <td>
+	    $<%= @box_movement.gains %>
+	  </td>
+
+	  <td>
+	    $<%= @box_movement.final_amount %>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+
+    <%= link_to 'Cerrar caja', box_movement_path(@box_movement), method: :delete, class: 'btn btn-default' %>
   </div>
 </div>
