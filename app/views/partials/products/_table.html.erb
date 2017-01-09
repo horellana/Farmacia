@@ -41,13 +41,21 @@
     </th>
 
     <th>
-      Agregar al carro
+      Stock
     </th>
 
+    <th>
+      Stock minimo
+    </th>
+
+    <th>
+      Agregar al carro
+    </th>
   </thead>
+
   <tbody>
     <% for product in products do %>
-      <%= render 'partials/products/table/row', product: product %>
+	<%= render 'partials/products/table/row', product: product %>
     <% end %>
   </tbody>
 </table>

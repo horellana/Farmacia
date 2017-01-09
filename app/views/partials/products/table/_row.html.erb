@@ -43,6 +43,14 @@
     $ <%= product.profit %>
   </td>
 
+  <td id="<%= product.identifier %>">
+    <%= product.stock %>
+  </td>
+
+  <td>
+    <%= product.minimum_stock %>
+  </td>
+
   <td>
     <%= form_tag(cart_cart_item_index_path(@cart), action: 'create', remote: true) do %>
       <%= hidden_field_tag(:search_product_field, product.name) %>

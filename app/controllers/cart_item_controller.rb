@@ -7,15 +7,18 @@ class CartItemController < ApplicationController
 
     begin
       product = Product.find_by! name: query
-      @cart.add(product)
+      @cart_item = @cart.add(product)
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = 'Producto no encontrado'
+    rescue ActiveRecord::RecordInvalid
+      flash[:alert] = 'El stock no puede ser menor a cero!'
     end
 
     respond_to :js
   end
 
   def destroy
-    CartItem.find(params[:id]).decrease_quantity
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.decrease_quantity
   end
 end

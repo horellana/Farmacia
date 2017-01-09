@@ -14,6 +14,9 @@ paracetamol:
   isp: MyString
   category: one
   discount: 1
+  description: 'foo'
+  stock: 7
+  minimum_stock: 1
 
 ibuprofeno:
   id: 2
@@ -29,3 +32,6 @@ ibuprofeno:
   isp: MyString
   category: two
   discount: 1
+  description: 'bar'
+  stock: 5
+  minimum_stock: 1
