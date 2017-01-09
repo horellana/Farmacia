@@ -36,6 +36,6 @@ class BoxMovementsController < ApplicationController
     @box_movement.box.active = false
     @box_movement.box.save!
 
-    redirect_to root_path
+    redirect_to root_path, notice: 'Caja cerrada'
   end
 end
