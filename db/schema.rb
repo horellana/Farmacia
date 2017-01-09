@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108174519) do
+ActiveRecord::Schema.define(version: 20170109154057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 20170108174519) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "transaction_id"
+    t.index ["transaction_id"], name: "index_carts_on_transaction_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -182,11 +184,13 @@ ActiveRecord::Schema.define(version: 20170108174519) do
     t.integer  "discount"
     t.integer  "total_amount"
     t.string   "client_rut"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "client_id"
     t.integer  "user_id"
     t.integer  "cart_id"
+    t.integer  "box_movement_id"
+    t.index ["box_movement_id"], name: "index_transactions_on_box_movement_id", using: :btree
     t.index ["cart_id"], name: "index_transactions_on_cart_id", using: :btree
     t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
     t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
@@ -224,6 +228,7 @@ ActiveRecord::Schema.define(version: 20170108174519) do
   add_foreign_key "box_movements", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
+  add_foreign_key "carts", "transactions"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
@@ -232,6 +237,7 @@ ActiveRecord::Schema.define(version: 20170108174519) do
   add_foreign_key "transaction_details", "products"
   add_foreign_key "transaction_details", "transactions"
   add_foreign_key "transaction_details", "users"
+  add_foreign_key "transactions", "box_movements"
   add_foreign_key "transactions", "carts"
   add_foreign_key "transactions", "clients"
   add_foreign_key "transactions", "users"
