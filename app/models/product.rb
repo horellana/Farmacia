@@ -1,6 +1,6 @@
 class StockValidator < ActiveModel::Validator
   def validate(record)
-    if record.stock < 0
+    if record.stock and record.stock < 0
       record.errors[:stock] << 'El stock no puede ser menor a 0!'
     end
   end
@@ -29,8 +29,8 @@ class Product < ApplicationRecord
   validates :medicinal_ingredient, presence: true
   validates :provider, presence: true
 
-  validates :stock, presence: true
   validates :minimum_stock, presence: true
+  validates :minimum_stock, numericality: { only_integer: true }
 
   validates_with StockValidator
 

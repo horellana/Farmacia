@@ -53,4 +53,9 @@ class ProductTest < ActiveSupport::TestCase
     p.decrease_stock(3)
     assert_equal 3, p.stock
   end
+
+  test 'el producto tiene validaciones' do
+    product = Product.new
+    assert_not product.valid?
+  end
 end
