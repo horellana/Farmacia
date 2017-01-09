@@ -21,6 +21,7 @@ class Product < ApplicationRecord
   validates :be, presence: true
   validates :isp, presence: true
   validates :discount, presence: true
+  validates :discount, numericality: { only_integer: true }
 
   validates :stock, presence: true
   validates :stock, numericality: { only_integer: true }
