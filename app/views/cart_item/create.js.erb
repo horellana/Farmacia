@@ -1,2 +1,5 @@
+$("#<%= @cart_item.product.identifier %>")
+  .html("<%= @cart_item.product.stock %>")
+
 $("#cart_item_list")
   .html("<%= j render 'partials/cart/cart', cart: @cart %>");

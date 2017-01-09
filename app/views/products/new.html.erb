@@ -1,3 +1,18 @@
+<% if @product.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@product.errors.count, "errors") %>
+
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <div class="panel panel-default">
 
   <div class="panel-heading">
@@ -54,6 +69,11 @@
 	  
 	 
 
+	  <p>
+	    <%= label_tag(:isp, "Instituto de Salud Pública de Chile") %>
+	    <%= check_box_tag(:product_isp) %>
+	  </p>
+	</div>
 
 	<div class="col-md-4">
 	<div class="panel panel-default">
@@ -81,9 +101,16 @@
 		    <%= f.text_field :commission %>
 		  </p>
 
-	</div>
-	  </div>
-	</div>
+      <p>
+	    <%= f.label :stock %><br>
+	    <%= f.text_area :stock %>
+	  </p>
+
+      <p>
+	    <%= f.label :minimum_stock %><br>
+	    <%= f.text_area :minimum_stock %>
+	  </p>
+
 
 	
 	
