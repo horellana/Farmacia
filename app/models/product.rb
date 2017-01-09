@@ -27,6 +27,7 @@ class Product < ApplicationRecord
 
   validates :category, presence: true
   validates :dose, presence: true
+  validates :dose, numericality: true
   validates :medicinal_ingredient, presence: true
   validates :provider, presence: true
 
