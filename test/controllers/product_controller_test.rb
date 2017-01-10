@@ -22,10 +22,11 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
                               exempt: 'si',
                               commission: 5,
                               discount: 22,
-                              description: 'descripcion',
-                              stock: 5,
-                              minimum_stock: 2 },
+                              description: 'descripcion'
+                               },
 
+                   stock: 5,
+                   minimum_stock: 2,
                    provider_name: providers(:one).name,
                    medicinal_ingredient_name: medicinal_ingredients(:one).name,
                    dose_kind: doses(:one).kind,

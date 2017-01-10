@@ -23,4 +23,16 @@ class TransactionControllerTest < ActionDispatch::IntegrationTest
 
     assert_not_equal cart_id, session[:cart_id]
   end
+
+  test 'No se puede crear una transaccion con el carro vacio' do
+    sign_in users(:one)
+    get new_cart_path
+
+    original_transaction_count = Transaction.count
+
+    post transactions_path
+
+    assert_equal 'El carrito esta vacio!', flash[:alert]
+    assert_equal original_transaction_count, Transaction.count
+  end
 end
