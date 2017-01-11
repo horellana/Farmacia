@@ -32,7 +32,7 @@ class BoxMovementControllerTest < ActionDispatch::IntegrationTest
   test "should get destroy" do
     sign_in users(:one)
 
-    box_movement = BoxMovement.create box: boxes(:one), user: users(:one)
+    box_movement = BoxMovement.create box: boxes(:one), user: users(:one), start_amount: 0
 
     delete box_movement_path(box_movement)
     assert_response :redirect

@@ -4,6 +4,9 @@ class BoxMovement < ApplicationRecord
 
   has_many :transactions
 
+  validates :box, presence: true
+  validates :user, presence: true
+
   def gains
     transactions.map(&:total).inject(0, :+)
   end
