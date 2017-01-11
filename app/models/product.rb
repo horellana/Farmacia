@@ -9,17 +9,23 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :sale_price, presence: true
+  validates :sale_price, numericality: { only_integer: true }
   validates :purchase_price, presence: true
+  validates :purchase_price, numericality: { only_integer: true }
   validates :be, presence: true
   validates :isp, presence: true
   validates :discount, presence: true
+  validates :discount, numericality: { only_integer: true }
 
   validates :category, presence: true
-  validates :dose, presence: true
   validates :medicinal_ingredient, presence: true
   validates :provider, presence: true
 
+  validates :inventory, presence: true
   validates_associated :inventory
+
+  validates :dose, presence: true
+  validates_associated :dose
 
   default_scope do
     select('*, sale_price - purchase_price as price').order('price desc')
