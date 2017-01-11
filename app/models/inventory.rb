@@ -11,7 +11,10 @@ class Inventory < ApplicationRecord
   belongs_to :product
 
   validates :stock, presence: true
+  validates :stock, numericality: { only_integer: true }
+
   validates :minimum_stock, presence: true
+  validates :minimum_stock, numericality: { only_integer: true }
 
   validates_with StockValidator
 
