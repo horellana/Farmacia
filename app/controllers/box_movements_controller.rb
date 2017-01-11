@@ -1,5 +1,5 @@
 class BoxMovementsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
   end
@@ -33,9 +33,21 @@ class BoxMovementsController < ApplicationController
 
   def destroy
     @box_movement = BoxMovement.last
-    @box_movement.box.active = false
-    @box_movement.box.save!
 
-    redirect_to root_path, notice: 'Caja cerrada'
+    begin
+      @box_movement.end_amount = params[:box_movement][:final_amount]
+    rescue NoMethodError
+      @box_movement.end_amount = @box_movement.final_amount
+    end
+
+    if @box_movement.valid?
+      @box_movement.box.active = false
+      @box_movement.box.save!
+      @box_movement.save
+
+      redirect_to root_path, notice: 'Caja cerrada'
+    else
+      render :show
+    end
   end
 end
