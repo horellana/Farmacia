@@ -7,7 +7,7 @@ class DosesController < ApplicationController
   end
 
   def index
-    @dose = Dose.all
+    @doses = Dose.all
   end
 
   def show
