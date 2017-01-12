@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) << :rut
   end
 
+  def current_office
+    current_user.office
+  end
 
   def setup_cart
     begin

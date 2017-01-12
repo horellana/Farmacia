@@ -1,6 +1,9 @@
 class Cart < ApplicationRecord
   has_many :cart_items
-  belongs_to :transactionn, required: false
+  belongs_to :transactionn,
+             required: false,
+             class_name: 'Transaction',
+             foreign_key: 'transaction_id'
 
   def empty?
     items.empty?

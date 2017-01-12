@@ -21,6 +21,9 @@ class ProductsController < ApplicationController
     provider = Provider.find_by name: params[:provider_name]
     dose = Dose.find_by kind: params[:dose_kind]
 
+    inventory = Inventory.new stock: params[:stock],
+                              minimum_stock: params[:minimum_stock],
+                              office: current_office
 
     @product = Product.new name: params[:product][:name],
                            description: params[:product][:description],
@@ -28,8 +31,6 @@ class ProductsController < ApplicationController
                            purchase_price: params[:product][:purchase_price],
                            exempt: params[:product][:exempt],
                            commission: params[:product][:commision],
-                           stock: params[:product][:stock],
-                           minimum_stock: params[:product][:minimum_stock],
                            be: params[:product_be],
                            isp: params[:product_isp],
                            discount: params[:product][:discount]
@@ -40,6 +41,7 @@ class ProductsController < ApplicationController
     @product.medicinal_ingredient = ingredient
     @product.provider = provider
     @product.dose = dose
+    @product.inventory = inventory
 
     if @product.save
       redirect_to @product

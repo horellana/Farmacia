@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  office: one
+  product_id: 1
+  stock: 7
+  minimum_stock: 1
+
+two:
+  office: two
+  product_id: 2
+  stock: 5
+  minimum_stock: 1
