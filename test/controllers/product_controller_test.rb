@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class ProductControllerTest < ActionDispatch::IntegrationTest
-  test 'no funciona sin iniciar sesion' do
+  test 'no se puede crear un producto sin iniciar sesion' do
     get new_product_path
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+
+
+    post products_path
     assert_response :redirect
     assert_redirected_to new_user_session_path
   end
@@ -17,10 +22,11 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
                               exempt: 'si',
                               commission: 5,
                               discount: 22,
-                              description: 'descripcion',
-                              stock: 5,
-                              minimum_stock: 2 },
+                              description: 'descripcion'
+                               },
 
+                   stock: 5,
+                   minimum_stock: 2,
                    provider_name: providers(:one).name,
                    medicinal_ingredient_name: medicinal_ingredients(:one).name,
                    dose_kind: doses(:one).kind,

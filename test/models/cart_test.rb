@@ -56,7 +56,7 @@ class CartTest < ActiveSupport::TestCase
 
   test 'No se pueden agregar productos al carro si el stock es cero' do
     product = products(:paracetamol)
-    product.stock = 0
+    product.inventory.stock = 0
     product.save!
 
     cart = Cart.create

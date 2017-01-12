@@ -8,10 +8,23 @@ class TransactionTest < ActiveSupport::TestCase
   end
 
   test "Se pueden agregar productos a una transaccion" do
-    user = users :one
-    t = Transaction.create user: user
+    t = Transaction.new user: users(:one), cart: carts(:one)
     t.add_product products(:ibuprofeno), 1
 
     assert_equal 1, t.details.length
+  end
+
+  test 'No se puede guardar una transaccion sin asignarle un carro de compras' do
+    user = users :one
+    t = Transaction.new user: user
+    t.add_product products(:ibuprofeno), 1
+
+    assert_not t.valid?
+  end
+
+  test 'No se pueden realizar transacciones sin productos' do
+    t = Transaction.new user: users(:one), cart: carts(:one)
+
+    assert_not t.valid?
   end
 end

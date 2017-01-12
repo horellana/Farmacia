@@ -1,10 +1,10 @@
 class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :client, required: false
+  belongs_to :box_movement
+
   has_many :details, class_name: 'TransactionDetail'
   has_one :cart
-
-  validates :cart, presence: true
 
   before_save :default_values
 
@@ -24,7 +24,8 @@ class Transaction < ApplicationRecord
     td.net_price = product.price - (product.price * 0.19)
     td.discount = product.discount
     td.devolution = 'no'
-    self.details << td
+
+    details << td
   end
 
   private

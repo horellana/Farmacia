@@ -103,7 +103,7 @@
 
 		<li>
 		  <% if box_open? %>
-		    <%= link_to 'Cerrar Caja', box_movement_path(current_box_movement), method: :delete %>
+		    <%= link_to 'Cerrar Caja', box_movement_path(current_box_movement) %>
 		  <% else %>
 		    <%= link_to 'Abrir Caja', new_box_movement_path %>
 		  <% end %>
