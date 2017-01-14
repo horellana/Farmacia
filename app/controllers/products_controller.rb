@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
-  autocomplete :product, :name
   before_action :authenticate_user!
   before_action :setup_cart
+
+  autocomplete :products, :name
 
   def new
     @product = Product.new
@@ -12,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @products = Product.find params[:id]
   end
 
   def create
