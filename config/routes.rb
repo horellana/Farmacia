@@ -1,19 +1,9 @@
 Rails.application.routes.draw do
-  # get 'box_movement/index'
+  # get 'foo/login'
 
-  # get 'box_movement/new'
+  # get 'foo/index'
 
-  # get 'box_movement/create'
-
-  # get 'box_movement/destroy'
-
-  # get 'box_movement/show'
-
-  get 'foo/login'
-
-  get 'foo/index'
-
-  get 'search_product/index'
+  # get 'search_product/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'
@@ -39,7 +29,8 @@ Rails.application.routes.draw do
   end
 
   scope :session do
-    devise_for :user
+    devise_for :users, controllers: { sessions: 'users/sessions' }
+
     put :rut, to: 'rut#update', as: 'set_rut'
     put :name, to: 'name#update', as: 'set_name'
   end

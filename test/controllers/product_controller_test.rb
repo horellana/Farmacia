@@ -37,4 +37,13 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to product_path(3)
   end
+
+  test 'funciona el autocompletar' do
+    sign_in users(:one)
+
+    get autocomplete_product_name_products_path,
+        params: { query: 'ibu' }
+
+    assert_response :success
+  end
 end
