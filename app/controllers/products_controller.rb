@@ -13,8 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    puts "HGOOOOOOOOOOAASDASDASd"
-    # @products = Product.find params[:id]
+    @product = Product.find params[:id]
   end
 
   def create
