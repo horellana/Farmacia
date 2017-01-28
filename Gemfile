@@ -56,3 +56,5 @@ gem 'devise'
 gem 'pundit'
 gem 'rails-jquery-autocomplete'
 gem 'rails_12factor'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
