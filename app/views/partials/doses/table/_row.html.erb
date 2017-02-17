@@ -7,5 +7,14 @@
   <td>
     $ <%= dose.quantity %>
   </td>
+  
+  <td>
+    <%= link_to 'Editar', edit_dose_path(dose) %>
+  </td>
+  
+  <td><%= link_to 'Eliminar', dose_path(dose),
+              method: :delete,
+              data: { confirm: 'Estas Seguro?' } %>
+  </td>
 
 </tr>
