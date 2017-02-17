@@ -53,5 +53,5 @@ Rails.application.routes.draw do
   end
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
-  get 'search/doses', to: 'search_dode#index', as: 'search_doses'
+  get 'search/doses', to: 'search_dose#index', as: 'search_doses'
 end

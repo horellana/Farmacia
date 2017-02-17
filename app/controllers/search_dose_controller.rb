@@ -3,7 +3,7 @@ class SearchDoseController < ApplicationController
 
   def index
     query = params[:search_dose_field]
-    @doses = Dose.match_name(query)
+    @doses = Dose.match_kind(query)
     respond_to :js
   end
 end

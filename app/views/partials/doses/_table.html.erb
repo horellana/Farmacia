@@ -12,7 +12,7 @@
 
   <tbody>
     <% for dose in doses do %>
-	    <%= render 'partials/doses/table/row', locals: {dose: dose} %>
+	    <%= render 'partials/doses/table/row', dose: dose %>
     <% end %>
   </tbody>
 </table>
