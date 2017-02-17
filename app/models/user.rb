@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   belongs_to :office
 
+  validates :office, presence: true
+
   def email_required?
     false
   end
