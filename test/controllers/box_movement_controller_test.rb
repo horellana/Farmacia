@@ -37,5 +37,7 @@ class BoxMovementControllerTest < ActionDispatch::IntegrationTest
     delete box_movement_path(box_movement)
     assert_response :redirect
     assert_redirected_to root_path
+
+    assert_not Box.get_box.active?
   end
 end

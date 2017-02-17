@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  # get 'box_movement/index'
-
-  # get 'box_movement/new'
-
-  # get 'box_movement/create'
-
-  # get 'box_movement/destroy'
-
-  # get 'box_movement/show'
-
   get 'foo/login'
 
   get 'foo/index'
@@ -23,11 +13,10 @@ Rails.application.routes.draw do
   resources :categories
   resources :doses
   resources :transactions
-  resources :products
   resources :box_movements
 
   resources :clients do
-    get :autocomplete_client_rut, on: :collection
+  get :autocomplete_client_rut, on: :collection
   end
 
   resources :products do
@@ -43,7 +32,8 @@ Rails.application.routes.draw do
   end
 
   scope :session do
-    devise_for :user
+    devise_for :users, controllers: { sessions: 'users/sessions' }
+
     put :rut, to: 'rut#update', as: 'set_rut'
     put :name, to: 'name#update', as: 'set_name'
   end
