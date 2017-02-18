@@ -14,6 +14,19 @@ class DosesController < ApplicationController
     @dose = Dose.find(params[:id])
   end
   
+    def create
+        @dose = Dose.new(kind: params[:dose][:kind],
+                         quantity: params[:dose][:quantity],)
+           if @dose.save
+            flash[:notice] = "Dosis Creada."
+            redirect_to @dose
+          else
+            render :action => 'new'
+          end
+   end
+ 
+  
+  
  def edit
     @dose = Dose.find(params[:id])
   end
@@ -27,19 +40,6 @@ def update
     render 'edit'
   end
 end
-
-
-  def create
-        @dose = Dose.new(kind: params[:dose][:kind],
-                         quantity: params[:dose][:quantity],)
-           if @dose.save
-            flash[:notice] = "Dosis Creada."
-            redirect_to @dose
-          else
-            render :action => 'new'
-          end
-   end
- 
 
 
   def destroy

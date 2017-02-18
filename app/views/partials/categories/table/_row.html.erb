@@ -1,0 +1,16 @@
+<tr>
+     
+  <td>
+    $ <%= category.description %>
+  </td>
+  
+  <td>
+    <%= link_to 'Editar', edit_category_path(category) %>
+  </td>
+  
+  <td><%= link_to 'Eliminar', category_path(category),
+              method: :delete,
+              data: { confirm: 'Estas Seguro?' } %>
+  </td>
+
+</tr>

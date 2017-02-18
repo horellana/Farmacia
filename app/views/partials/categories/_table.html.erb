@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+
+    <th>
+      Nombre
+    </th>
+
+  </thead>
+
+  <tbody>
+    <% for category in categories do %>
+	    <%= render 'partials/categories/table/row', category: category %>
+    <% end %>
+  </tbody>
+</table>
