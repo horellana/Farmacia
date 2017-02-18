@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar Proveedor
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag(search_providers_path, method: :get, remote: true) do %>
+      <%= autocomplete_field_tag :search_provider_field, '', autocomplete_provider_name_providers_path %>
+      <%= submit_tag('Buscar', class: 'btn btn-default') %>
+    <% end %>
+    
+    
+    <div id="search_provider_result">
+    </div>
+  </div>
+</div>

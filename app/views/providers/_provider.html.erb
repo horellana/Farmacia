@@ -1,0 +1,45 @@
+<tr>
+  <td>
+    <%= provider.name %>
+  </td>
+  
+  <td>
+    <%= provider.rut %>
+  </td>
+  
+    <td>
+    <%= provider.business_name %>
+  </td>
+  
+    <td>
+    <%= provider.address %>
+  </td>
+  
+    <td>
+    <%= provider.phone_one %>
+  </td>
+  
+    <td>
+    <%= provider.phone_two %>
+  </td>
+  
+    <td>
+    <%= provider.email %>
+  </td>
+  
+    <td>
+    <%= provider.web%>
+  </td>
+  
+    <td>
+    <%= provider.observation %>
+  </td>
+  
+
+  
+  <td>
+      <%= hidden_field_tag(:search_provider_field, provider.name) %>
+      <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-ok' %>
+  </td>
+
+</tr>
