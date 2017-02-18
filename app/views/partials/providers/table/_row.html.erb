@@ -1,0 +1,41 @@
+<tr>
+     
+  <td>
+    <%= provider.name %>
+  </td>
+  
+  <td>
+    <%= provider.rut %>
+  </td>
+  
+    <td>
+    <%= provider.business_name %>
+  </td>
+  
+    <td>
+    <%= provider.address %>
+  </td>
+  
+    <td>
+    <%= provider.phone_one %>
+  </td>
+  
+    <td>
+    <%= provider.phone_two %>
+  </td>
+  
+    <td>
+    <%= provider.email %>
+  </td>
+  
+  
+  <td>
+    <%= link_to 'Editar', edit_provider_path(provider) %>
+  </td>
+  
+  <td><%= link_to 'Eliminar', provider_path(provider),
+              method: :delete,
+              data: { confirm: 'Estas Seguro?' } %>
+  </td>
+
+</tr>

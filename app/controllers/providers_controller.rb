@@ -32,5 +32,36 @@ class ProvidersController < ApplicationController
             #  render 
         end
   end
+  
+  
+  
+  def edit
+    @provider = Provider.find(params[:id])
+  end
+  
+  def update
+    @provider = Provider.find(params[:id])
+   
+    if @provider.update(provider_params)
+      redirect_to @provider
+    else
+      render 'edit'
+    end
+  end
+
+
+  def destroy
+    @provider = Dose.find(params[:id])
+    @provider.destroy
+
+    redirect_to providers_path
+  end
+
+ 
+  private
+    def provider_params
+      params.require(:provider).permit(:name, :rut, :business_name, :address, :phone_one, :phone_two, 
+                                        :email, :web,:observation)
+  end
 
 end

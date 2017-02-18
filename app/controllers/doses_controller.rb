@@ -49,8 +49,6 @@ end
     redirect_to doses_path
   end
 
-
-
  
   private
     def dose_params
