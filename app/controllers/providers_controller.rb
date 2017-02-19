@@ -51,7 +51,7 @@ class ProvidersController < ApplicationController
 
 
   def destroy
-    @provider = Dose.find(params[:id])
+    @provider = Provider.find(params[:id])
     @provider.destroy
 
     redirect_to providers_path
