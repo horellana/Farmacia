@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+     Editar Cliente
+
+  </div>
+
+  <div class="panel-body">
+    <%= form_for @client do |f| %>
+      <div class="row">
+
+        <div class="col-md-4">
+          <p>
+            <%= f.label :nombre %><br>
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.label :Apeliido  %><br>
+            <%= f.text_field :lastname %>
+          </p>
+          <p>
+            <%= f.label :rut %><br>
+            <%= f.text_field :rut %>
+          </p>
+
+          <p>
+            <%= f.label :direccion %><br>
+            <%= f.text_field :address %>
+          </p>
+          <p>
+            <%= f.label :email %><br>
+            <%= f.text_field :email %>
+          </p>
+     
+            <p>
+              <%= f.label :genero %><br>
+              <%= radio_button_tag(:gender, "gender M") %>
+               <%= label_tag(:gender, "M") %>
+               <%= radio_button_tag(:gender, "gender F") %>
+               <%= label_tag(:gender, "F") %>
+            </p>
+            
+          <p>
+             <%= f.label :Direecion %><br>
+             <%= f.text_field :address %>
+           </p>
+            
+        </div>
+
+
+            <p>
+              <%= f.submit %>
+            </p>
+
+        </div>
+
+      </div>
+
+  </div>
+          <% end %>
+           
+          <%= link_to 'Atras', clients_path %>
+</div>

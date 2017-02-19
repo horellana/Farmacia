@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar Cliente
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag(search_clients_path, method: :get, remote: true) do %>
+      <%= autocomplete_field_tag :client_name, '', autocomplete_client_name_clients_path %>
+      <%= submit_tag('Buscar', class: 'btn btn-default') %>
+    <% end %>
+
+    <div id="search_client_result">
+    </div>
+  </div>
+</div>

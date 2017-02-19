@@ -1,6 +1,12 @@
 class Client < ApplicationRecord
   has_many :transactions
 
+  scope :match_name, ->(name) do
+    where('name ilike ?', "%#{name}%")
+  end
+     
+
+
   def self.from_rut(rut)
     begin
       return Client.find_by! rut: rut

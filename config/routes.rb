@@ -10,11 +10,16 @@ Rails.application.routes.draw do
   resources :providers
   resources :categories
   resources :doses
+  resources :clients
   resources :transactions
   resources :box_movements
 
   resources :clients do
   get :autocomplete_client_rut, on: :collection
+  end
+  
+  resources :clients do
+    get :autocomplete_client_name, on: :collection
   end
 
   resources :products do
@@ -41,12 +46,14 @@ Rails.application.routes.draw do
   get 'search_dose/index'
   get 'search_category/index'
   get 'search_provider/index'
+  get 'search_client/index'
 
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
   get 'search/doses', to: 'search_dose#index', as: 'search_doses'
   get 'search/categories', to: 'search_category#index', as: 'search_categories'
   get 'search/providers', to: 'search_provider#index', as: 'search_providers'
+  get 'search/clients', to: 'search_client#index', as: 'search_clients'
   
   
   
