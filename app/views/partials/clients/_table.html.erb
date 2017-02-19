@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <th>
+      Nombre
+    </th>
+
+    <th>
+      Apellido
+    </th>
+
+
+    <th>
+      Rut
+    </th>
+
+    <th>
+      Mail
+    </th>
+
+    <th>
+      Direccion
+    </th>
+
+  </thead>
+
+  <tbody>
+    <% for client in clients do %>
+	<%= render 'partials/clients/table/row', client: client %>
+    <% end %>
+  </tbody>
+</table>
