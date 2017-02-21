@@ -3,8 +3,10 @@ class Client < ApplicationRecord
 
   validates :name, presence: true
   validates :lastname, presence: true
-  validates :rut , presence: true
-  
+  validates :rut, presence: true
+  validates :address, presence: true
+  validates :email, presence: true
+  validates :gender, presence: true 
 
   scope :match_name, ->(name) do
     where('name ilike ?', "%#{name}%")
