@@ -6,7 +6,7 @@ class Client < ApplicationRecord
   validates :rut, presence: true
   validates :address, presence: true
   validates :email, presence: true
-  validates :gender, presence: true 
+  #validates :gender, presence: true
 
   scope :match_name, ->(name) do
     where('name ilike ?', "%#{name}%")
