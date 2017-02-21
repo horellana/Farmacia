@@ -1,10 +1,13 @@
 class Client < ApplicationRecord
   has_many :transactions
 
+  validates :name, presence: true
+  
+
   scope :match_name, ->(name) do
     where('name ilike ?', "%#{name}%")
   end
-     
+
 
 
   def self.from_rut(rut)
