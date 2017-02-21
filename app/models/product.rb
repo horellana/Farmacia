@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   has_one :inventory, autosave: true
 
   validates :name, presence: true
-  validates :description, presence: true
+  #validates :description, presence: true
   validates :sale_price, presence: true
   validates :sale_price, numericality: { only_integer: true }
   validates :purchase_price, presence: true
