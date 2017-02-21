@@ -4,7 +4,10 @@ class Provider < ApplicationRecord
   validates :rut, presence: true
   validates :business_name, presence: true
   validates :address, presence: true
-  
+  validates :phone_one, numericality: { only_integer: true }
+  validates :email, presence: true
+
+
   scope :match_name, ->(name) do
     where('name ilike ?', "%#{name}%")
   end
