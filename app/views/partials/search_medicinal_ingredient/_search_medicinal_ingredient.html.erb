@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar Principio activo
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag(search_medicinal_ingredients_path, method: :get, remote: true) do %>
+      <%= autocomplete_field_tag :search_medicinal_ingredient_field, '', autocomplete_medicinal_ingredient_name_medicinal_ingredients_path %>
+      <%= submit_tag('Buscar', class: 'btn btn-default') %>
+    <% end %>
+    
+    
+    <div id="search_medicinal_ingredient_result">
+    </div>
+  </div>
+</div>

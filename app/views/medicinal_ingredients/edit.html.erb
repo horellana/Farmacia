@@ -1,0 +1,17 @@
+
+<h1>Modificar Principio Activo</h1>
+ 
+<%= form_for(@medicinal_ingredient) do |f| %>
+ 
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Atras', medicinal_ingredients_path %>
