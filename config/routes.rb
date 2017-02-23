@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :user
   resources :providers
   resources :categories
+  resources :medicinal_ingredients
   resources :doses
   resources :clients
   resources :transactions
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
   get 'search_category/index'
   get 'search_provider/index'
   get 'search_client/index'
+  get 'search_medicinal_ingredient/index'
 
 
   get 'search/products', to: 'search_product#index', as: 'search_products'
@@ -54,6 +56,7 @@ Rails.application.routes.draw do
   get 'search/categories', to: 'search_category#index', as: 'search_categories'
   get 'search/providers', to: 'search_provider#index', as: 'search_providers'
   get 'search/clients', to: 'search_client#index', as: 'search_clients'
+  get 'search/medicinal_ingredients', to: 'search_medicinal_ingredient#index', as: 'search_medicinal_ingredients'
   
   
   
