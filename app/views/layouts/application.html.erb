@@ -41,20 +41,22 @@
 		<li>
 		  <%= link_to 'Editar Producto', '#' %>
 		</li>
-		
-			<li class="divider"></li>
-			<li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
-			<li> <%= link_to 'Buscar Principio activo', medicinal_ingredients_path %>   </li>
-	
-			<li class="divider"></li>
-    		<li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
-				<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
-		
-			<li class="divider"></li>
-				<li> <%= link_to 'Crear Dosis', new_dose_path %>   </li>
-				<li> <%= link_to 'Buscar Dosis', doses_path %>   </li>
-		  </li>
-	   </ul>
+
+		<li class="divider"></li>
+		<li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
+		<li> <%= link_to 'Buscar Principio activo', medicinal_ingredients_path %>   </li>
+
+		<li class="divider"></li>
+		<li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
+		<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
+
+		<li class="divider"></li>
+		<li> <%= link_to 'Crear Dosis', new_dose_path %>   </li>
+		<li> <%= link_to 'Buscar Dosis', doses_path %>   </li>
+
+
+	    </li>
+	      </ul>
     </li>
 
 
@@ -65,18 +67,26 @@
 	Proveedor
       </a>
       <ul class="dropdown-menu">
-				<li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
-				<li> <%= link_to 'Buscar proveedor', providers_path %>   </li>
+	<li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
+	<li> <%= link_to 'Buscar proveedor', providers_path %>   </li>
       </ul>
     </li>
 
     <li role="presentation" class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Clientes	</a>
       <ul class="dropdown-menu">
-				<li> <%= link_to 'Crear cliente', new_client_path %>   </li>
-				<li> <%= link_to 'Buscar cliente', clients_path %>   </li>
+	<li> <%= link_to 'Crear cliente', new_client_path %>   </li>
+	<li> <%= link_to 'Buscar cliente', clients_path %>   </li>
 
       </ul>
+    </li>
+
+    <li>
+      <% if box_open? %>
+	<%= link_to 'Cerrar Caja', box_movement_path(current_box_movement) %>
+      <% else %>
+	<%= link_to 'Abrir Caja', new_box_movement_path %>
+      <% end %>
     </li>
 
     <!--
@@ -107,13 +117,6 @@
 		  <%= link_to 'Perfil', edit_user_path(current_user) %>
 		</li>
 
-		<li>
-		  <% if box_open? %>
-		    <%= link_to 'Cerrar Caja', box_movement_path(current_box_movement) %>
-		  <% else %>
-		    <%= link_to 'Abrir Caja', new_box_movement_path %>
-		  <% end %>
-		</li>
 
 		<li role="separator" class="divider">
 		</li>
