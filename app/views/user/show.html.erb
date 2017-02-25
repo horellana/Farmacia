@@ -9,5 +9,9 @@
     <br>
 
     Ultimo inicio sesion: <%= @user.last_sign_in_at %>
+
+    <br>
+
+    <%= link_to 'Editar', edit_user_registration_path(@user) %>
   </div>
 </div>
