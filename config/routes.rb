@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  
+
+
+
   get 'foo/login'
   get 'foo/index'
 
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   resources :clients do
   get :autocomplete_client_rut, on: :collection
   end
-  
+
   resources :clients do
     get :autocomplete_client_name, on: :collection
   end
@@ -26,7 +28,7 @@ Rails.application.routes.draw do
   resources :products do
     get :autocomplete_product_name, on: :collection
   end
-  
+
   resources :doses do
     get :autocomplete_dose_kind, on: :collection
   end
@@ -34,11 +36,11 @@ Rails.application.routes.draw do
   resources :medicinal_ingredient do
     get :autocomplete_medicinal_ingredient_name, on: :collection
   end
-  
+
   resources :categories do
     get :autocomplete_category_description, on: :collection
   end
-  
+
   resources :providers do
     get :autocomplete_provider_name, on: :collection
   end
@@ -57,9 +59,8 @@ Rails.application.routes.draw do
   get 'search/providers', to: 'search_provider#index', as: 'search_providers'
   get 'search/clients', to: 'search_client#index', as: 'search_clients'
   get 'search/medicinal_ingredients', to: 'search_medicinal_ingredient#index', as: 'search_medicinal_ingredients'
-  
-  
-  
+
+
    scope :session do
     devise_for :users, controllers: { sessions: 'users/sessions' }
 
