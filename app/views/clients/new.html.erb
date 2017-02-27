@@ -10,44 +10,50 @@
 
     <div class="col-md-4">
        <p>
-         <%= f.label :nombre %><br>
+         <%= f.label :name %><br>
          <%= f.text_field :name %>
        </p>
        <p>
-         <%= f.label :apellido %><br>
+         <%= f.label :lastname %><br>
          <%= f.text_field :lastname %>
        </p>
        <p>
          <%= f.label :rut %><br>
          <%= f.text_field :rut %>
        </p>
+
+
        <p>
-         <%= f.label :genero %><br>
-         <%= radio_button_tag(:gender, "gender M") %>
-          <%= label_tag(:gender, "M") %>
-          <%= radio_button_tag(:gender, "gender F") %>
-          <%= label_tag(:gender, "F") %>
-       </p>
-       <p>
-         <%= f.label :email %><br>
+         <%= f.label :Email %><br>
          <%= f.text_field :email %>
        </p>
 
-      <p>
-         <%= f.label :Direccion %><br>
-         <%= f.text_field :address %>
+       <p>
+            <%= f.radio_button :gender, 'M' %> 
+            <%= f.label :gender, 'Masculino', :value => 'M' %>
+            <%= f.radio_button :gender, 'F' %>
+            <%= f.label :gender, 'Femenino', :value => 'F' %>
        </p>
 
+       
+       <p>
+         <%= f.label :Fecha %><br />
+         <%= f.date_select :birth, :start_year=>1900 %>
+       </p>
+       
+       
+       <p>
+         <%= f.label :gender %><br>
+         <%= f.text_field :kind %>
+       </p>
 
-      <p>
-    <%= f.submit %>
-  </p>
-    </div>
+     
+           <p>
+            <%= f.submit %>
+           </p>
+     </div>
 
-<% end %>
+     <% end %>
   </div>
-  </div>
-
-
-
+ </div>
 </div>

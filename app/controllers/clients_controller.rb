@@ -23,6 +23,9 @@ class ClientsController < ApplicationController
                          rut: params[:client][:rut],
                          email: params[:client][:email],
                          address: params[:client][:address],
+                         gender: params[:client][:gender],
+                         birth: params[:client][:birth],
+                         kind: params[:client][:kind],
                         )
     if @client.save
       redirect_to @client
@@ -55,7 +58,8 @@ class ClientsController < ApplicationController
  
   private
     def client_params
-      params.require(:client).permit(:name, :lastname, :rut, :email, :address)
+      params.require(:client).permit(:name, :lastname, :rut, :email, :address,
+                                     :gender, :birth)
   end
 
 end

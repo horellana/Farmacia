@@ -11,41 +11,42 @@
 
         <div class="col-md-4">
           <p>
-            <%= f.label :nombre %><br>
-            <%= f.text_field :name %>
-          </p>
-          <p>
-            <%= f.label :Apeliido  %><br>
-            <%= f.text_field :lastname %>
-          </p>
-          <p>
-            <%= f.label :rut %><br>
-            <%= f.text_field :rut %>
-          </p>
-
-          <p>
-            <%= f.label :direccion %><br>
-            <%= f.text_field :address %>
-          </p>
-          <p>
-            <%= f.label :email %><br>
-            <%= f.text_field :email %>
-          </p>
-     
-            <p>
-              <%= f.label :genero %><br>
-              <%= radio_button_tag(:gender, "gender M") %>
-               <%= label_tag(:gender, "M") %>
-               <%= radio_button_tag(:gender, "gender F") %>
-               <%= label_tag(:gender, "F") %>
-            </p>
-            
-          <p>
-             <%= f.label :Direecion %><br>
-             <%= f.text_field :address %>
+             <%= f.label :name %><br>
+             <%= f.text_field :name %>
            </p>
-            
-        </div>
+           <p>
+             <%= f.label :lastname %><br>
+             <%= f.text_field :lastname %>
+           </p>
+           <p>
+             <%= f.label :rut %><br>
+             <%= f.text_field :rut %>
+           </p>
+    
+    
+           <p>
+             <%= f.label :email %><br>
+             <%= f.text_field :email %>
+           </p>
+    
+           <p>
+                <%= f.radio_button :gender, 'M' %> 
+                <%= f.label :gender, 'Masculino', :value => 'M' %>
+                <%= f.radio_button :gender, 'F' %>
+                <%= f.label :gender, 'Femenino', :value => 'F' %>
+           </p>
+    
+           
+           <p>
+             <%= f.label :Fecha %><br />
+             <%= f.date_select :birth, :start_year=>1900 %>
+           </p>
+           
+           
+           <p>
+             <%= f.label :kind %><br>
+             <%= f.text_field :kind %>
+           </p>
 
 
             <p>
