@@ -32,26 +32,39 @@
 		Productos
 	      </a>
 	      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-		<li>
-		  <%= link_to 'Crear producto', new_product_path %>
-		</li>
+		<% if current_user.admin? %>
+		  <li>
+		    <%= link_to 'Crear producto', new_product_path %>
+		  </li>
+		<% end %>
+
 		<li>
 		  <%= link_to 'Buscar Producto', products_path %>
 		</li>
-		<li>
-		  <%= link_to 'Editar Producto', '#' %>
-		</li>
+
+		<% if current_user.admin? %>
+		  <li>
+		    <%= link_to 'Editar Producto', '#' %>
+		  </li>
+		<% end %>
 
 		<li class="divider"></li>
-		<li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
+
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
+		<% end %>
 		<li> <%= link_to 'Buscar Principio activo', medicinal_ingredients_path %>   </li>
 
 		<li class="divider"></li>
-		<li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
+		<% end %>
 		<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
 
 		<li class="divider"></li>
-		<li> <%= link_to 'Crear Dosis', new_dose_path %>   </li>
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear Dosis', new_dose_path %>   </li>
+		<% end %>
 		<li> <%= link_to 'Buscar Dosis', doses_path %>   </li>
 
 
@@ -67,7 +80,9 @@
 	Proveedor
       </a>
       <ul class="dropdown-menu">
+	<% if current_user.admin? %>
 	<li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
+	<% end %>
 	<li> <%= link_to 'Buscar proveedor', providers_path %>   </li>
       </ul>
     </li>

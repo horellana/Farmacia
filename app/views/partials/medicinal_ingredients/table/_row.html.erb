@@ -1,17 +1,19 @@
 <tr>
-     
+
   <td>
     <%= medicinal_ingredient.name %>
   </td>
 
-  
-  <td>
-    <%= link_to 'Editar', edit_medicinal_ingredient_path(medicinal_ingredient) %>
-  </td>
-  
-  <td><%= link_to 'Eliminar', medicinal_ingredient_path(medicinal_ingredient),
-              method: :delete,
-              data: { confirm: 'Estas Seguro?' } %>
-  </td>
+
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to 'Editar', edit_medicinal_ingredient_path(medicinal_ingredient) %>
+    </td>
+
+    <td><%= link_to 'Eliminar', medicinal_ingredient_path(medicinal_ingredient),
+	method: :delete,
+	data: { confirm: 'Estas Seguro?' } %>
+    </td>
+  <% end %>
 
 </tr>
