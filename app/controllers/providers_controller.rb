@@ -27,21 +27,22 @@ class ProvidersController < ApplicationController
                         observation: params[:provider][:observation]
                         )
         if @provider.save
+              flash[:notice] = "Proveedor creado con exito"
               redirect_to @provider
         else
-            #  render 
+              render :action => 'new'
         end
   end
-  
-  
-  
+
+
+
   def edit
     @provider = Provider.find(params[:id])
   end
-  
+
   def update
     @provider = Provider.find(params[:id])
-   
+
     if @provider.update(provider_params)
       redirect_to @provider
     else
@@ -57,10 +58,10 @@ class ProvidersController < ApplicationController
     redirect_to providers_path
   end
 
- 
+
   private
     def provider_params
-      params.require(:provider).permit(:name, :rut, :business_name, :address, :phone_one, :phone_two, 
+      params.require(:provider).permit(:name, :rut, :business_name, :address, :phone_one, :phone_two,
                                         :email, :web,:observation)
   end
 
