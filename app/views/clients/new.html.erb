@@ -44,6 +44,11 @@
        </p>
 
        <p>
+         <%= f.label :direccion %><br>
+         <%= f.text_field :address %>
+       </p>
+
+       <p>
             <%= f.radio_button :gender, 'M' %>
             <%= f.label :gender, 'Masculino', :value => 'M' %>
             <%= f.radio_button :gender, 'F' %>
