@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
-     autocomplete :Category, :name
-     before_action :authenticate_user!
+  autocomplete :Category, :name
+  before_action :authenticate_user!
+
+  before_action :admin_only, except: [:index, :show]
 
   def new
     @category = Category.new
@@ -15,23 +17,23 @@ class CategoriesController < ApplicationController
   end
 
   def create
-        @category = Category.new(description: params[:category][:description],)
-           if @category.save
-            flash[:notice] = "Categoria Creada."
-            redirect_to @category
-          else
-            render :action => 'new'
-          end
-   end
-   
-   
+    @category = Category.new(description: params[:category][:description],)
+    if @category.save
+      flash[:notice] = "Categoria Creada."
+      redirect_to @category
+    else
+      render :action => 'new'
+    end
+  end
+
+
   def edit
     @category = Category.find(params[:id])
   end
-  
+
   def update
     @category = Category.find(params[:id])
-   
+
     if @category.update(category_params)
       redirect_to @category
     else
@@ -49,10 +51,10 @@ class CategoriesController < ApplicationController
 
 
 
- 
+
   private
-    def category_params
-      params.require(:category).permit(:description)
+  def category_params
+    params.require(:category).permit(:description)
   end
- 
+
 end

@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
 
+
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :rut
     devise_parameter_sanitizer.for(:sign_in) << :rut
@@ -29,5 +31,15 @@ class ApplicationController < ActionController::Base
 
     session[:cart_id] = nil
     session[:client_rut] = nil
+  end
+
+  def admin_only
+    if current_user.nil?
+      redirect_to root, alert: 'No eres administrador'
+    end
+
+    if not current_user.admin?
+      redirect_to root_path, alert: 'No eres administrador'
+    end
   end
 end
