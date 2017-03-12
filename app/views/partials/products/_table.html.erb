@@ -52,18 +52,22 @@
       Agregar al carro
     </th>
 
-    <th>
-      Editar
-    </th>
+    <% if current_user.admin? %>
+      <th>
+	Editar
+      </th>
+    <% end %>
 
-    <th>
-      Eliminar
-    </th>
+    <% if current_user.admin? %>
+      <th>
+	Eliminar
+      </th>
+    <% end %>
   </thead>
 
   <tbody>
     <% for product in products do %>
-	<%= render 'partials/products/table/row', product: product %>
+      <%= render 'partials/products/table/row', product: product %>
     <% end %>
   </tbody>
 </table>

@@ -1,6 +1,8 @@
 class DosesController < ApplicationController
-     autocomplete :dose, :kind
-     before_action :authenticate_user!
+  autocomplete :dose, :kind
+  before_action :authenticate_user!
+
+  before_action :admin_only, except: [:index, :show]
 
   def new
     @dose = Dose.new
@@ -13,25 +15,25 @@ class DosesController < ApplicationController
   def show
     @dose = Dose.find(params[:id])
   end
-  
+
   def create
-        @dose = Dose.new(kind: params[:dose][:kind],
-                         quantity: params[:dose][:quantity],)
-           if @dose.save
-            flash[:notice] = "Dosis Creada."
-            redirect_to @dose
-          else
-            render :action => 'new'
-          end
+    @dose = Dose.new(kind: params[:dose][:kind],
+                     quantity: params[:dose][:quantity],)
+    if @dose.save
+      flash[:notice] = "Dosis Creada."
+      redirect_to @dose
+    else
+      render :action => 'new'
+    end
   end
-  
+
   def edit
     @dose = Dose.find(params[:id])
   end
-  
+
   def update
     @dose = Dose.find(params[:id])
-   
+
     if @dose.update(dose_params)
       redirect_to @dose
     else
@@ -47,9 +49,9 @@ class DosesController < ApplicationController
     redirect_to doses_path
   end
 
- 
+
   private
-    def dose_params
-      params.require(:dose).permit(:kind, :quantity)
+  def dose_params
+    params.require(:dose).permit(:kind, :quantity)
   end
 end

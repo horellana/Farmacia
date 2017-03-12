@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :setup_cart
 
+  before_action :admin_only, except: [:index, :show]
+
   autocomplete :product, :name
 
   def new
@@ -55,7 +57,7 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
-  
+
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
