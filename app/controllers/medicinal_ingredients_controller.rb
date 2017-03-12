@@ -2,6 +2,8 @@ class MedicinalIngredientsController < ApplicationController
   autocomplete :medicinal_ingredient, :name
   before_action :authenticate_user!
 
+  before_action :admin_only, except: [:index, :show]
+
   def new
     @medicinal_ingredient = MedicinalIngredient.new
   end
