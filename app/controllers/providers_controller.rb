@@ -55,8 +55,14 @@ class ProvidersController < ApplicationController
 
   def destroy
     @provider = Provider.find(params[:id])
-    @provider.destroy
 
+    begin
+      @provider.destroy
+    rescue ActiveRecord::InvalidForeignKey
+      return redirect_to root_path, alert: 'Hay productos que pertenecen a ese proveedor, no se puede eliminar'
+    end
+
+    flash[:notice] = 'Proveedor eliminado'
     redirect_to providers_path
   end
 
