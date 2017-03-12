@@ -52,19 +52,21 @@
   </td>
 
   <td>
+    <%= link_to 'Editar', edit_product_path(product) %>
+  </td>
+
+  <td>
+    <%= link_to 'Eliminar', product_path(product),
+    method: :delete,
+    data: { confirm: 'Estas Seguro?' } %>
+  </td>
+
+
+
+  <td>
     <%= form_tag(cart_cart_item_index_path(@cart), action: 'create', remote: true) do %>
       <%= hidden_field_tag(:search_product_field, product.name) %>
       <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-ok' %>
     <% end %>
-  </td>
-  
-  <td>
-    <%= link_to 'Editar', edit_product_path(product) %>
-   </td>
-  
-  <td>
-       <%= link_to 'Eliminar', product_path(product),
-              method: :delete,
-              data: { confirm: 'Estas Seguro?' } %>
   </td>
 </tr>
