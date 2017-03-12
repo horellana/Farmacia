@@ -24,14 +24,14 @@ class MedicinalIngredientsController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
     def edit
     @medicinal_ingredient = MedicinalIngredient.find(params[:id])
   end
-  
+
   def update
     @medicinal_ingredient = MedicinalIngredient.find(params[:id])
-   
+
     if @medicinal_ingredient.update(medicinal_ingredient_params)
       redirect_to @medicinal_ingredient
     else
@@ -47,10 +47,10 @@ class MedicinalIngredientsController < ApplicationController
     redirect_to medicinal_ingredients_path
   end
 
- 
+
   private
     def medicinal_ingredient_params
       params.require(:medicinal_ingredient).permit(:name)
   end
-  
+
 end
