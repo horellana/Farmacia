@@ -28,18 +28,20 @@ class ClientsController < ApplicationController
                          kind: params[:client][:kind],
                         )
     if @client.save
+      flash[:notice] = "Cliente creado con exito"
       redirect_to @client
     else
+      render :action => 'new'
     end
   end
-  
+
   def edit
     @client = Client.find(params[:id])
   end
-  
+
   def update
     @client = Client.find(params[:id])
-   
+
     if @client.update(client_params)
       redirect_to @client
     else
@@ -55,7 +57,7 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
- 
+
   private
     def client_params
       params.require(:client).permit(:name, :lastname, :rut, :email, :address,
