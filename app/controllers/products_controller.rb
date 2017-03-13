@@ -19,10 +19,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    category = Category.find_by description: params[:category_description]
-    ingredient = MedicinalIngredient.find_by name: params[:medicinal_ingredient_name]
-    provider = Provider.find_by name: params[:provider_name]
-    dose = Dose.find_by kind: params[:dose_kind]
+    category = Category.find_by description: params[:category_descripcion]
+    ingredient = MedicinalIngredient.find_by name: params[:product][:medicinal_ingredient_id]
+    provider = Provider.find_by name: params[:product][:provider_id]
+    dose = Dose.find_by kind: params[:product][:dose_id]
 
     inventory = Inventory.new stock: params[:stock],
                               minimum_stock: params[:minimum_stock],
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
                            commission: params[:product][:commision],
                            be: params[:product_be],
                            isp: params[:product_isp],
-                           discount: params[:product][:discount]
+                           discount: params[:product][:discount].to_i
 
     @product.isp = false if not @product.isp
 
