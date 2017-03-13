@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'
 
-  resources :user
   resources :providers
   resources :categories
   resources :medicinal_ingredients
@@ -60,8 +59,11 @@ Rails.application.routes.draw do
   get 'search/medicinal_ingredients', to: 'search_medicinal_ingredient#index', as: 'search_medicinal_ingredients'
 
 
+  resources :users
+
    scope :session do
-    devise_for :users, controllers: { sessions: 'users/sessions' }
+     devise_for :users, controllers: { sessions: 'users/sessions',
+                                       registrations: 'users/registrations' }
 
     put :rut, to: 'rut#update', as: 'set_rut'
     put :name, to: 'name#update', as: 'set_name'
