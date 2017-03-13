@@ -42,12 +42,6 @@
 		  <%= link_to 'Buscar Producto', products_path %>
 		</li>
 
-		<% if current_user.admin? %>
-		  <li>
-		    <%= link_to 'Editar Producto', '#' %>
-		  </li>
-		<% end %>
-
 		<li class="divider"></li>
 
 		<% if current_user.admin? %>
