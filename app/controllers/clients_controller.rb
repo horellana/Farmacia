@@ -52,9 +52,14 @@ class ClientsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:id])
-    @client.destroy
 
-    redirect_to clients_path
+    begin
+      @client.destroy
+    rescue ActiveRecord::InvalidForeignKey
+      return redirect_to root_path, alert: 'Este cliente ya realizo compras, no es posible eliminarlo'
+    end
+
+    redirect_to root_path, notice: 'Cliente eliminado'
   end
 
 
