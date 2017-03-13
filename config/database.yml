@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  port: 5434
+  port: 5432
   host: localhost
   database: Farmacia_production
   username: Farmacia
