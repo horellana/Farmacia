@@ -1,3 +1,16 @@
+<% if @dose.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@dose.errors.count, "errors") %>
+
+    <ul>
+      <% @dose.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <h1>Modificar Dosis</h1>
 
