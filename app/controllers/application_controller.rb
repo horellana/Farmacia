@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
 
   def admin_only
     if current_user.nil?
-      redirect_to root, alert: 'No eres administrador'
+      return redirect_to root_path, alert: 'No eres administrador'
     end
 
     if not current_user.admin?
