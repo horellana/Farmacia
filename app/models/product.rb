@@ -27,6 +27,8 @@ class Product < ApplicationRecord
   validates :dose, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates_associated :dose
 
+  validates_with NameValidator
+
   default_scope do
     select('*, sale_price - purchase_price as price').order('price desc')
   end

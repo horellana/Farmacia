@@ -1,12 +1,3 @@
-class RUTValidator < ActiveModel::Validator
-  require 'rut_chileno'
-  def validate(record)
-    unless RUT::validar(record.rut)
-      record.errors[:rut] << I18n.t(:invalid_rut)
-    end
-  end
-end
-
 class Client < ApplicationRecord
   has_many :transactions
 
@@ -15,6 +6,7 @@ class Client < ApplicationRecord
   validates :rut, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :rut, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates_with RUTValidator
+  validates_with NameValidator
   validates :email, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :email, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates :address, presence: {case_sensitive: false ,message: "no puede estar vacio"}
