@@ -51,24 +51,27 @@
     <%= product.minimum_stock %>
   </td>
 
-  <% if current_user.admin? %>
-    <td>
-      <%= link_to 'Editar', edit_product_path(product) %>
-    </td>
-  <% end %>
-
-  <% if current_user.admin? %>
-    <td>
-      <%= link_to 'Eliminar', product_path(product),
-      method: :delete,
-      data: { confirm: 'Estas Seguro?' } %>
-    </td>
-  <% end %>
-
-  <  <td>
+  <td>
     <%= form_tag(cart_cart_item_index_path(@cart), action: 'create', remote: true) do %>
       <%= hidden_field_tag(:search_product_field, product.name) %>
       <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-ok' %>
     <% end %>
   </td>
+
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to '', edit_product_path(product),
+       class: 'glyphicon glyphicon-pencil'%>
+    </td>
+  <% end %>
+
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to '', product_path(product),
+      method: :delete,
+      data: { confirm: 'Estas Seguro?' },
+      class: 'glyphicon glyphicon-remove' %>
+    </td>
+  <% end %>
+
 </tr>
