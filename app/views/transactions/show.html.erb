@@ -125,8 +125,10 @@
       </tbody>
     </table>
 
-    <%= form_for(@transaction, action: :print) do |f| %>
-      <%= f.submit('Imprimir', class: 'btn btn-default') %>
-    <% end %>
+    <%= link_to 'Boleta', transaction_ticket_path(@transaction) %>
+
+    <%#= form_for(@transaction, action: :print) do |f| %>
+      <%#= f.submit('boleta', class: 'btn btn-default') %>
+    <%# end %>
   </div>
 </div>

@@ -25,6 +25,11 @@ class TransactionsController < ApplicationController
     redirect_to @transaction
   end
 
+  def ticket
+    @transaction = Transaction.find params[:transaction_id]
+    render 'ticket.txt.erb', layout: false
+  end
+
   private
 
   def set_transaction_client
