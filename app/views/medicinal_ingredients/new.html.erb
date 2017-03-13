@@ -1,3 +1,17 @@
+<% if @medicinal_ingredient.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@medicinal_ingredient.errors.count, "errors") %>
+
+    <ul>
+      <% @medicinal_ingredient.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     Crear Principio activo
