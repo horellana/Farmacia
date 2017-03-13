@@ -7,6 +7,10 @@
     <table class="table">
       <thead>
 	<th>
+	  Nombre
+	</th>
+
+	<th>
 	  Rut
 	</th>
       </thead>
@@ -14,6 +18,10 @@
       <tbody>
 	<% for user in @users %>
 	  <tr>
+	    <td>
+	      <%= user.name %>
+	    </td>
+
 	    <td>
 	      <%= link_to user.rut, user_path(user) %>
 	    </td>

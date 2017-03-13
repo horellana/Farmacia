@@ -23,8 +23,14 @@
 	<%#= devise_error_messages! %>
 
 	<div class= "field">
+	  <%= f.label :name, "Nombre" %><br />
+	  <%= f.text_field :name, autofocus: true, class:"form-control" %>
+	</div>
+
+
+	<div class= "field">
 	  <%= f.label :name, "Rut" %><br />
-	  <%= f.text_field :rut, autofocus: true, class:"form-control" %>
+	  <%= f.text_field :rut, autofocus: false, class:"form-control" %>
 	</div>
 
 	<div class="field">
