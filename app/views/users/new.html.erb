@@ -1,0 +1,60 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@user.errors.count, "errors") %>
+
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="row center-xs">
+  <div class="col-xs-8 col-md-6">
+    <div class="box text-left">
+      <h2> Registrarse </h2>
+
+      <%= form_for(@user) do |f| %>
+	<%#= devise_error_messages! %>
+
+	<div class= "field">
+	  <%= f.label :name, "Rut" %><br />
+	  <%= f.text_field :rut, autofocus: true, class:"form-control" %>
+	</div>
+
+	<div class="field">
+	  <%= f.label :password, "Contraseña *" %>
+	  <% if @validatable %>
+	    <em>(<%= @minimum_password_length %> Minimo 8 caracteres)</em>
+	  <% end %></br>
+	  <%= f.password_field :password, autocomplete:"off", class:"form-control" %>
+	</div>
+
+	<div class="field">
+	  <%= f.label :password_confirmation, "Confirmar contraseña *" %><br />
+	  <%= f.password_field :password_confirmation, autocomplete:"off", class:"form-control" %>
+	</div>
+
+	<br>
+
+	<%#= select_tag(:office, options_for_select(@offices)) %>
+
+	<div class="field">
+	  <%= f.label :administrador %>
+	  <%= f.check_box(:admin) %>
+	</div>
+
+	<div class="actions">
+	  <%= f.submit "Crear usuario",class:"btn btn-default" %>
+	</div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
