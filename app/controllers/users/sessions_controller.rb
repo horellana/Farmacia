@@ -19,10 +19,8 @@ class Users::SessionsController < Devise::SessionsController
 
   private
   def check_open_box!
-    if Box.get_box.active?
+    if Box.get_box && Box.get_box.active?
       return redirect_to root_path, alert: 'Falta cerrar la caja!'
-    else
-      super
     end
   end
   # protected
