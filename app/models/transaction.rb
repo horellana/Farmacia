@@ -13,7 +13,7 @@ class Transaction < ApplicationRecord
   end
 
   def date
-    created_at.to_s(:long)
+    "#{created_at.day}/#{created_at.month}/#{created_at.year}"
   end
 
   def add_product(product, quantity)

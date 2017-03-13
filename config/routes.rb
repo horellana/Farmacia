@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-
-
   get 'foo/login'
   get 'foo/index'
 
@@ -14,7 +11,9 @@ Rails.application.routes.draw do
   resources :medicinal_ingredients
   resources :doses
   resources :clients
-  resources :transactions
+  resources :transactions do
+    get 'ticket'
+  end
   resources :box_movements
 
   resources :clients do
