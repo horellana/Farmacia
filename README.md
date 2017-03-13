@@ -9,6 +9,13 @@ Software
 * base de datos: postgresql
 
 
+Como ejecutar
+-------------
+
+```
+bundle exec rails server
+```
+
 Como instalar
 -------------
 
