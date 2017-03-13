@@ -36,33 +36,33 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: 'Usuario eliminado correctamente'
   end
 
-def edit
-  @user = User.find(params[:id])
-end
-
-def create
-  @user = User.new
-  @user.rut = params[:user][:rut]
-  @user.password = params[:user][:password]
-  @user.admin = params[:user][:admin] == "1"
-  @user.name = params[:user][:name]
-  @user.office = Office.first
-
-  if @user.save
-    redirect_to @user
-  else
-    render :new
+  def edit
+    @user = User.find(params[:id])
   end
-end
 
-private
+  def create
+    @user = User.new
+    @user.rut = params[:user][:rut]
+    @user.password = params[:user][:password]
+    @user.admin = params[:user][:admin] == "1"
+    @user.name = params[:user][:name]
+    @user.office = Office.first
 
-def find_user
-  @user = User.find_by id: params[:id]
-
-  if not @user
-    flash[:alert] = 'No se encontro al usuario'
-    redirect_to :root
+    if @user.save
+      redirect_to @user
+    else
+      render :new
+    end
   end
-end
+
+  private
+
+  def find_user
+    @user = User.find_by id: params[:id]
+
+    if not @user
+      flash[:alert] = 'No se encontro al usuario'
+      redirect_to :root
+    end
+  end
 end

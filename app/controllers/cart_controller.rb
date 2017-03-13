@@ -2,6 +2,10 @@ class CartController < ApplicationController
   before_action :authenticate_user!
   before_action :setup_cart, only: [:show, :destroy, :new]
 
+  def index
+    @carts = Cart.all
+  end
+
   def new
     begin
       authorize @cart
