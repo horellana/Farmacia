@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Usuarios
+  </div>
+
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+	<th>
+	  Rut
+	</th>
+      </thead>
+
+      <tbody>
+	<% for user in @users %>
+	  <tr>
+	    <td>
+	      <%= link_to user.rut, user_path(user) %>
+	    </td>
+
+	    <td>
+	      <%= link_to '', edit_user_path(user),
+	      class: 'glyphicon glyphicon-pencil' %>
+	    </td>
+
+	    <td>
+	      <%= link_to '', user_path(user),
+	      method: :delete,
+	      data: { confirm: 'Estas seguro?' },
+	      class: 'glyphicon glyphicon-remove' %>
+	    </td>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

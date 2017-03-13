@@ -5,7 +5,7 @@ class Client < ApplicationRecord
   validates :lastname, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :rut, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :rut, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
-  validates_with RUTValidator
+  validates_with RutValidator
   validates_with NameValidator
   validates :email, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :email, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}

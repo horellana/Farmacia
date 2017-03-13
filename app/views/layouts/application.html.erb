@@ -99,8 +99,18 @@
     </li>
 
     <% if current_user.admin? %>
-      <li>
-	<%= link_to 'Crear usuario', new_user_path %>
+      <li role="presentation" class="dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Usuarios
+	</a>
+
+	<ul class="dropdown-menu">
+	  <li>
+	    <%= link_to 'Lista usuarios', users_path %>
+	  </li>
+	  <li>
+	    <%= link_to  'Crear usuario', new_user_path %>
+	  </li>
+	</ul>
       </li>
     <% end %>
     <!--
