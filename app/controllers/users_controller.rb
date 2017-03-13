@@ -23,6 +23,19 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def destroy
+    @user = User.find(params[:id])
+
+    begin
+      @user.destroy
+    rescue ActiveRecord::InvalidForeignKey
+      return redirect_to root_path, alert: 'No se puede borrar este usuario. Quizas ya realizo alguna venta'
+    end
+
+    redirect_to root_path, notice: 'Usuario eliminado correctamente'
+  end
+
 def edit
   @user = User.find(params[:id])
 end

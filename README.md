@@ -5,6 +5,7 @@ Software
 --------
 
 * Version ruby: 2.4.0
+* Version rails: 5.0.0
 * base de datos: postgresql
 
 
