@@ -6,7 +6,9 @@ class User < ApplicationRecord
 
   belongs_to :office
 
+  validates :rut,  uniqueness: true
   validates :office, presence: true
+  validates_with RUTValidator
 
   def email_required?
     false

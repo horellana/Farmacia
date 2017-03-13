@@ -98,6 +98,11 @@
       <% end %>
     </li>
 
+    <% if current_user.admin? %>
+      <li>
+	<%= link_to 'Crear usuario', new_user_path %>
+      </li>
+    <% end %>
     <!--
 	 <li> <%= link_to 'Inventario','#'  %>   </li>
 	 <li> <%= link_to 'Merma', '#' %>   </li>
@@ -111,7 +116,8 @@
 	  <% end %>
 	</ul>
 	</ul>
-      </div>
+
+	      </div>
 
       <div class="navbar-right">
 	<ul class="nav navbar-nav">
