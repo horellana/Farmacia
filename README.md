@@ -1,24 +1,29 @@
-# README
+Farmacias Herrera
+-----------------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Software
+--------
 
-Things you may want to cover:
+* Version ruby: 2.4.0
+* base de datos: postgresql
 
-* Ruby version
 
-* System dependencies
+Como instalar
+-------------
 
-* Configuration
+1) clonar el repositorio
+2) definir la variable de entorno RAILS_ENV=production y exportarla con export RAILS_ENV
+3) definir la variable de entorno FARMACIA_DATABASE_PASSWORD y exportarla con export FARMACIA_DATABASE_PASSWORD
+3) hacer bundle install
+4) hacer bundle exec rails assets:precompile
+5) hacer bundle exec rails db:migrate
+6) hacer bundle exec rails db:fixtures:load
 
-* Database creation
 
-* Database initialization
+Configuracion base de datos
+---------------------------
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1) puerto: 5432
+2) nombre base de datos: Farmacia_production
+3) nombre de usuario base de datos: Farmacia
+4) la contraseña de la base de datos tiene que estar definida en la variable de entorno FARMACIA_DATABASE_PASSWORD
