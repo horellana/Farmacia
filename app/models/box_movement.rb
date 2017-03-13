@@ -7,6 +7,7 @@ class BoxMovement < ApplicationRecord
   validates :box, presence: true
   validates :user, presence: true
   validates :start_amount, presence: true
+  validates :start_amount, numericality: { only_integer: true }
 
   def gains
     transactions.map(&:total).inject(0, :+)
