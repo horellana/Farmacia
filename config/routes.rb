@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get 'search_medicinal_ingredient/index'
 
 
+  get 'search/users', to: 'search_users#index', as: 'search_users'
   get 'search/products', to: 'search_product#index', as: 'search_products'
   get 'search/doses', to: 'search_dose#index', as: 'search_doses'
   get 'search/categories', to: 'search_category#index', as: 'search_categories'

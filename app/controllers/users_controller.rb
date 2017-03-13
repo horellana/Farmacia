@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :admin_only, only: [:create, :new, :edit]
 
   def index
+    @users = User.all
   end
 
   def show

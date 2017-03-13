@@ -2,7 +2,7 @@ class Provider < ApplicationRecord
 
   validates :name, presence: true
   validates :rut, presence: true
-  validates_with RUTValidator
+  validates_with RutValidator
   validates :business_name, presence: true
   validates :address, presence: true
   validates :phone_one, numericality: { only_integer: true }

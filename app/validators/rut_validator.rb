@@ -1,4 +1,4 @@
-class RUTValidator < ActiveModel::Validator
+class RutValidator < ActiveModel::Validator
   require 'rut_chileno'
   def validate(record)
     unless RUT::validar(record.rut)

@@ -8,7 +8,13 @@ class User < ApplicationRecord
 
   validates :rut,  uniqueness: true
   validates :office, presence: true
-  validates_with RUTValidator
+  validates_with RutValidator
+
+
+  scope :match_rut, ->(rut) do
+    puts "Buscando rut: #{rut}"
+    where('rut ilike ?', "%#{rut}%")
+  end
 
   def email_required?
     false
