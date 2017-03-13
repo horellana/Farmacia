@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
-  belongs_to :provider
-  belongs_to :medicinal_ingredient
-  belongs_to :dose
-  belongs_to :category
+  belongs_to :provider, optional: true
+  belongs_to :medicinal_ingredient, optional: true
+  belongs_to :dose, optional: true
+  belongs_to :category, optional: true
 
-  has_one :inventory, autosave: true
+  has_one :inventory, autosave: true, dependent: :delete
 
   validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   #validates :description, presence: true

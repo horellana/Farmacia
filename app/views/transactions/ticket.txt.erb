@@ -3,7 +3,7 @@ Farmacias Herrera
 <%= @transaction.date %>
 
 <% @transaction.details.each do |d| %>
-<%= d.product.name %>     <%= d.quantity  %> x  <%= d.unit_price %>   $<%= d.net_price %>
+<%= d.product.name %>     <%= d.quantity  %> x $<%= d.net_price %>   $<%= d.quantity * d.net_price %>
 <% end %>
 
 TOTAL: $ <%= @transaction.total %>
