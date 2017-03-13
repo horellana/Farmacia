@@ -45,6 +45,7 @@ def create
   @user.rut = params[:user][:rut]
   @user.password = params[:user][:password]
   @user.admin = params[:user][:admin] == "1"
+  @user.name = params[:user][:name]
   @user.office = Office.first
 
   if @user.save
