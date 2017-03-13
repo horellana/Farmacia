@@ -75,7 +75,7 @@
       </a>
       <ul class="dropdown-menu">
 	<% if current_user.admin? %>
-	<li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
+	  <li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
 	<% end %>
 	<li> <%= link_to 'Buscar proveedor', providers_path %>   </li>
       </ul>
@@ -95,6 +95,12 @@
 	<%= link_to 'Cerrar Caja', box_movement_path(current_box_movement) %>
       <% else %>
 	<%= link_to 'Abrir Caja', new_box_movement_path %>
+      <% end %>
+    </li>
+
+    <li>
+      <% if current_user.admin? %>
+	<%= link_to 'Historial movimientos caja', box_movements_path %>
       <% end %>
     </li>
 
@@ -128,7 +134,7 @@
 	</ul>
 	</ul>
 
-	      </div>
+      </div>
 
       <div class="navbar-right">
 	<ul class="nav navbar-nav">
