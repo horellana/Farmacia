@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'quotations/index'
+
   get 'foo/login'
   get 'foo/index'
+
+  # resources :cotizaciones
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'

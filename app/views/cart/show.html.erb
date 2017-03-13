@@ -57,6 +57,10 @@
 	<%= submit_tag('Vender', class: 'btn btn-success') %>
 	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete, remote: true %>
       <% end %>
+
+      <br>
+
+      <%= link_to 'Cotizacion', quotations_index_path, class: 'btn btn-success' %>
     </div>
   </div>
 </div>
