@@ -2,6 +2,7 @@ class BoxMovementsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @box_movements = BoxMovement.all
   end
 
   def new

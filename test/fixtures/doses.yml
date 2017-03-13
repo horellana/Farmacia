@@ -5,5 +5,5 @@ one:
   quantity: MyString
 
 two:
-  kind: 1
+  kind: 2
   quantity: MyString
