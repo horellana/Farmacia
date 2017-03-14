@@ -10,6 +10,7 @@ one:
   client: two
   created_at: <%= Time.now %>
   updated_at: <%= Time.now %>
+  user: one
 
 two:
   kind: MyString
@@ -21,3 +22,4 @@ two:
   client: two
   created_at: <%= Time.now %>
   updated_at: <%= Time.now %>
+  user: two
