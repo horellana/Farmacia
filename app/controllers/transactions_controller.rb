@@ -27,7 +27,15 @@ class TransactionsController < ApplicationController
 
   def ticket
     @transaction = Transaction.find params[:transaction_id]
-    render 'ticket.txt.erb', layout: false
+    @monto_pago = params[:monto_pago].to_i
+
+    if @monto_pago < @transaction.total
+      return redirect_to :back,
+                         alert: "El monto de pago no puede ser menor a $#{@transaction.total}"
+    else
+      @vuelto = @monto_pago - @transaction.total
+      return render 'ticket.txt.erb', layout: false
+    end
   end
 
   private
@@ -35,7 +43,6 @@ class TransactionsController < ApplicationController
   def set_transaction_client
     rut = session[:client_rut]
     name = session[:client_name]
-
 
     @transaction.client = Client.from_rut(rut) if rut
     @transaction.client.name = name if name && rut
