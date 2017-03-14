@@ -9,7 +9,7 @@ class Cart < ApplicationRecord
     items.empty?
   end
 
-  def add(product)
+  def add(product, n)
     @item =
       begin
         CartItem.find_by! cart: self, product: product
@@ -17,7 +17,7 @@ class Cart < ApplicationRecord
         CartItem.create! cart: self, product: product
       end
 
-    @item.increase_quantity
+    @item.increase_quantity(n)
     @item
   end
 

@@ -4,10 +4,11 @@ class CartItemController < ApplicationController
 
   def create
     query = params[:search_product_field]
+    quantity = params[:product_quantity].to_i
 
     begin
       product = Product.find_by! name: query
-      @cart_item = @cart.add(product)
+      @cart_item = @cart.add(product, quantity)
     rescue ActiveRecord::RecordNotFound
       flash[:alert] = 'Producto no encontrado'
     rescue ActiveRecord::RecordInvalid
