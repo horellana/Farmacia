@@ -125,7 +125,13 @@
       </tbody>
     </table>
 
-    <%= link_to 'Boleta', transaction_ticket_path(@transaction) %>
+    <%= form_tag transaction_ticket_path(@transaction), method: :get do %>
+      <%= label_tag 'Monto pago (en pesos)' %>
+      <%= number_field_tag :monto_pago %>
+      <%= submit_tag('Boleta', class: 'btn btn-default') %>
+    <% end %>
+
+    <%#= link_to 'Boleta', transaction_ticket_path(@transaction) %>
 
     <%#= form_for(@transaction, action: :print) do |f| %>
       <%#= f.submit('boleta', class: 'btn btn-default') %>
