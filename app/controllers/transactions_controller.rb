@@ -3,6 +3,10 @@ class TransactionsController < ApplicationController
   before_action :setup_cart
   before_action :avoid_empty_cart, only: :create
 
+  def index
+    @transactions = Transaction.all
+  end
+
   def show
     @transaction = Transaction.find params[:id]
   end
