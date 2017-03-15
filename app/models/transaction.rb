@@ -38,7 +38,7 @@ class Transaction < ApplicationRecord
     self.details << td
   end
 
-  def vuelto
+  def change
     (total - payed_amount).abs
   end
 

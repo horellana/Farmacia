@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: principio_activo_uno
+  name: paracetamol
 
 two:
   name: principio_activo_dos
