@@ -18,6 +18,42 @@ paracetamol:
   stock: 7
   minimum_stock: 1
 
+tylenol:
+  id: 4
+  name: tylenol
+  provider: one
+  sale_price: 2500
+  purchase_price: 1
+  exempt: MyString
+  commission: 1
+  medicinal_ingredient: one
+  dose: one
+  be: MyString
+  isp: MyString
+  category: one
+  discount: 1
+  description: 'foo'
+  stock: 7
+  minimum_stock: 1
+
+quitadol:
+  id: 3
+  name: quitadol
+  provider: one
+  sale_price: 5000
+  purchase_price: 1
+  exempt: MyString
+  commission: 1
+  medicinal_ingredient: one
+  dose: one
+  be: MyString
+  isp: MyString
+  category: one
+  discount: 1
+  description: 'foo'
+  stock: 7
+  minimum_stock: 1
+
 ibuprofeno:
   id: 2
   name: Ibuprofeno
