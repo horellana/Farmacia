@@ -126,8 +126,6 @@
     </table>
 
     <%= form_tag transaction_ticket_path(@transaction), method: :get do %>
-      <%= label_tag 'Monto pago (en pesos)' %>
-      <%= number_field_tag :monto_pago %>
       <%= submit_tag('Boleta', class: 'btn btn-default') %>
     <% end %>
 

@@ -6,6 +6,8 @@ class Transaction < ApplicationRecord
   has_many :details, class_name: 'TransactionDetail'
   has_one :cart
 
+  validates_with TransactionValidator
+
   before_save :default_values
 
   def total

@@ -16,30 +16,30 @@ class TransactionsController < ApplicationController
                                    cart: @cart,
                                    box_movement: BoxMovement.last
 
-    set_transaction_client
-    @transaction.save!
+    puts "monto_pago = #{params[:monto_pago].to_i}"
+    monto_pago = params[:monto_pago].to_i
+
+    @transaction.payed_amount = monto_pago
+    @transaction.save
 
     @cart.items.each do |item|
       @transaction.add_product(item.product, item.quantity)
     end
 
-    @transaction.save!
 
-    clean_cart
-    redirect_to @transaction
+    if @transaction.save
+      clean_cart
+      redirect_to @transaction
+    else
+      flash[:alert] = @transaction.errors.full_messages.to_sentence
+      redirect_back(fallback_location: new_cart_path)
+    end
+
   end
 
   def ticket
     @transaction = Transaction.find params[:transaction_id]
-    @monto_pago = params[:monto_pago].to_i
-
-    if @monto_pago < @transaction.total
-      return redirect_to :back,
-                         alert: "El monto de pago no puede ser menor a $#{@transaction.total}"
-    else
-      @vuelto = @monto_pago - @transaction.total
-      return render 'ticket.txt.erb', layout: false
-    end
+    render 'ticket.txt.erb', layout: false
   end
 
   private
