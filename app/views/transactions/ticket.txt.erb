@@ -1,13 +1,28 @@
-Farmacias Herrera
+"Farmacias Herrera"
+IMP. COMER. Y DISTRIB. DE PRODUCTOS
+FARMACEUTICOS Y PERFUMERIA.
+C. MATRIZ:AV.FROILAN ROA 580 LOCAL 7,
+LA FLORIDA.
 
-<%= @transaction.date %>
+
+
+Rut Nro.: 76.133.541-3
+FARMACIAS HERRERA LTDA.
+
+
+**BOLETA DE VENTA AUTORIZADA POR EL SII***
+**   RES. EX. No. 94 del 30/09/2004    ***
+
+Numero de caja: <%= Box.get_box.id %>
+Nro. Boleta: <%= @transaction.id %>
+Fecha <%= @transaction.date %>
 
 <% @transaction.details.each do |d| %>
-<%= d.product.name %>     <%= d.quantity  %> x $<%= d.net_price %>   $<%= d.quantity * d.net_price %>
+<%= d.product.name %>     <%= d.quantity  %> x <%= d.net_price %>   <%= d.quantity * d.net_price %>
 <% end %>
 
+
+TOTAL: <%= @transaction.total %>
 <% if @transaction.change %>
-VUELTO: $<%= @transaction.change %>
+VUELTO: <%= @transaction.change %>
 <% end %>
-
-TOTAL: $<%= @transaction.total %>
