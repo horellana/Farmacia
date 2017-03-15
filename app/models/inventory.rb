@@ -8,8 +8,6 @@ class Inventory < ApplicationRecord
   validates :minimum_stock, presence: true
   validates :minimum_stock, numericality: { only_integer: true }
 
-  validates_with StockValidator
-
   def increase_stock(n=1)
     self.stock += n
     save
