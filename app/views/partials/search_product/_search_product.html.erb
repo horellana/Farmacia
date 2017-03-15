@@ -5,7 +5,7 @@
 
   <div class="panel-body">
     <%= form_tag(search_products_path, method: :get, remote: true) do %>
-      <%= autocomplete_field_tag :product_medicinal_ingredient, '', autocomplete_product_name_products_path %>
+      <%= autocomplete_field_tag :product_name, '', autocomplete_product_name_products_path %>
       <%= submit_tag('Buscar', class: 'btn btn-default') %>
     <% end %>
 
