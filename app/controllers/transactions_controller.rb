@@ -20,19 +20,17 @@ class TransactionsController < ApplicationController
     monto_pago = params[:monto_pago].to_i
 
     @transaction.payed_amount = monto_pago
-    @transaction.save
 
     @cart.items.each do |item|
       @transaction.add_product(item.product, item.quantity)
     end
 
-
     if @transaction.save
       clean_cart
-      redirect_to @transaction
+      return redirect_to @transaction
     else
-      flash[:alert] = @transaction.errors.full_messages.to_sentence
-      redirect_back(fallback_location: new_cart_path)
+      flash[:alert] = @transaction.errors[:payed_amount].to_sentence
+      return redirect_back(fallback_location: new_cart_path)
     end
 
   end

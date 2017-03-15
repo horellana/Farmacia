@@ -11,7 +11,7 @@ class TransactionValidator < ActiveModel::Validator
     puts "record.payed_amount = #{record.payed_amount}"
 
     if record.total > record.payed_amount
-      msg = "El monto de pago no puede ser menor a #{record.total}!"
+      msg = "El monto de pago no puede ser menor a $#{record.total}!"
       record.errors[:payed_amount] << msg
     end
   end

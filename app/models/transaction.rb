@@ -3,7 +3,7 @@ class Transaction < ApplicationRecord
   belongs_to :client, required: false
   belongs_to :box_movement
 
-  has_many :details, class_name: 'TransactionDetail'
+  has_many :details, class_name: 'TransactionDetail', autosave: true
   has_one :cart
 
   validates_with TransactionValidator
@@ -26,8 +26,16 @@ class Transaction < ApplicationRecord
     td.net_price = product.price - (product.price * 0.19)
     td.discount = product.discount
     td.devolution = 'no'
+    td.transactionn = self
 
-    details << td
+    puts "td.transactionn = #{td.transactionn}"
+    puts "td.valid? = #{td.valid?}"
+    puts "td.errors = #{td.errors.full_messages}"
+
+    puts "td.product = #{td.product}"
+    puts "td.quantity = #{td.quantity}"
+
+    self.details << td
   end
 
   def vuelto
