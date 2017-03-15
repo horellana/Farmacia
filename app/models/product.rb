@@ -40,9 +40,6 @@ class Product < ApplicationRecord
       .where('medicinal_ingredient.name ilike ?', "%#{mi}%")
   end
 
-  # scope :match_medicinal_ingredient, ->(mi) do
-  # end
-
   def price
     sale_price - discount
   end

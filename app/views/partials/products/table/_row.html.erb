@@ -54,9 +54,10 @@
   <td>
     <%= form_tag(cart_cart_item_index_path(@cart), action: 'create', remote: true) do %>
       <%= hidden_field_tag(:search_product_field, product.name) %>
-      <!-- <input type="number" id="product_quantity" name="product_quantity" size="1" width="1"> -->
-      <%= number_field_tag(:product_quantity, 1, min: 0) %>
-      <%= button_tag('', type: 'submit', class: 'glyphicon glyphicon-ok') %>
+      <div class="row">
+	<%= number_field_tag(:product_quantity, 1, min: 0) %>
+	<%= button_tag('', type: 'submit', class: 'glyphicon glyphicon-ok') %>
+      </div>
     <% end %>
   </td>
 
@@ -64,9 +65,7 @@
     <td>
       <%= link_to '', edit_product_path(product), class: 'glyphicon glyphicon-pencil'%>
     </td>
-  <% end %>
 
-  <% if current_user.admin? %>
     <td>
       <%= link_to '', product_path(product),
       method: :delete,
