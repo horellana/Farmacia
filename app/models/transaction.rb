@@ -30,6 +30,10 @@ class Transaction < ApplicationRecord
     details << td
   end
 
+  def vuelto
+    (total - payed_amount).abs
+  end
+
   private
 
   def default_values

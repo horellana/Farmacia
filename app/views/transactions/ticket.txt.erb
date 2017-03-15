@@ -6,6 +6,8 @@ Farmacias Herrera
 <%= d.product.name %>     <%= d.quantity  %> x $<%= d.net_price %>   $<%= d.quantity * d.net_price %>
 <% end %>
 
-VUELTO: $<%= @vuelto %>
+<% if @transaction.vuelto %>
+VUELTO: $<%= @transaction.vuelto %>
+<% end %>
 
 TOTAL: $<%= @transaction.total %>
