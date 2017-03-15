@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :setup_cart
 
-  before_action :admin_only, except: [:index, :show]
+  before_action :admin_only, except: [:index, :show, :autocomplete_product_name]
 
   autocomplete :product, :name
 

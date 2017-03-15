@@ -11,19 +11,5 @@ class SearchProductController < ApplicationController
                    .where.not(id: @product.id)
 
     respond_to :js
-
-    # query = params[:product_medicinal_ingredient]
-
-    # puts "query = #{query}"
-
-    # mi = MedicinalIngredient.find_by name: query
-    # puts "medicinal_ingredient found = #{mi}"
-
-
-    # @products = Product.where medicinal_ingredient: mi
-
-    # puts "@products = #{@products}"
-
-    # respond_to :js
   end
 end
