@@ -98,11 +98,6 @@
       <% end %>
     </li>
 
-    <li>
-      <% if current_user.admin? %>
-	<%= link_to 'Historial movimientos caja', box_movements_path %>
-      <% end %>
-    </li>
 
     <% if current_user.admin? %>
       <li role="presentation" class="dropdown">
@@ -127,6 +122,12 @@
 	<ul class="dropdown-menu">
 	  <li>
 	    <%= link_to 'Historico ventas',   transactions_path %>
+	  </li>
+
+	  <li>
+	    <% if current_user.admin? %>
+	      <%= link_to 'Historial movimientos caja', box_movements_path %>
+	    <% end %>
 	  </li>
 	</ul>
       </li>

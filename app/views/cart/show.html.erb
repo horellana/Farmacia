@@ -54,13 +54,20 @@
       <br>
 
       <%= form_for(:transaction, url: '/transactions', remote: true) do %>
+	<%= label_tag 'Monto pago (en pesos)' %>
+	<%= number_field_tag :monto_pago %>
+
+	<br>
+	<br>
+
 	<%= submit_tag('Vender', class: 'btn btn-success') %>
-	<%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete, remote: true %>
+	<%= link_to 'Cotizacion', quotations_index_path, class: 'btn btn-success' %>
       <% end %>
 
       <br>
 
-      <%= link_to 'Cotizacion', quotations_index_path, class: 'btn btn-success' %>
+      <%= link_to raw('<button class="btn btn-danger">Limpiar</button>'), cart_path(@cart), method: :delete, remote: true %>
+
     </div>
   </div>
 </div>
