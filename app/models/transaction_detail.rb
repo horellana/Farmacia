@@ -3,5 +3,5 @@ class TransactionDetail < ApplicationRecord
              class_name: 'Transaction',
              foreign_key: 'transaction_id'
 
-  belongs_to :product
+  belongs_to :product, autosave: true
 end
