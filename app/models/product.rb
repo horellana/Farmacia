@@ -7,12 +7,10 @@ class Product < ApplicationRecord
   has_one :inventory, autosave: true, dependent: :delete
 
   validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  #validates :description, presence: true
   validates :sale_price, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :sale_price, numericality: { only_integer: true }
   validates :purchase_price, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :purchase_price, numericality: { only_integer: true }
-  #validates :be, presence: true
   validates :isp, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :discount, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :discount, numericality: { only_integer: true }
