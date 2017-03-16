@@ -19,22 +19,7 @@ class Transaction < ApplicationRecord
   end
 
   def add_product(product, quantity)
-    td = TransactionDetail.new
-    td.product = product
-    td.quantity = quantity
-    td.unit_price = product.price
-    td.net_price = product.price - (product.price * 0.19)
-    td.discount = product.discount
-    td.devolution = 'no'
-    td.transactionn = self
-
-    puts "td.transactionn = #{td.transactionn}"
-    puts "td.valid? = #{td.valid?}"
-    puts "td.errors = #{td.errors.full_messages}"
-
-    puts "td.product = #{td.product}"
-    puts "td.quantity = #{td.quantity}"
-
+    td = TransactionDetail.build(self, product, quantity)
     self.details << td
   end
 

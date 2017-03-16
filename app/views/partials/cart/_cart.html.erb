@@ -13,6 +13,10 @@
     </th>
 
     <th>
+      IVA
+    </th>
+
+    <th>
       Descuento
     </th>
 
@@ -45,6 +49,10 @@
 	</td>
 
 	<td>
+	  <%= item.product.tax %>
+	</td>
+
+	<td>
 	  $<%= item.product.discount %>
 	</td>
 
@@ -53,7 +61,7 @@
 	</td>
 
 	<td>
-	  $<%= item.product.price * item.quantity %>
+	  $<%= item.product.net_price * item.quantity %>
 	</td>
 
 	<td>

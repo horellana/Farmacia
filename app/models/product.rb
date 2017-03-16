@@ -40,8 +40,16 @@ class Product < ApplicationRecord
       .where('medicinal_ingredient.name ilike ?', "%#{mi}%")
   end
 
+  def tax
+    sale_price * 0.19
+  end
+
+  def net_price
+    sale_price + (sale_price * 0.19) - discount
+  end
+
   def price
-    sale_price - discount
+    sale_price
   end
 
   def profit
