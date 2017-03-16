@@ -9,8 +9,6 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :minimum_stock
       t.string :exempt
       t.integer :commission
-      t.references :medicinal_ingredient, foreign_key: true
-      t.references :dose, foreign_key: true
       t.string :be
       t.string :isp
       t.references :category, foreign_key: true
