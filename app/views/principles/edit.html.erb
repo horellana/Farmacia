@@ -1,9 +1,9 @@
-<% if @medicinal_ingredient.errors.any? %>
+<% if @principle.errors.any? %>
   <div class="alert alert-danger">
-    <%= pluralize(@medicinal_ingredient.errors.count, "errors") %>
+    <%= pluralize(@principle.errors.count, "errors") %>
 
     <ul>
-      <% @medicinal_ingredient.errors.full_messages.each do |message| %>
+      <% @principle.errors.full_messages.each do |message| %>
 	<li>
 	  <%= message %>
 	</li>
@@ -14,7 +14,7 @@
 
 <h1>Modificar Principio Activo</h1>
 
-<%= form_for(@medicinal_ingredient) do |f| %>
+<%= form_for(@principle) do |f| %>
 
   <p>
     <%= f.label :nombre %><br>
@@ -27,4 +27,4 @@
 
 <% end %>
 
-<%= link_to 'Atras', medicinal_ingredients_path %>
+<%= link_to 'Atras', principles_path %>

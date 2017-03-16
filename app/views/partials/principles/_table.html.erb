@@ -1,0 +1,14 @@
+<table class="table">
+  
+  <thead>
+    <th>
+      Nombre
+    </th>
+  </thead>
+
+  <tbody>
+    <% for principle in principles do %>
+	    <%= render 'partials/principles/table/row', principle: principle %>
+    <% end %>
+  </tbody>
+</table>

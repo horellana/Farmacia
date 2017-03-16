@@ -1,4 +1,4 @@
-class MedicinalIngredient < ApplicationRecord
+class Principle < ApplicationRecord
 
 validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
 
