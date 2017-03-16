@@ -9,7 +9,7 @@ paracetamol:
   exempt: MyString
   commission: 1
   medicinal_ingredient: one
-  dose: one
+  presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -27,7 +27,7 @@ tylenol:
   exempt: MyString
   commission: 1
   medicinal_ingredient: one
-  dose: one
+  presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -46,7 +46,7 @@ quitadol:
   exempt: MyString
   commission: 1
   medicinal_ingredient: one
-  dose: one
+  presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -65,7 +65,7 @@ ibuprofeno:
   exempt: MyString
   commission: 1
   medicinal_ingredient: two
-  dose: two
+  presentation: two
   be: MyString
   isp: MyString
   category: two
