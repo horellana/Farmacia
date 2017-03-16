@@ -45,9 +45,9 @@
 		<li class="divider"></li>
 
 		<% if current_user.admin? %>
-		  <li> <%= link_to 'Crear Principio activo', new_medicinal_ingredient_path %>   </li>
+		  <li> <%= link_to 'Crear Principio activo', new_principle_path %>   </li>
 		<% end %>
-		<li> <%= link_to 'Buscar Principio activo', medicinal_ingredients_path %>   </li>
+		<li> <%= link_to 'Buscar Principio activo', principles_path %>   </li>
 
 		<li class="divider"></li>
 		<% if current_user.admin? %>
