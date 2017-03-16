@@ -32,8 +32,6 @@ class ProductsController < ApplicationController
                            description: params[:product][:description],
                            sale_price: params[:product][:sale_price],
                            purchase_price: params[:product][:purchase_price],
-                           exempt: params[:product][:exempt],
-                           commission: params[:product][:commision],
                            be: params[:product_be],
                            isp: params[:product_isp],
                            discount: params[:product][:discount].to_i
@@ -82,6 +80,6 @@ class ProductsController < ApplicationController
     params
       .require(:product)
       .permit(:name, :description, :sale_price, :purchase_price,
-              :exempt, :commission, :be, :isp, :discount, :description)
+              :be, :isp, :discount, :description)
   end
 end
