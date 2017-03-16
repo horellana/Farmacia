@@ -45,17 +45,7 @@
 		<%= f.text_area :description %>
 
 	      </p>
-	      <!--
-		   <p>
-		   <#= f.label :Stock %><br>
-		   <#= f.text_field :stock %>
-		   </p>
 
-		   <p>
-		   <#= f.label :Min_Stock %><br>
-		   <#= f.text_field :min_stock %>
-		   </p>
-		 -->
 
 	      <p>
 		<%= label_tag(:product_be, "Es bio equivalente") %>
@@ -113,12 +103,12 @@
 	      <%= text_field_tag :category_descripcion %>
 	    </p>
 	    <p>
-	      <%= f.label :presentation_id %> <br>
-	      <%= f.text_field :presentation_id %>
+	      <%= f.label :presentation %> <br>
+	      <%= f.text_field :presentation %>
 	    </p>
 	    <p>
-	      <%= f.label :medicinal_ingredient_id %> <br>
-	      <%= f.text_field :medicinal_ingredient_id %>
+	      <%= f.label :principle %> <br>
+	      <%= f.text_field :principle %>
 	    </p>
 
 	    <p>
