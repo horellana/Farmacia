@@ -6,10 +6,7 @@ paracetamol:
   provider: one
   sale_price: 1000
   purchase_price: 1
-  exempt: MyString
-  commission: 1
-  medicinal_ingredient: one
-  presentation: one
+  # presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -24,10 +21,7 @@ tylenol:
   provider: one
   sale_price: 2500
   purchase_price: 1
-  exempt: MyString
-  commission: 1
-  medicinal_ingredient: one
-  presentation: one
+  # presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -43,10 +37,7 @@ quitadol:
   provider: one
   sale_price: 5000
   purchase_price: 1
-  exempt: MyString
-  commission: 1
-  medicinal_ingredient: one
-  presentation: one
+  # presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -62,10 +53,7 @@ ibuprofeno:
   provider: two
   sale_price: 666
   purchase_price: 1
-  exempt: MyString
-  commission: 1
-  medicinal_ingredient: two
-  presentation: two
+  # presentation: two
   be: MyString
   isp: MyString
   category: two
@@ -74,3 +62,19 @@ ibuprofeno:
   stock: 5
   minimum_stock: 1
   code: '2222222222'
+
+ibuprofeno:
+  id: 5
+  name: aspirina
+  provider: two
+  sale_price: 5000
+  purchase_price: 1
+  # presentation: two
+  be: MyString
+  isp: MyString
+  category: two
+  discount: 1
+  description: 'Si es bayer es bueno'
+  stock: 5
+  minimum_stock: 1
+  code: '9999999999'
