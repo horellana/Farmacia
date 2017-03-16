@@ -79,13 +79,6 @@ ActiveRecord::Schema.define(version: 20170316131108) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "doses", force: :cascade do |t|
-    t.string   "kind"
-    t.integer  "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "inventories", force: :cascade do |t|
     t.integer  "office_id"
     t.integer  "product_id"
@@ -98,12 +91,6 @@ ActiveRecord::Schema.define(version: 20170316131108) do
   end
 
   create_table "job_titles", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "medicinal_ingredients", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -130,19 +117,15 @@ ActiveRecord::Schema.define(version: 20170316131108) do
     t.integer  "purchase_price"
     t.integer  "stock"
     t.integer  "minimum_stock"
-    t.integer  "medicinal_ingredient_id"
-    t.integer  "dose_id"
     t.string   "be"
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "name"
     t.string   "code"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
-    t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree
-    t.index ["medicinal_ingredient_id"], name: "index_products_on_medicinal_ingredient_id", using: :btree
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 
@@ -246,8 +229,6 @@ ActiveRecord::Schema.define(version: 20170316131108) do
   add_foreign_key "inventories", "offices"
   add_foreign_key "inventories", "products"
   add_foreign_key "products", "categories"
-  add_foreign_key "products", "doses"
-  add_foreign_key "products", "medicinal_ingredients"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
   add_foreign_key "transaction_details", "products"
