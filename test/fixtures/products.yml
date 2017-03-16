@@ -6,7 +6,6 @@ paracetamol:
   provider: one
   sale_price: 1000
   purchase_price: 1
-  # presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -21,7 +20,6 @@ tylenol:
   provider: one
   sale_price: 2500
   purchase_price: 1
-  # presentation: one
   be: MyString
   isp: MyString
   category: one
@@ -37,7 +35,6 @@ quitadol:
   provider: one
   sale_price: 5000
   purchase_price: 1
-  # presentation: one
   be: MyString
   isp: MyString
   category: one

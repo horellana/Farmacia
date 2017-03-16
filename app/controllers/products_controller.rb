@@ -67,10 +67,10 @@ class ProductsController < ApplicationController
   end
 
   def get_relations_from_form(product, params)
-    product.category = Category.find_by description: params[:category_descripcion]
-    product.ingredient = MedicinalIngredient.find_by name: params[:product][:medicinal_ingredient_id]
-    product.provider = Provider.find_by name: params[:product][:provider_id]
-    product.presentation = Presentation.find_by kind: params[:product][:presentation_id]
+    product.category = Category.find_by(description: params[:category_descripcion])
+    product.ingredients << Principle.find_by(name: params[:product][:principle_id])
+    product.provider = Provider.find_by(name: params[:product][:provider_id])
+    product.presentation = Presentation.find_by(kind: params[:product][:presentation_id])
   end
 
   def create_from_form(product, params)

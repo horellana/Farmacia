@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :discount, numericality: { only_integer: true }
 
   validates :category, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  validates :medicinal_ingredient, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates :principle, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :provider, presence: {case_sensitive: false ,message: "no puede estar vacio"}
 
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
@@ -37,9 +37,9 @@ class Product < ApplicationRecord
     where('name ilike ?', "%#{name}%")
   end
 
-  def self.match_medicinal_ingredient(mi)
-    joins(:medicinal_ingredient)
-      .where('medicinal_ingredient.name ilike ?', "%#{mi}%")
+  def self.match_principle(mi)
+    joins(:principle)
+      .where('principle.name ilike ?', "%#{mi}%")
   end
 
   def tax

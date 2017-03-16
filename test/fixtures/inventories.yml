@@ -23,3 +23,9 @@ four:
   product_id: 4
   stock: 3
   minimum_stock: 2
+
+five:
+  office: one
+  product_id: 5
+  stock: 60
+  minimum_stock: 2
