@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_many :principle_details
   has_many :principles, through: :principle_details
 
   belongs_to :provider, optional: true
