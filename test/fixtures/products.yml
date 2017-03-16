@@ -35,6 +35,7 @@ tylenol:
   description: 'foo'
   stock: 7
   minimum_stock: 1
+  code: '000000000'
 
 quitadol:
   id: 3
@@ -53,6 +54,7 @@ quitadol:
   description: 'foo'
   stock: 7
   minimum_stock: 1
+  code: '1111111111'
 
 ibuprofeno:
   id: 2
@@ -71,3 +73,4 @@ ibuprofeno:
   description: 'bar'
   stock: 5
   minimum_stock: 1
+  code: '2222222222'
