@@ -1,0 +1,29 @@
+<% if @presentation.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@presentation.errors.count, "errors") %>
+
+    <ul>
+      <% @presentation.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>Modificar presentacion</h1>
+
+<%= form_for(@presentation) do |f| %>
+  <p>
+    <%= f.label :nombre %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Atras', presentations_path %>

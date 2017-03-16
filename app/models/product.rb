@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :provider, optional: true
   belongs_to :medicinal_ingredient, optional: true
-  belongs_to :dose, optional: true
+  belongs_to :presentation, optional: true
   belongs_to :category, optional: true
 
   has_one :inventory, autosave: true, dependent: :delete
@@ -22,8 +22,8 @@ class Product < ApplicationRecord
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates_associated :inventory
 
-  validates :dose, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  validates_associated :dose
+  validates :presentation, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates_associated :presentation
 
   validates_with NameValidator
 

@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     category = Category.find_by description: params[:category_descripcion]
     ingredient = MedicinalIngredient.find_by name: params[:product][:medicinal_ingredient_id]
     provider = Provider.find_by name: params[:product][:provider_id]
-    dose = Dose.find_by kind: params[:product][:dose_id]
+    presentation = presentation.find_by kind: params[:product][:presentation_id]
 
     inventory = Inventory.new stock: params[:stock],
                               minimum_stock: params[:minimum_stock],
@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
     @product.category = category
     @product.medicinal_ingredient = ingredient
     @product.provider = provider
-    @product.dose = dose
+    @product.presentation = presentation
     @product.inventory = inventory
 
     if @product.save

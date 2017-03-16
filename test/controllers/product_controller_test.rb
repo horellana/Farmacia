@@ -29,7 +29,7 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
                    minimum_stock: 2,
                    provider_name: providers(:one).name,
                    medicinal_ingredient_name: medicinal_ingredients(:one).name,
-                   dose_kind: doses(:one).kind,
+                   presentation_kind: presentations(:one).kind,
                    product_be: '1',
                    product_isp: '1',
                    category_description: categories(:one).description }
