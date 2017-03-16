@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :provider, optional: true
-  belongs_to :medicinal_ingredient, optional: true
+  belongs_to :principle, optional: true
   belongs_to :presentation, optional: true
   belongs_to :category, optional: true
 
