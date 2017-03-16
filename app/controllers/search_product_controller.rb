@@ -4,12 +4,7 @@ class SearchProductController < ApplicationController
 
   def index
     query = params[:product_name]
-
-    @product = Product.find_by(name: query)
-    @equivalents = Product
-                   .where(medicinal_ingredient: @product.medicinal_ingredient)
-                   .where.not(id: @product.id)
-
+    @product, @equivalents = SearchProductService.new(query).call
     respond_to :js
   end
 end

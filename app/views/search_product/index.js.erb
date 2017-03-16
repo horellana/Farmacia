@@ -1,2 +1,7 @@
+<% if @product %>
 $("#search_product_result")
   .html("<%= j render 'partials/products/table', product: @product, equivalents: @equivalents %>");
+<% else %>
+$('#search_product_result')
+  .html('<br> No se encontro ningun producto');
+<% end %>
