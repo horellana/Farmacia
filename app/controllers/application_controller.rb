@@ -26,7 +26,12 @@ class ApplicationController < ActionController::Base
 
     # Restauro el stock de los productos
     # si es que no se hizo una transaccion
-    cart.drop unless cart.transactionn
+    # cart.drop unless cart.transactionn
+
+    unless transaction
+      cart.drop
+      cart.destroy
+    end
 
     session[:cart_id] = nil
     session[:client_rut] = nil
