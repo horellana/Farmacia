@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
+  has_many :principles, through: :principle_details
+
   belongs_to :provider, optional: true
-  belongs_to :principle, optional: true
   belongs_to :presentation, optional: true
   belongs_to :category, optional: true
 
