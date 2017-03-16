@@ -5,6 +5,12 @@ class SearchProductController < ApplicationController
   def index
     query = params[:product_name]
     @product, @equivalents = SearchProductService.new(query).call
+
+    puts "@product = #{@product}"
+    puts "@equivalents = #{@equivalents}"
+
+    puts "@product.stock"
+
     respond_to :js
   end
 end
