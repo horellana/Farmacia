@@ -1,0 +1,19 @@
+<tr>
+
+  <td>
+    <%= principle.name %>
+  </td>
+
+
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to 'Editar', edit_principle_path(principle) %>
+    </td>
+
+    <td><%= link_to 'Eliminar', principle_path(principle),
+	method: :delete,
+	data: { confirm: 'Estas Seguro?' } %>
+    </td>
+  <% end %>
+
+</tr>
