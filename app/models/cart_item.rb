@@ -1,6 +1,6 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
-  belongs_to :product
+  belongs_to :product, optional: true
 
   def increase_quantity(n=1)
     puts "Disminuyendo el stock de #{product.name} en #{n} unidades"
@@ -10,8 +10,6 @@ class CartItem < ApplicationRecord
       self.quantity += n
       save!
     else
-      puts "El producto #{product.name} no es valido"
-      puts "Aumentando el stock de #{product.name} en #{n} unidades"
       product.increase_stock(n)
     end
   end
