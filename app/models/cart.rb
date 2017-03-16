@@ -27,7 +27,7 @@ class Cart < ApplicationRecord
 
   def total
     items
-      .map { |item| item.product.price * item.quantity }
+      .map { |item| item.product.net_price * item.quantity }
       .inject(0, :+)
   end
 
