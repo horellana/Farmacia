@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316131108) do
+ActiveRecord::Schema.define(version: 20170316161014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,23 @@ ActiveRecord::Schema.define(version: 20170316131108) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "presentations", force: :cascade do |t|
+    t.string  "name"
+    t.integer "product_id"
+    t.index ["product_id"], name: "index_presentations_on_product_id", using: :btree
+  end
+
+  create_table "principle_details", force: :cascade do |t|
+    t.integer "principle_id"
+    t.integer "product_id"
+    t.index ["principle_id"], name: "index_principle_details_on_principle_id", using: :btree
+    t.index ["product_id"], name: "index_principle_details_on_product_id", using: :btree
+  end
+
+  create_table "principles", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "products", force: :cascade do |t|
@@ -228,6 +245,9 @@ ActiveRecord::Schema.define(version: 20170316131108) do
   add_foreign_key "carts", "transactions"
   add_foreign_key "inventories", "offices"
   add_foreign_key "inventories", "products"
+  add_foreign_key "presentations", "products"
+  add_foreign_key "principle_details", "principles"
+  add_foreign_key "principle_details", "products"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"

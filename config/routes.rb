@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :providers
   resources :categories
   resources :medicinal_ingredients
-  resources :doses
+  resources :presentations
   resources :clients
   resources :transactions do
     get 'ticket'
@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     get :autocomplete_product_name, on: :collection
   end
 
-  resources :doses do
-    get :autocomplete_dose_kind, on: :collection
+  resources :presentations do
+    get :autocomplete_presentation_name, on: :collection
   end
 
   resources :medicinal_ingredient do
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   end
 
   get 'search_product/index'
-  get 'search_dose/index'
+  get 'search_presentation/index'
   get 'search_category/index'
   get 'search_provider/index'
   get 'search_client/index'
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
   get 'search/users', to: 'search_users#index', as: 'search_users'
   get 'search/products', to: 'search_product#index', as: 'search_products'
-  get 'search/doses', to: 'search_dose#index', as: 'search_doses'
+  get 'search/presentations', to: 'search_presentation#index', as: 'search_presentations'
   get 'search/categories', to: 'search_category#index', as: 'search_categories'
   get 'search/providers', to: 'search_provider#index', as: 'search_providers'
   get 'search/clients', to: 'search_client#index', as: 'search_clients'

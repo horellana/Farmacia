@@ -13628,19 +13628,19 @@ var widgetsSelectable = $.widget( "ui.selectable", $.ui.mouse, {
 		} );
 
 		$( event.target ).parents().addBack().each( function() {
-			var doSelect,
+			var presentationlect,
 				selectee = $.data( this, "selectable-item" );
 			if ( selectee ) {
-				doSelect = ( !event.metaKey && !event.ctrlKey ) ||
+				presentationlect = ( !event.metaKey && !event.ctrlKey ) ||
 					!selectee.$element.hasClass( "ui-selected" );
-				that._removeClass( selectee.$element, doSelect ? "ui-unselecting" : "ui-selected" )
-					._addClass( selectee.$element, doSelect ? "ui-selecting" : "ui-unselecting" );
-				selectee.unselecting = !doSelect;
-				selectee.selecting = doSelect;
-				selectee.selected = doSelect;
+				that._removeClass( selectee.$element, presentationlect ? "ui-unselecting" : "ui-selected" )
+					._addClass( selectee.$element, presentationlect ? "ui-selecting" : "ui-unselecting" );
+				selectee.unselecting = !presentationlect;
+				selectee.selecting = presentationlect;
+				selectee.selected = presentationlect;
 
 				// selectable (UN)SELECTING callback
-				if ( doSelect ) {
+				if ( presentationlect ) {
 					that._trigger( "selecting", event, {
 						selecting: selectee.element
 					} );

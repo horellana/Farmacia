@@ -1,9 +1,9 @@
-<% if @dose.errors.any? %>
+<% if @presentation.errors.any? %>
   <div class="alert alert-danger">
-    <%= pluralize(@dose.errors.count, "errors") %>
+    <%= pluralize(@presentation.errors.count, "errors") %>
 
     <ul>
-      <% @dose.errors.full_messages.each do |message| %>
+      <% @presentation.errors.full_messages.each do |message| %>
 	<li>
 	  <%= message %>
 	</li>
@@ -14,22 +14,19 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    Crear Dosis
+    Crear Precentacion
   </div>
 
   <div class="panel-body">
-    <%= form_for @dose do |f| %>
+    <%= form_for @presentation do |f| %>
       <div class="row">
 
         <div class="col-md-4">
           <p>
-            <%= f.label :tipo %><br>
-            <%= f.text_field :kind %>
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
           </p>
-          <p>
-            <%= f.label :cantidad %><br>
-            <%= f.text_field :quantity %>
-          </p>
+
             <%= f.submit %>
           </p>
         </div>
