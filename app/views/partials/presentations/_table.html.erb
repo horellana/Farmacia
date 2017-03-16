@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+    <th>
+      Nombre
+    </th>
+
+
+  </thead>
+
+  <tbody>
+    <% for presentation in presentations do %>
+	    <%= render 'partials/presentations/table/row', presentation: presentation %>
+    <% end %>
+  </tbody>
+</table>
