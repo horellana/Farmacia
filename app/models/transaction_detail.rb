@@ -14,5 +14,7 @@ class TransactionDetail < ApplicationRecord
     td.discount = product.discount
     td.devolution = 'no'
     td.transactionn = transactionn
+
+    return td
   end
 end
