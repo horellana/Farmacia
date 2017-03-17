@@ -6,13 +6,16 @@ class CartItemController < ApplicationController
     query = params[:search_product_field]
     quantity = params[:product_quantity].to_i
 
+    puts "query = #{query}"
+    puts "quantity = #{quantity}"
+
     begin
-      product = Product.find_by! name: query
+      product = Product.find_by!(name: query)
       @cart_item = @cart.add(product, quantity)
     rescue ActiveRecord::RecordNotFound
-      flash[:alert] = 'Producto no encontrado'
+      flash[:alert] = "Producto no encontrado"
     rescue ActiveRecord::RecordInvalid
-      flash[:alert] = 'El stock no puede ser menor a cero!'
+      flash[:alert] = "El stock no puede ser menor a cero!"
     end
 
     respond_to :js

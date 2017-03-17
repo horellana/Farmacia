@@ -1,0 +1,38 @@
+<% if @laboratory.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@laboratory.errors.count, "errors") %>
+
+    <ul>
+      <% @laboratory.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Crear Laboratorio
+  </div>
+
+  <div class="panel-body">
+    <%= form_for @laboratory do |f| %>
+      <div class="row">
+
+        <div class="col-md-4">
+          <p>
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </p>
+          <p>
+            <%= f.submit %>
+          </p>
+        </div>
+
+      </div>
+
+  </div>
+    <% end %>
+</div>

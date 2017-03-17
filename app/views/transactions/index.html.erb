@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>
+	Numero transaccion
+      </th>
+
+      <th>
+	Vendedor
+      </th>
+
+      <th>
+	Fecha
+      </th>
+
+      <th>
+	Monto transaccion
+      </th>
+    </thead>
+
+    <tbody>
+      <% @transactions.each  do |t| %>
+	<tr>
+	  <td>
+	    <%= link_to t.id, transaction_path(t) %>
+	  </td>
+
+	  <td>
+	    <%= link_to t.user.name, user_path(t.user) %>
+	  </td>
+
+	  <td>
+	    <%= t.date %>
+	  </td>
+
+	  <td>
+	    $<%= t.total %>
+	  </td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
