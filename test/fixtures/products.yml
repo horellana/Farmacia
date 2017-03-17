@@ -15,6 +15,7 @@ paracetamol:
   minimum_stock: 1
   presentation: one
   code: '111111111'
+  laboratory: one
 
 ibuprofeno:
   id: 2
@@ -32,6 +33,7 @@ ibuprofeno:
   minimum_stock: 1
   code: '2222222222'
   presentation: one
+  laboratory: one
 
 quitadol:
   id: 3
@@ -48,6 +50,7 @@ quitadol:
   minimum_stock: 1
   code: '1111111111'
   presentation: one
+  laboratory: one
 
 tylenol:
   id: 4
@@ -64,6 +67,7 @@ tylenol:
   minimum_stock: 1
   code: '000000000'
   presentation: one
+  laboratory: one
 
 ibuprofeno:
   id: 5
@@ -81,3 +85,4 @@ ibuprofeno:
   minimum_stock: 1
   code: '9999999999'
   presentation: one
+  laboratory: one
