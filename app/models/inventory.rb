@@ -8,6 +8,13 @@ class Inventory < ApplicationRecord
   validates :minimum_stock, presence: true
   validates :minimum_stock, numericality: { only_integer: true }
 
+  validates :product, presence: true
+  validates :office, presence: true
+
+  def total
+    stock * product.sale_price
+  end
+
   def self.low_stock
     select('product_id').where('stock <= minimum_stock')
   end
