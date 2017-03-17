@@ -60,6 +60,13 @@
 	<br>
 	<br>
 
+	<%= label_tag 'Tipo de pago' %>
+	<%= select_tag(:typo_pago,
+		       options_for_select([['Efectivo', 1], ['Redcompra', 2]])) %>
+
+	<br>
+	<br>
+
 	<%= submit_tag('Vender', class: 'btn btn-success') %>
 	<%= link_to 'Cotizacion', quotations_index_path, class: 'btn btn-success' %>
       <% end %>
