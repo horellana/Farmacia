@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'low_stock/index'
+
   get 'quotations/index'
 
   get 'foo/login'
