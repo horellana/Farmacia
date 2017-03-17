@@ -16,20 +16,21 @@ paracetamol:
   presentation: one
   code: '111111111'
 
-tylenol:
-  id: 4
-  name: tylenol
-  provider: one
-  sale_price: 2500
+ibuprofeno:
+  id: 2
+  name: Ibuprofeno
+  provider: two
+  sale_price: 666
   purchase_price: 1
+  # presentation: two
   be: MyString
   isp: MyString
-  category: one
+  category: two
   discount: 1
-  description: 'foo'
-  stock: 7
+  description: 'bar'
+  stock: 5
   minimum_stock: 1
-  code: '000000000'
+  code: '2222222222'
   presentation: one
 
 quitadol:
@@ -48,21 +49,20 @@ quitadol:
   code: '1111111111'
   presentation: one
 
-ibuprofeno:
-  id: 2
-  name: Ibuprofeno
-  provider: two
-  sale_price: 666
+tylenol:
+  id: 4
+  name: tylenol
+  provider: one
+  sale_price: 2500
   purchase_price: 1
-  # presentation: two
   be: MyString
   isp: MyString
-  category: two
+  category: one
   discount: 1
-  description: 'bar'
-  stock: 5
+  description: 'foo'
+  stock: 7
   minimum_stock: 1
-  code: '2222222222'
+  code: '000000000'
   presentation: one
 
 ibuprofeno:
