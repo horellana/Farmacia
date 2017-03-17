@@ -8,8 +8,10 @@ class SearchProductService
 
     if product
       equivalents = Product
-                    .where(medicinal_ingredient: product.medicinal_ingredient)
-                    .where.not(id: product.id)
+                    .where(id: PrincipleDetail
+                            .select(:product_id)
+                            .where(principle: product.principles))
+                    .where.not(id: product)
 
       return product, equivalents
     end

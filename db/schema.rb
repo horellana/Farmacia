@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316160922) do
+ActiveRecord::Schema.define(version: 20170317180159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,10 @@ ActiveRecord::Schema.define(version: 20170316160922) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "laboratories", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "offices", force: :cascade do |t|
     t.integer  "phone"
     t.string   "sii_code"
@@ -108,6 +112,15 @@ ActiveRecord::Schema.define(version: 20170316160922) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "presentation_details", force: :cascade do |t|
+    t.integer  "presentation_id"
+    t.integer  "product_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["presentation_id"], name: "index_presentation_details_on_presentation_id", using: :btree
+    t.index ["product_id"], name: "index_presentation_details_on_product_id", using: :btree
   end
 
   create_table "presentations", force: :cascade do |t|
@@ -138,11 +151,13 @@ ActiveRecord::Schema.define(version: 20170316160922) do
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "name"
     t.string   "code"
+    t.integer  "presentation_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["presentation_id"], name: "index_products_on_presentation_id", using: :btree
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 
@@ -245,10 +260,13 @@ ActiveRecord::Schema.define(version: 20170316160922) do
   add_foreign_key "carts", "transactions"
   add_foreign_key "inventories", "offices"
   add_foreign_key "inventories", "products"
+  add_foreign_key "presentation_details", "presentations"
+  add_foreign_key "presentation_details", "products"
   add_foreign_key "presentations", "products"
   add_foreign_key "principle_details", "principles"
   add_foreign_key "principle_details", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "presentations"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
   add_foreign_key "transaction_details", "products"

@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar Laboratorio
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag(search_laboratories_path, method: :get, remote: true) do %>
+      <%= autocomplete_field_tag :search_laboratory_field, '', autocomplete_laboratory_name_laboratories_path %>
+      <%= submit_tag('Buscar', class: 'btn btn-default') %>
+    <% end %>
+
+    <div id="search_laboratory_result">
+    </div>
+  </div>
+</div>

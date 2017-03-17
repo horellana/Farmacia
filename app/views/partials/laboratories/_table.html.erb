@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+
+    <th>
+      Nombre
+    </th>
+
+  </thead>
+
+  <tbody>
+    <% for laboratory in laboratories do %>
+	    <%= render 'partials/laboratories/table/row', laboratory: laboratory %>
+    <% end %>
+  </tbody>
+</table>

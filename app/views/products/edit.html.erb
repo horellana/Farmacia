@@ -18,14 +18,12 @@
   <div class="panel-heading">
     Editar producto
   </div>
-  
-  
+
+
   <div class="panel-body">
     <%= form_for @product do |f| %>
-     	
-     	
-     	
-    	<div class="col-md-4">
+
+	<div class="col-md-4">
 	<div class="panel-group">
 	  <div class="panel panel-default">
 	    <div class="panel-body">Infromacion
@@ -34,23 +32,23 @@
 		    <%= f.label :nombre %><br>
 		    <%= f.text_field :name %>
 		  </p>
-		  
+
 		  <p>
 		    <%= f.label(:isp, "Instituto de Salud Pública de Chile") %>
 		    <%= f.text_field(:isp) %>
 		  </p>
-		  
+
 		 <p>
 		    <%= f.label :descripcion %><br>
 		    <%= f.text_area :description %>
-		    
+
 		  </p>
-<!--	
+<!--
 	      <p>
 		 <#= f.label :Stock %><br>
 		<#= f.text_field :stock %>
 	      </p>
-	     
+
 	      <p>
 		 <#= f.label :Min_Stock %><br>
 		<#= f.text_field :min_stock %>
@@ -61,19 +59,19 @@
 		    <%= label_tag(:product_be, "Es bio equivalente") %>
 		    <%= check_box_tag(:product_be) %>
 		  </p>
-			
-			</div>	
+
+			</div>
 		</div>
 	     </div>
 	  </div>
-	  
-	 
+
+
 
 
 	<div class="col-md-4">
 	<div class="panel panel-default">
 	    <div class="panel-body">Dinero
-	    
+
 		   <p>
 		  <%= f.label :descuento %><br>
 		  <%= f.text_field :discount %>
@@ -100,27 +98,27 @@
 	  </div>
 	</div>
 
-	
-	
-	
-	
+
+
+
+
 	<div class="col-md-3">
 	<div class="panel panel-default">
 	    <div class="panel-body">Categorias
-	    
+
 		  <p>
 		    <%= f.label 'Nombre categoria' %> <br>
 		    <%= text_field_tag :category_descripcion %>
 		  </p>
 		   <p>
 		    <%= f.label :presentation_id %> <br>
-		    <%= f.text_field :presentation_id %>
+		    <%= text_field_tag :presentation %>
 		  </p>
 		  <p>
-		    <%= f.label :medicinal_ingredient_id %> <br>
-		    <%= f.text_field :medicinal_ingredient_id %>
+		    <%= f.label :principle_id %> <br>
+		    <%= text_field_tag :principles %>
 		  </p>
-	
+
 		 <p>
 		    <%= f.label :provider_id %> <br>
 		    <%= f.text_field :provider_id %>
@@ -128,11 +126,11 @@
 	</div>
 	  </div>
 	</div>
-	
 
-	
-	
-	
+
+
+
+
 	  <p>
 	    <%= f.submit %>
 	  </p>
@@ -141,4 +139,3 @@
       </div>
   </div>
 <% end %>
-

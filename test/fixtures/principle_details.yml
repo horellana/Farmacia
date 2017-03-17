@@ -1,0 +1,19 @@
+one:
+  product_id: 1
+  principle_id: 1
+
+two:
+  product_id: 2
+  principle_id: 1
+
+three:
+  product_id: 3
+  principle_id: 1
+
+four:
+  product_id: 4
+  principle_id: 1
+
+five:
+  product_id: 5
+  principle_id: 2

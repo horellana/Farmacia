@@ -3,7 +3,7 @@
 one:
   office: one
   product_id: 1
-  stock: 7
+  stock: 0
   minimum_stock: 1
 
 two:
@@ -22,4 +22,10 @@ four:
   office: one
   product_id: 4
   stock: 3
+  minimum_stock: 2
+
+five:
+  office: one
+  product_id: 5
+  stock: 60
   minimum_stock: 2

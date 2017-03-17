@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'low_stock/index'
+
   get 'quotations/index'
 
   get 'foo/login'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   resources :principles
   resources :presentations
   resources :clients
+  resources :laboratories
   resources :transactions do
     get 'ticket'
   end
@@ -42,6 +45,10 @@ Rails.application.routes.draw do
   resources :categories do
     get :autocomplete_category_description, on: :collection
   end
+  
+  resources :laboratories do
+    get :autocomplete_laboratory_name, on: :collection
+  end
 
   resources :providers do
     get :autocomplete_provider_name, on: :collection
@@ -53,6 +60,7 @@ Rails.application.routes.draw do
   get 'search_provider/index'
   get 'search_client/index'
   get 'search_principle/index'
+  get 'search_laboratory/index'
 
 
   get 'search/users', to: 'search_users#index', as: 'search_users'
@@ -62,6 +70,7 @@ Rails.application.routes.draw do
   get 'search/providers', to: 'search_provider#index', as: 'search_providers'
   get 'search/clients', to: 'search_client#index', as: 'search_clients'
   get 'search/principles', to: 'search_principle#index', as: 'search_principles'
+  get 'search/laboratories', to: 'search_laboratory#index', as: 'search_laboratories'
 
 
   resources :users

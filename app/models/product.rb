@@ -1,7 +1,13 @@
 class Product < ApplicationRecord
+  has_many :principle_details
+  has_many :principles, through: :principle_details
+
+  belongs_to :presentation
+
+  # has_many :presentation_details
+  # has_many :presentations, through: :presentation_details
+
   belongs_to :provider, optional: true
-  belongs_to :principle, optional: true
-  belongs_to :presentation, optional: true
   belongs_to :category, optional: true
 
   has_one :inventory, autosave: true, dependent: :delete
@@ -16,7 +22,7 @@ class Product < ApplicationRecord
   validates :discount, numericality: { only_integer: true }
 
   validates :category, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  validates :medicinal_ingredient, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates :principles, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :provider, presence: {case_sensitive: false ,message: "no puede estar vacio"}
 
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
@@ -35,9 +41,13 @@ class Product < ApplicationRecord
     where('name ilike ?', "%#{name}%")
   end
 
-  def self.match_medicinal_ingredient(mi)
-    joins(:medicinal_ingredient)
-      .where('medicinal_ingredient.name ilike ?', "%#{mi}%")
+  def self.low_stock
+    where(id: Inventory.low_stock)
+  end
+
+  def self.match_principle(mi)
+    joins(:principle)
+      .where('principle.name ilike ?', "%#{mi}%")
   end
 
   def tax
@@ -58,6 +68,10 @@ class Product < ApplicationRecord
 
   def stock
     inventory.stock
+  end
+
+  def minimum_stock
+    inventory.minimum_stock
   end
 
   def decrease_stock(n=1)

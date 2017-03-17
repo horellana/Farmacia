@@ -11,16 +11,18 @@
   </tbody>
 </table>
 
-<h3>
-  Bioequivalentes
-</h3>
+<% if equivalents.length > 0 %>
+  <h3>
+    Bioequivalentes
+  </h3>
 
-<table class="table">
-  <%= render 'partials/products/table/headers' %>
+  <table class="table">
+    <%= render 'partials/products/table/headers' %>
 
-  <tbody>
-    <% equivalents.each do |e| %>
-      <%= render 'partials/products/table/row', product: e %>
-    <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% equivalents.each do |e| %>
+	<%= render 'partials/products/table/row', product: e %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
