@@ -62,6 +62,10 @@ class Product < ApplicationRecord
     inventory.stock
   end
 
+  def minimum_stock
+    inventory.minimum_stock
+  end
+
   def decrease_stock(n=1)
     inventory.decrease_stock(n)
   end

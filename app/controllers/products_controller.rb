@@ -77,6 +77,8 @@ class ProductsController < ApplicationController
     get_relations_from_form(product, params)
     set_attributes_from_form(product, params)
 
+    puts "minimum_stock = #{params[:minimum_stock]}"
+
     inventory = Inventory.new stock: params[:stock],
                               minimum_stock: params[:minimum_stock],
                               office: current_office
