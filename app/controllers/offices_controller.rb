@@ -17,13 +17,26 @@ class OfficesController < ApplicationController
 
 
   def create
+    puts "#{params[:office][:hour_in]}"
+
+
     @office = Office.new(address: params[:office][:address],
                          sii_code: params[:office][:sii_code],
                          phone: params[:office][:phone],
                          description: params[:office][:description],
-                         hour_in: params[:office][:hour_in],
-                         hour_out: params[:office][:hour_out],
+                         # hour_in: params[:office][:hour_in],
+                         # hour_out: params[:office][:hour_out],
                         )
+
+    hora_entrada = params[:office]['hour_in(4i)']
+    min_entrada = params[:office]['hour_in(5i)']
+
+    hora_salida = params[:office]['hour_out(4i)']
+    min_salida = params[:office]['hour_out(5i)']
+
+    @office.hour_in = Time.parse(DateTime.parse("#{hora_entrada}:#{min_entrada}").to_s)
+    @office.hour_out = Time.parse(DateTime.parse("#{hora_salida}:#{min_salida}").to_s)
+
     if @office.save
       flash[:notice] = "Cliente creado con exito"
       redirect_to @office
