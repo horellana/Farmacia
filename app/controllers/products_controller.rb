@@ -36,6 +36,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     set_attributes_from_form(@product, params)
+    set_relations_from_form(@product, params)
+
     @product.inventory.stock = params[:stock]
     @product.inventory.minimum_stock = params[:minimum_stock]
 
@@ -66,16 +68,30 @@ class ProductsController < ApplicationController
     product.discount = params[:product][:discount].to_i
   end
 
-  def get_relations_from_form(product, params)
-    product.category = Category.find_by(description: params[:category_descripcion])
-    product.laboratory = Laboratory.find_by(name: params[:product][:laboratory_id])
-    product.principles = Principle.from_string(params[:principles])
-    product.provider = Provider.find_by(name: params[:product][:provider_id])
-    product.presentation = Presentation.find_by(name: params[:presentation_id])
+  def set_relations_from_form(product, params)
+    if params[:category_descripcion]
+      product.category = Category.find_by(description: params[:category_descripcion])
+    end
+
+    if params[:product][:laboratory_id]
+      product.laboratory = Laboratory.find_by(name: params[:product][:laboratory_id])
+    end
+
+    if params[:principles]
+      product.principles = Principle.from_string(params[:principles])
+    end
+
+    if params[:product][:provider_id]
+      product.provider = Provider.find_by(name: params[:product][:provider_id])
+    end
+
+    if params[:presentation_id]
+      product.presentation = Presentation.find_by(name: params[:presentation_id])
+    end
   end
 
   def create_from_form(product, params)
-    get_relations_from_form(product, params)
+    set_relations_from_form(product, params)
     set_attributes_from_form(product, params)
 
     puts "minimum_stock = #{params[:minimum_stock]}"

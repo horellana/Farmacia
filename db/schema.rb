@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20170317192851) do
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
     t.integer  "product_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "quantity",   default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "quantity"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
     t.index ["product_id"], name: "index_cart_items_on_product_id", using: :btree
   end
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 20170317192851) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "doses", force: :cascade do |t|
+    t.integer  "kind"
+    t.string   "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "inventories", force: :cascade do |t|
     t.integer  "office_id"
     t.integer  "product_id"
@@ -98,6 +105,12 @@ ActiveRecord::Schema.define(version: 20170317192851) do
 
   create_table "laboratories", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "medicinal_ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "offices", force: :cascade do |t|
@@ -148,20 +161,24 @@ ActiveRecord::Schema.define(version: 20170317192851) do
     t.integer  "provider_id"
     t.integer  "sale_price"
     t.integer  "purchase_price"
-    t.integer  "stock"
-    t.integer  "minimum_stock"
+    t.integer  "medicinal_ingredient_id"
+    t.integer  "dose_id"
     t.string   "be"
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "name"
+    t.integer  "stock"
+    t.integer  "minimum_stock"
     t.string   "code"
     t.integer  "presentation_id"
     t.integer  "laboratory_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree
     t.index ["laboratory_id"], name: "index_products_on_laboratory_id", using: :btree
+    t.index ["medicinal_ingredient_id"], name: "index_products_on_medicinal_ingredient_id", using: :btree
     t.index ["presentation_id"], name: "index_products_on_presentation_id", using: :btree
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
@@ -193,6 +210,11 @@ ActiveRecord::Schema.define(version: 20170317192851) do
     t.index ["checkout_id"], name: "index_quotations_on_checkout_id", using: :btree
   end
 
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "transaction_details", force: :cascade do |t|
     t.integer  "transaction_id"
     t.integer  "product_id"
@@ -216,13 +238,16 @@ ActiveRecord::Schema.define(version: 20170317192851) do
     t.float    "iva"
     t.integer  "discount"
     t.integer  "total_amount"
+    t.string   "client_rut"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "client_id"
     t.integer  "user_id"
+    t.integer  "cart_id"
     t.integer  "box_movement_id"
     t.integer  "payed_amount"
     t.index ["box_movement_id"], name: "index_transactions_on_box_movement_id", using: :btree
+    t.index ["cart_id"], name: "index_transactions_on_cart_id", using: :btree
     t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
     t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
@@ -271,7 +296,9 @@ ActiveRecord::Schema.define(version: 20170317192851) do
   add_foreign_key "principle_details", "principles"
   add_foreign_key "principle_details", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "doses"
   add_foreign_key "products", "laboratories"
+  add_foreign_key "products", "medicinal_ingredients"
   add_foreign_key "products", "presentations"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
@@ -279,6 +306,7 @@ ActiveRecord::Schema.define(version: 20170317192851) do
   add_foreign_key "transaction_details", "transactions"
   add_foreign_key "transaction_details", "users"
   add_foreign_key "transactions", "box_movements"
+  add_foreign_key "transactions", "carts"
   add_foreign_key "transactions", "clients"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "job_titles"
