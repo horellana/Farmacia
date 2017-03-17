@@ -14,6 +14,7 @@ paracetamol:
   stock: 7
   minimum_stock: 1
   presentation: one
+  code: '111111111'
 
 tylenol:
   id: 4
