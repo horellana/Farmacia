@@ -41,19 +41,7 @@
 		 <p>
 		    <%= f.label :descripcion %><br>
 		    <%= f.text_area :description %>
-
 		  </p>
-<!--
-	      <p>
-		 <#= f.label :Stock %><br>
-		<#= f.text_field :stock %>
-	      </p>
-
-	      <p>
-		 <#= f.label :Min_Stock %><br>
-		<#= f.text_field :min_stock %>
-	      </p>
--->
 
 		  <p>
 		    <%= label_tag(:product_be, "Es bio equivalente") %>
@@ -76,14 +64,17 @@
 		  <%= f.label :descuento %><br>
 		  <%= f.text_field :discount %>
 		  </p>
-		  <p>
-		    <%= f.label :precio_de_venta %><br>
-		    <%= f.text_field :sale_price %>
-		  </p>
+		  
 		  <p>
 		    <%= f.label :precio_de_compra %><br>
 		    <%= f.text_field :purchase_price %>
 		  </p>
+		  
+		  <p>
+		    <%= f.label :precio_de_venta %><br>
+		    <%= f.text_field :sale_price %>
+		  </p>
+
 
 	    <p>
 	      <%= f.label :stock %><br>
@@ -118,6 +109,11 @@
 		    <%= f.label :principle_id %> <br>
 		    <%= text_field_tag :principles %>
 		  </p>
+		  
+		  <p>
+		      <%= f.label :laboratory_id %> <br>
+		      <%= f.text_field :laboratory_id %>
+	      </p>
 
 		 <p>
 		    <%= f.label :provider_id %> <br>
