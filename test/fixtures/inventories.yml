@@ -8,7 +8,7 @@ one:
 
 two:
   office: two
-  product_id: 2
+  product_id: 3
   stock: 5
   minimum_stock: 1
 
