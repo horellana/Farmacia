@@ -41,6 +41,10 @@ class Product < ApplicationRecord
     where('name ilike ?', "%#{name}%")
   end
 
+  def self.low_stock
+    where(id: Inventory.low_stock)
+  end
+
   def self.match_principle(mi)
     joins(:principle)
       .where('principle.name ilike ?', "%#{mi}%")
