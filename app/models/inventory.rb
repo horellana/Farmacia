@@ -9,7 +9,7 @@ class Inventory < ApplicationRecord
   validates :minimum_stock, numericality: { only_integer: true }
 
   def self.low_stock
-    where('stock <= minimum_stock')
+    select('product_id').where('stock <= minimum_stock')
   end
 
   def increase_stock(n=1)

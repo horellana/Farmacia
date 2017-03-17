@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+<% if @products.length > 0 %>
+>>>>>>> c5c79a91f1cb7bcab34344c71dd9b4019dbef783
 <div class="panel panel-default">
   <div class="panel-heading">
   </div>
@@ -24,8 +29,33 @@
   Precio compra
       </th>
     </thead>
-  <tbody>
-  <% @products.each do |ls| %>
-  </tbody>
+    <tbody>
+      <% @products.each do |ls| %>
+      <tr>
+        <td>
+          <%= ls.name %>
+        </td>
 
+        <td>
+          <%= ls.principles.first.name %>
+        </td>
+
+        <td>
+          <%= ls.stock %>
+        </td>
+
+        <td>
+          <%= ls.minimum_stock %>
+        </td>
+
+        <td>
+          <%= ls.purchase_price %>
+        </td>
+
+      <%end%>
+    </tr>
+    </tbody>
   </table>
+</div>
+<% end %>
+
