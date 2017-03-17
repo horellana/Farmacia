@@ -44,22 +44,23 @@
       <% @inventories.each do |inv| %>
       <tr>
         <td>
-
+        <%=  inv.product.code %>
         </td>
 
         <td>
-
+        <%=  inv.product.name %>
         </td>
 
        <td>
+        <%= inv.product.laboratory %>
         </td>
 
         <td>
-
+      <%=    inv.product.presentation.name %>
         </td>
 
         <td>
-
+        <%=  inv.product.sale_price %>
         </td>
 
         <td>
@@ -71,11 +72,11 @@
         </td>
 
         <td>
-
+        <%=  inv.product.isp %>
         </td>
 
         <td>
-          
+        <%=  inv.product.be %>
         </td>
 
       <%end%>
