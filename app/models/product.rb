@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   # has_many :presentation_details
   # has_many :presentations, through: :presentation_details
 
+  belongs_to :laboratory, optional: true
   belongs_to :provider, optional: true
   belongs_to :category, optional: true
 
@@ -24,6 +25,8 @@ class Product < ApplicationRecord
   validates :category, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :principles, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :provider, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates :laboratory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+
 
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates_associated :inventory
