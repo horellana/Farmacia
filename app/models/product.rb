@@ -29,7 +29,7 @@ class Product < ApplicationRecord
   validates_associated :inventory
 
   validates :presentation, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  validates_associated :presentations
+  validates_associated :presentation
 
   validates_with NameValidator
 
