@@ -1,0 +1,86 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>
+ Codigo
+      </th>
+
+      <th>
+	Nombre
+      </th>
+
+      <th>
+	Laboratorio
+      </th>
+
+      <th>
+        Presentacion
+      </th>
+
+      <th>
+  Precio Venta
+      </th>
+
+      <th>
+  Cantidad
+      </th>
+
+      <th>
+  Total Inventario
+      </th>
+
+      <th>
+  ISP
+      </th>
+
+      <th>
+  BE
+      </th>
+    </thead>
+    <tbody>
+      <% @inventories.each do |inv| %>
+      <tr>
+        <td>
+        <%=  inv.product.code %>
+        </td>
+
+        <td>
+        <%=  inv.product.name %>
+        </td>
+
+       <td>
+        <%= inv.product.laboratory %>
+        </td>
+
+        <td>
+      <%=    inv.product.presentation.name %>
+        </td>
+
+        <td>
+        <%=  inv.product.sale_price %>
+        </td>
+
+        <td>
+          <%= inv.stock %>
+        </td>
+
+        <td>
+          <%= inv.total %>
+        </td>
+
+        <td>
+        <%=  inv.product.isp %>
+        </td>
+
+        <td>
+        <%=  inv.product.be %>
+        </td>
+
+      <%end%>
+    </tr>
+  </tbody>
+  </table>
+</div>

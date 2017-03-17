@@ -54,7 +54,7 @@
 		  <li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
 		<% end %>
 		<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
-		
+
 		<li class="divider"></li>
 		<% if current_user.admin? %>
 		  <li> <%= link_to 'Crear Laboratorio', new_laboratory_path %>   </li>
@@ -154,6 +154,9 @@
 	  <ul class="dropdown-menu">
 	    <li>
 	      <%= link_to 'Reporte Bajo Stock', low_stock_index_path %>
+	    </li>
+      <li>
+	      <%= link_to 'Inventario', inventories_index_path %>
 	    </li>
 	  </ul>
 	</li>
