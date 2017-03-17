@@ -1,6 +1,7 @@
 class Presentation < ApplicationRecord
+  belongs_to :products, required: false
 
-  validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates :name, presence: true
 
   scope :match_name, ->(name) do
     where('name ilike ?', "%#{name}%")
