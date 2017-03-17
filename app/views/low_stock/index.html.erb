@@ -24,8 +24,28 @@
   Precio compra
       </th>
     </thead>
-  <tbody>
-  <% @products.each do |ls| %>
-  </tbody>
+    <tbody>
+      <% @products.each do |ls| %>
+      <tr>
+        <td>
+          $<%= ls.name %>
+        </td>
 
+        <td>
+          $<%= ls.principles.first.name %>
+        </td>
+
+        <td>
+        </td>
+
+        <td>
+        </td>
+
+        <td>
+        </td>
+
+      <%end%>
+    </tr>
+    </tbody>
   </table>
+</div>
