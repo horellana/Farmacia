@@ -1,3 +1,5 @@
+
+<% if @products.length > 0 %>
 <div class="panel panel-default">
   <div class="panel-heading">
   </div>
@@ -28,20 +30,23 @@
       <% @products.each do |ls| %>
       <tr>
         <td>
-          $<%= ls.name %>
+          <%= ls.name %>
         </td>
 
         <td>
-          $<%= ls.principles.first.name %>
+          <%= ls.principles.first.name %>
         </td>
 
         <td>
+          <%= ls.stock %>
         </td>
 
         <td>
+          <%= ls.minimum_stock %>
         </td>
 
         <td>
+          <%= ls.purchase_price %>
         </td>
 
       <%end%>
@@ -49,3 +54,4 @@
     </tbody>
   </table>
 </div>
+<% end %>
