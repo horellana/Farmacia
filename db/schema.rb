@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317031251) do
+ActiveRecord::Schema.define(version: 20170317152059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -166,9 +166,11 @@ ActiveRecord::Schema.define(version: 20170317031251) do
     t.integer  "stock"
     t.integer  "minimum_stock"
     t.string   "code"
+    t.integer  "presentation_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["dose_id"], name: "index_products_on_dose_id", using: :btree
     t.index ["medicinal_ingredient_id"], name: "index_products_on_medicinal_ingredient_id", using: :btree
+    t.index ["presentation_id"], name: "index_products_on_presentation_id", using: :btree
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 
@@ -287,6 +289,7 @@ ActiveRecord::Schema.define(version: 20170317031251) do
   add_foreign_key "products", "categories"
   add_foreign_key "products", "doses"
   add_foreign_key "products", "medicinal_ingredients"
+  add_foreign_key "products", "presentations"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
   add_foreign_key "transaction_details", "products"
