@@ -2,8 +2,20 @@
 
 one:
   presentation: one
-  product: one
+  product_id: 1
 
 two:
   presentation: two
-  product: two
+  product_id: 2
+
+three:
+  presentation: one
+  product_id: 3
+
+four:
+  presentation: one
+  product_id: 4
+
+five:
+  presentation: one
+  product_id: 5

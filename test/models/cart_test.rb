@@ -11,7 +11,7 @@ class CartTest < ActiveSupport::TestCase
   test 'Se pueden agregar productos a un carro' do
     cart = Cart.create
 
-    cart.add(paracetamol)
+    cart.add(paracetamol, 1)
 
     assert_equal cart.items.length, 1
     assert_equal paracetamol, cart.items.first.product
@@ -19,7 +19,7 @@ class CartTest < ActiveSupport::TestCase
     assert_equal 1, cart.items.first.quantity
     assert cart.items.first.persisted?
 
-    cart.add(paracetamol)
+    cart.add(paracetamol, 1)
 
     assert_equal cart.items.length, 1
     assert_equal 5, paracetamol.stock

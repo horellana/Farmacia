@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   has_many :principles, through: :principle_details
 
   has_many :presentation_details
-  belongs_to :presentations, through: :presentation_details
+  has_many :presentations, through: :presentation_details
 
   belongs_to :provider, optional: true
   belongs_to :category, optional: true
