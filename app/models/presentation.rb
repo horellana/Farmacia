@@ -1,5 +1,6 @@
 class Presentation < ApplicationRecord
-  belongs_to :products, required: false
+  has_many :presentation_details
+  belongs_to :products, through: :presentation_details
 
   validates :name, presence: true
 

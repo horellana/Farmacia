@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     # si es que no se hizo una transaccion
     # cart.drop unless cart.transactionn
 
-    unless transaction
+    unless cart.transactionn
       cart.drop
       cart.destroy
     end

@@ -2,8 +2,10 @@ class Product < ApplicationRecord
   has_many :principle_details
   has_many :principles, through: :principle_details
 
+  has_many :presentation_details
+  belongs_to :presentations, through: :presentation_details
+
   belongs_to :provider, optional: true
-  has_one :presentation, required: true
   belongs_to :category, optional: true
 
   has_one :inventory, autosave: true, dependent: :delete
@@ -24,8 +26,8 @@ class Product < ApplicationRecord
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates_associated :inventory
 
-  validates :presentation, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  validates_associated :presentation
+  validates :presentations, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates_associated :presentations
 
   validates_with NameValidator
 
