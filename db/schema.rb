@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317031251) do
+ActiveRecord::Schema.define(version: 20170317152059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,11 +147,13 @@ ActiveRecord::Schema.define(version: 20170317031251) do
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "name"
     t.string   "code"
+    t.integer  "presentation_id"
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+    t.index ["presentation_id"], name: "index_products_on_presentation_id", using: :btree
     t.index ["provider_id"], name: "index_products_on_provider_id", using: :btree
   end
 
@@ -260,6 +262,7 @@ ActiveRecord::Schema.define(version: 20170317031251) do
   add_foreign_key "principle_details", "principles"
   add_foreign_key "principle_details", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "presentations"
   add_foreign_key "products", "providers"
   add_foreign_key "quotations", "checkouts"
   add_foreign_key "transaction_details", "products"
