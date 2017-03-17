@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :presentations
   resources :clients
   resources :laboratories
+  resources :offices
   resources :transactions do
     get 'ticket'
   end
@@ -53,6 +54,10 @@ Rails.application.routes.draw do
   resources :providers do
     get :autocomplete_provider_name, on: :collection
   end
+  
+  resources :offices do
+    get :autocomplete_office_address, on: :collection
+  end
 
   get 'search_product/index'
   get 'search_presentation/index'
@@ -61,6 +66,8 @@ Rails.application.routes.draw do
   get 'search_client/index'
   get 'search_principle/index'
   get 'search_laboratory/index'
+  get 'search_office/index'
+
 
 
   get 'search/users', to: 'search_users#index', as: 'search_users'
@@ -71,6 +78,8 @@ Rails.application.routes.draw do
   get 'search/clients', to: 'search_client#index', as: 'search_clients'
   get 'search/principles', to: 'search_principle#index', as: 'search_principles'
   get 'search/laboratories', to: 'search_laboratory#index', as: 'search_laboratories'
+  get 'search/offices', to: 'search_office#index', as: 'search_offices'
+
 
 
   resources :users

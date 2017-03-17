@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Buscar Sucursal
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag(search_offices_path, method: :get, remote: true) do %>
+      <%= autocomplete_field_tag :search_office_field, '', autocomplete_office_address_offices_path %>
+      <%= submit_tag('Buscar', class: 'btn btn-default') %>
+    <% end %>
+
+    <div id="search_office_result">
+    </div>
+  </div>
+</div>

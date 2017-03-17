@@ -1,0 +1,30 @@
+<tr>
+
+  <td>
+    <%= office.address %>
+  </td>
+
+  <td>
+    <%= office.phone %>
+  </td>
+  
+    <td>
+    <%= office.sii_code %>
+  </td>
+  
+    <td>
+    <%= office.hour_in %>
+  </td>
+  
+    <td>
+    <%= office.hour_out %>
+  </td>
+  
+
+  
+  <td>
+      <%= hidden_field_tag(:search_office_field, office.address) %>
+      <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-ok' %>
+  </td>
+
+</tr>
