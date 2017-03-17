@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   has_many :principles, through: :principle_details
 
   belongs_to :provider, optional: true
-  belongs_to :presentation, optional: true
+  has_one :presentation, required: true
   belongs_to :category, optional: true
 
   has_one :inventory, autosave: true, dependent: :delete
@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :discount, numericality: { only_integer: true }
 
   validates :category, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-  validates :principle, presence: {case_sensitive: false ,message: "no puede estar vacio"}
+  validates :principles, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :provider, presence: {case_sensitive: false ,message: "no puede estar vacio"}
 
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}

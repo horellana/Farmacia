@@ -8,4 +8,8 @@ class Principle < ApplicationRecord
     where('name ilike ?', "%#{name}%")
   end
 
+  def self.from_string(string)
+    names = string.split('-')
+    return where(name: names)
+  end
 end
