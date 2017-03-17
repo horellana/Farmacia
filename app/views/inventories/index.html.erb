@@ -1,5 +1,3 @@
-<% if @products.length > 0 %>
-
 <div class="panel panel-default">
   <div class="panel-heading">
   </div>
@@ -7,51 +5,81 @@
   <table class="table">
     <thead>
       <th>
-	Producto
+ Codigo
       </th>
 
       <th>
-	Principio activo
+	Nombre
       </th>
 
       <th>
-	Stock Actual
+	Laboratorio
       </th>
 
       <th>
-	Stock minimo
+        Presentacion
       </th>
 
       <th>
-  Precio compra
+  Precio Venta
+      </th>
+
+      <th>
+  Cantidad
+      </th>
+
+      <th>
+  Total Inventario
+      </th>
+
+      <th>
+  ISP
+      </th>
+
+      <th>
+  BE
       </th>
     </thead>
     <tbody>
-      <% @products.each do |ls| %>
+      <% @inventories.each do |inv| %>
       <tr>
         <td>
-          <%= ls.name %>
+
         </td>
 
         <td>
-          <%= ls.principles.first.name %>
+
+        </td>
+
+       <td>
         </td>
 
         <td>
-          <%= ls.stock %>
+
         </td>
 
         <td>
-          <%= ls.minimum_stock %>
+
         </td>
 
         <td>
-          <%= ls.purchase_price %>
+          <%= inv.stock %>
+        </td>
+
+        <td>
+          <%= inv.total %>
+        </td>
+
+        <td>
+
+        </td>
+
+        <td>
+          
         </td>
 
       <%end%>
     </tr>
-    </tbody>
+  </tbody>
   </table>
 </div>
-<% end %>

@@ -4,5 +4,5 @@ class LowStockController < ApplicationController
     if @products.length <= 0
       flash[:notice] = "Todos los productos estan sobre el stock minimo"
     end
-    end
+  end
 end

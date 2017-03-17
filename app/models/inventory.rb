@@ -12,6 +12,10 @@ class Inventory < ApplicationRecord
     select('product_id').where('stock <= minimum_stock')
   end
 
+  def total
+    stock * product.sale_price
+  end
+
   def increase_stock(n=1)
     self.stock += n
     save
