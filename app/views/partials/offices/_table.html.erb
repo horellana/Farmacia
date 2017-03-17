@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <th>
+      Direccion
+    </th>
+
+    <th>
+      Fono
+    </th>
+
+    <th>
+      Codigo ssi
+    </th>
+
+    <th>
+      Hora Inicio
+    </th>
+
+    <th>
+      Hora de Salida
+    </th>
+
+  </thead>
+
+  <tbody>
+    <% for office in offices do %>
+	<%= render 'partials/offices/table/row', office: office %>
+    <% end %>
+  </tbody>
+</table>

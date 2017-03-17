@@ -1,0 +1,35 @@
+<tr>
+
+  <td>
+    <%= link_to office.address, office_path(office) %>
+  </td>
+  
+  <td>
+    <%= office.phone %>
+  </td>
+  
+  <td>
+    <%= office.sii_code %>
+  </td>
+  
+  <td>
+    <%= office.hour_in %>
+  </td>
+  
+  <td>
+    <%= office.hour_out %>
+  </td>
+  
+  
+  
+   <td>
+    <%= link_to 'Editar', edit_office_path(office) %>
+   </td>
+  
+  <td>
+       <%= link_to 'Eliminar', office_path(office),
+              method: :delete,
+              data: { confirm: 'Estas Seguro?' } %>
+  </td>
+  
+</tr>

@@ -1,0 +1,67 @@
+<% if @office.errors.any? %>
+  <div class="alert alert-danger">
+    <%= pluralize(@office.errors.count, "errors") %>
+
+    <ul>
+      <% @office.errors.full_messages.each do |message| %>
+	<li>
+	  <%= message %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    Crear Sucursal
+  </div>
+
+  <div class="panel-body">
+    <%= form_for @office, method: :create do |f| %>
+    <div class="row">
+
+    <div class="col-md-4">
+
+       <p>
+         <%= f.label :address %><br>
+         <%= f.text_field :address %>
+       </p>
+       <p>
+         <%= f.label :sii_code %><br>
+         <%= f.text_field :sii_code %>
+       </p>
+       <p>
+         <%= f.label :phone %><br>
+         <%= f.text_field :phone %>
+       </p>
+
+
+       <p>
+         <%= f.label :description %><br>
+         <%= f.text_field :description %>
+       </p>
+
+
+       <p>
+         <%= f.label :hour_in %><br />
+         <%= f.time_select :hour_in, :default => {:hour => '10', :minute => '30'}  %>
+       </p>
+
+
+       <p>
+         <%= f.label :hour_out %><br>
+         <%= f.time_select :hour_out, :default => {:hour => '10', :minute => '30'}  %>
+       </p>
+
+
+           <p>
+            <%= f.submit %>
+           </p>
+     </div>
+
+     <% end %>
+  </div>
+ </div>
+</div>
