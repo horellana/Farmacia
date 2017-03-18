@@ -40,7 +40,6 @@ class ProductsController < ApplicationController
     set_attributes_from_form(@product, params)
     set_relations_from_form(@product, params)
 
-
     if @product.save
       redirect_to @product
     else
@@ -78,22 +77,6 @@ class ProductsController < ApplicationController
     product
       .inventory
       .update(params[:product][:inventory_attributes].permit(:stock, :minimum_stock))
-
-  end
-
-  def create_from_form(product, params)
-    set_relations_from_form(product, params)
-    set_attributes_from_form(product, params)
-
-    puts "minimum_stock = #{params[:minimum_stock]}"
-
-    inventory = Inventory.new stock: params[:stock],
-                              minimum_stock: params[:minimum_stock],
-                              office: current_office
-
-    product.inventory = inventory
-
-    return product
   end
 
   def new_product(product=Product.new)
