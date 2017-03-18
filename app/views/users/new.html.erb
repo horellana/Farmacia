@@ -1,18 +1,4 @@
-<% if @user.errors.any? %>
-  <div class="alert alert-danger">
-    <%= pluralize(@user.errors.count, "errors") %>
-
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-	<li>
-	  <%= message %>
-	</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
+<%= render 'partials/shared/list_errors', object: @user %>
 
 <div class="row center-xs">
   <div class="col-xs-8 col-md-6">

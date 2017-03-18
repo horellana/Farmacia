@@ -1,16 +1,4 @@
-<% if @provider.errors.any? %>
-  <div class="alert alert-danger">
-    <%= pluralize(@provider.errors.count, "errors") %>
-
-    <ul>
-      <% @provider.errors.full_messages.each do |message| %>
-	<li>
-	  <%= message %>
-	</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'partials/shared/list_errors', object: @provider %>
 
 <div class="panel panel-default">
 
@@ -22,58 +10,58 @@
     <%= form_for @provider do |f| %>
       <div class="row">
 
-        <div class="col-md-4">
-          <p>
-            <%= f.label :nombre %><br>
-            <%= f.text_field :name %>
-          </p>
-          <p>
-            <%= f.label :rut %><br>
-            <%= f.text_field :rut %>
-          </p>
-          <p>
-            <%= f.label :nombre_del_negocio %><br>
-            <%= f.text_field :business_name %>
-          </p>
-          <p>
-            <%= f.label :direccion %><br>
-            <%= f.text_field :address %>
-          </p>
-          <p>
-            <%= f.label :fono_1 %><br>
-            <%= f.text_field :phone_one %>
-          </p>
-          <p>
-            <%= f.label :fono_2 %><br>
-            <%= f.text_field :phone_two %>
-          </p>
+	<div class="col-md-4">
+	  <p>
+	    <%= f.label :nombre %><br>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label :rut %><br>
+	    <%= f.text_field :rut %>
+	  </p>
+	  <p>
+	    <%= f.label :nombre_del_negocio %><br>
+	    <%= f.text_field :business_name %>
+	  </p>
+	  <p>
+	    <%= f.label :direccion %><br>
+	    <%= f.text_field :address %>
+	  </p>
+	  <p>
+	    <%= f.label :fono_1 %><br>
+	    <%= f.text_field :phone_one %>
+	  </p>
+	  <p>
+	    <%= f.label :fono_2 %><br>
+	    <%= f.text_field :phone_two %>
+	  </p>
 
 
-        </div>
+	</div>
 
-        <div class="col-md-4">
+	<div class="col-md-4">
 
 
-          <p>
-            <%= f.label :email %><br>
-            <%= f.text_field :email %>
-          </p>
+	  <p>
+	    <%= f.label :email %><br>
+	    <%= f.text_field :email %>
+	  </p>
 
-          <p>
-            <%= f.label :web %><br>
-            <%= f.text_field :web %>
-          </p>
+	  <p>
+	    <%= f.label :web %><br>
+	    <%= f.text_field :web %>
+	  </p>
 
-          <p>
-            <%= f.label :observacion %> <br>
-            <%= f.text_area :observation %>
-          </p>
+	  <p>
+	    <%= f.label :observacion %> <br>
+	    <%= f.text_area :observation %>
+	  </p>
 
-          <p>
-            <%= f.submit %>
-          </p>
-        </div>
-        <p>
+	  <p>
+	    <%= f.submit %>
+	  </p>
+	</div>
+	<p>
 
 
       </div>

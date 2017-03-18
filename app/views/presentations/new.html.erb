@@ -1,16 +1,4 @@
-<% if @presentation.errors.any? %>
-  <div class="alert alert-danger">
-    <%= pluralize(@presentation.errors.count, "errors") %>
-
-    <ul>
-      <% @presentation.errors.full_messages.each do |message| %>
-	<li>
-	  <%= message %>
-	</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'partials/shared/list_errors', object: @presentation %>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -21,15 +9,15 @@
     <%= form_for @presentation do |f| %>
       <div class="row">
 
-        <div class="col-md-4">
-          <p>
-            <%= f.label :name %><br>
-            <%= f.text_field :name %>
-          </p>
+	<div class="col-md-4">
+	  <p>
+	    <%= f.label :name %><br>
+	    <%= f.text_field :name %>
+	  </p>
 
-            <%= f.submit %>
-          </p>
-        </div>
+	    <%= f.submit %>
+	  </p>
+	</div>
 
       </div>
 

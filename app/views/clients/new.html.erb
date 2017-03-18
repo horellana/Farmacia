@@ -1,16 +1,4 @@
-<% if @client.errors.any? %>
-  <div class="alert alert-danger">
-    <%= pluralize(@client.errors.count, "errors") %>
-
-    <ul>
-      <% @client.errors.full_messages.each do |message| %>
-	<li>
-	  <%= message %>
-	</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render 'partials/shared/list_errors', object: @client %>
 
 <div class="panel panel-default">
 
@@ -25,52 +13,52 @@
     <div class="col-md-4">
 
        <p>
-         <%= f.label :nombre %><br>
-         <%= f.text_field :name %>
+	 <%= f.label :nombre %><br>
+	 <%= f.text_field :name %>
        </p>
        <p>
-         <%= f.label :apellido %><br>
-         <%= f.text_field :lastname %>
+	 <%= f.label :apellido %><br>
+	 <%= f.text_field :lastname %>
        </p>
        <p>
-         <%= f.label :rut %><br>
-         <%= f.text_field :rut %>
-       </p>
-
-
-       <p>
-         <%= f.label :Email %><br>
-         <%= f.text_field :email %>
-       </p>
-
-       <p>
-         <%= f.label :direccion %><br>
-         <%= f.text_field :address %>
-       </p>
-
-       <p>
-            <%= f.radio_button :gender, 'M' %>
-            <%= f.label :gender, 'Masculino', :value => 'M' %>
-            <%= f.radio_button :gender, 'F' %>
-            <%= f.label :gender, 'Femenino', :value => 'F' %>
+	 <%= f.label :rut %><br>
+	 <%= f.text_field :rut %>
        </p>
 
 
        <p>
-         <%= f.label :Fecha %><br />
-         <%= f.date_select :birth, :start_year=>1900 %>
+	 <%= f.label :Email %><br>
+	 <%= f.text_field :email %>
+       </p>
+
+       <p>
+	 <%= f.label :direccion %><br>
+	 <%= f.text_field :address %>
+       </p>
+
+       <p>
+	    <%= f.radio_button :gender, 'M' %>
+	    <%= f.label :gender, 'Masculino', :value => 'M' %>
+	    <%= f.radio_button :gender, 'F' %>
+	    <%= f.label :gender, 'Femenino', :value => 'F' %>
        </p>
 
 
        <p>
-         <%= f.label :Tipo %><br>
-         <%= f.text_field :kind %>
+	 <%= f.label :Fecha %><br />
+	 <%= f.date_select :birth, :start_year=>1900 %>
        </p>
 
 
-           <p>
-            <%= f.submit %>
-           </p>
+       <p>
+	 <%= f.label :Tipo %><br>
+	 <%= f.text_field :kind %>
+       </p>
+
+
+	   <p>
+	    <%= f.submit %>
+	   </p>
      </div>
 
      <% end %>
