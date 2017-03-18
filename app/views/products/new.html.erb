@@ -1,17 +1,4 @@
-<% if @product.errors.any? %>
-  <div class="alert alert-danger">
-    <%= pluralize(@product.errors.count, "errors") %>
-
-    <ul>
-      <% @product.errors.full_messages.each do |message| %>
-	<li>
-	  <%= message %>
-	</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render 'partials/shared/list_errors', object: @product %>
 
 <div class="panel panel-default">
 
@@ -68,13 +55,13 @@
 	      <%= f.label :descuento %><br>
 	      <%= f.text_field :discount %>
 	    </p>
-	    
+
 	    <p>
 	      <%= f.label :precio_de_compra %><br>
 	      <%= f.text_field :purchase_price %>
 	    </p>
 
-	    
+
 	    <p>
 	      <%= f.label :precio_de_venta %><br>
 	      <%= f.text_field :sale_price %>
@@ -113,7 +100,7 @@
 	      <%= f.label :principles %> <br>
 	      <%= text_field_tag :principles %>
 	    </p>
-	    
+
 	    <p>
 	      <%= f.label :laboratory_id %> <br>
 	      <%= f.text_field :laboratory_id %>

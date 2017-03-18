@@ -1,17 +1,4 @@
-<% if @box_movement.errors.any? %>
-  <div class="alert alert-danger">
-    <%= pluralize(@box_movement.errors.count, "errors") %>
-
-    <ul>
-      <% @box_movement.errors.full_messages.each do |message| %>
-	<li>
-	  <%= message %>
-	</li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render 'partials/shared/list_errors', object: @box_movement %>
 
 <div class="panel panel-default">
   <div class="panel-body">
