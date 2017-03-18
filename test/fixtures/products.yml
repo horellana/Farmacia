@@ -16,6 +16,7 @@ paracetamol:
   presentation: one
   code: '111111111'
   laboratory: one
+  provider: two
 
 ibuprofeno:
   id: 2

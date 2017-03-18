@@ -1,17 +1,22 @@
 class Product < ApplicationRecord
   has_many :principle_details
-  has_many :principles, through: :principle_details
+  has_many :principles, through: :principle_details, inverse_of: :products
+  accepts_nested_attributes_for :principle_details
 
   belongs_to :presentation
+  accepts_nested_attributes_for :presentation
 
-  # has_many :presentation_details
-  # has_many :presentations, through: :presentation_details
+  belongs_to :laboratory, inverse_of: :products
+  accepts_nested_attributes_for :laboratory
 
-  belongs_to :laboratory, optional: true
-  belongs_to :provider, optional: true
-  belongs_to :category, optional: true
+  belongs_to :provider, inverse_of: :products
+  accepts_nested_attributes_for :provider
 
-  has_one :inventory, autosave: true, dependent: :delete
+  belongs_to :category, inverse_of: :products
+  accepts_nested_attributes_for :category
+
+  has_one :inventory, autosave: true, dependent: :delete, inverse_of: :product
+  accepts_nested_attributes_for :inventory
 
   validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :sale_price, presence: {case_sensitive: false ,message: "no puede estar vacio"}
@@ -26,7 +31,6 @@ class Product < ApplicationRecord
   validates :principles, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :provider, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :laboratory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-
 
   validates :inventory, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates_associated :inventory
@@ -87,5 +91,9 @@ class Product < ApplicationRecord
 
   def identifier
     id.to_s + '_' + name
+  end
+
+  def principles_string
+    principles.map(&:name).join('-')
   end
 end
