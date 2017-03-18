@@ -1,6 +1,6 @@
 class Inventory < ApplicationRecord
   belongs_to :office
-  belongs_to :product
+  belongs_to :product, inverse_of: :inventory
 
   validates :stock, presence: true
   validates :stock, numericality: { only_integer: true }

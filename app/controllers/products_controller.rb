@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   autocomplete :product, :name
 
   def new
-    @product = Product.new
+    @product = new_product
   end
 
   def index
@@ -18,8 +18,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new
-    @product = create_from_form(@product, params)
+    @product = new_product
+
+    set_attributes_from_form(@product, params)
+    set_relations_from_form(@product, params)
 
     if @product.save
       redirect_to @product
@@ -38,14 +40,11 @@ class ProductsController < ApplicationController
     set_attributes_from_form(@product, params)
     set_relations_from_form(@product, params)
 
-    @product.inventory.stock = params[:stock]
-    @product.inventory.minimum_stock = params[:minimum_stock]
-
 
     if @product.save
       redirect_to @product
     else
-      render 'edit'
+      render :edit
     end
   end
 
@@ -69,25 +68,16 @@ class ProductsController < ApplicationController
   end
 
   def set_relations_from_form(product, params)
-    if params[:category_descripcion]
-      product.category = Category.find_by(description: params[:category_descripcion])
-    end
+    product.principles = Principle.from_string(params[:product][:principles_string])
+    product.provider = Provider.find_by(name: params[:product][:provider_attributes][:name])
+    product.presentation = Presentation.find_by(name: params[:product][:presentation_attributes][:name])
+    product.category = Category.find_by(description: params[:product][:category_attributes][:description])
+    product.laboratory = Laboratory.find_by(name: params[:product][:laboratory_attributes][:name])
 
-    if params[:product][:laboratory_id]
-      product.laboratory = Laboratory.find_by(name: params[:product][:laboratory_id])
-    end
+    product
+      .inventory
+      .update(params[:product][:inventory_attributes].permit(:stock, :minimum_stock))
 
-    if params[:principles]
-      product.principles = Principle.from_string(params[:principles])
-    end
-
-    if params[:product][:provider_id]
-      product.provider = Provider.find_by(name: params[:product][:provider_id])
-    end
-
-    if params[:presentation_id]
-      product.presentation = Presentation.find_by(name: params[:presentation_id])
-    end
   end
 
   def create_from_form(product, params)
@@ -105,10 +95,14 @@ class ProductsController < ApplicationController
     return product
   end
 
-  def product_params
-    params
-      .require(:product)
-      .permit(:name, :description, :sale_price, :purchase_price,
-              :be, :isp, :discount, :description)
+  def new_product
+    product = Product.new
+    product.provider ||= Provider.new
+    product.category ||= Category.new
+    product.laboratory ||= Laboratory.new
+    product.presentation ||= Presentation.new
+    product.inventory ||= Inventory.new
+
+    return product
   end
 end

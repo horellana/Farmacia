@@ -7,6 +7,7 @@ end
 
 
 class Provider < ApplicationRecord
+  has_many :products, inverse_of: :product
 
   validates :name, presence: true
   validates :rut, presence: true

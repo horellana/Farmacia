@@ -1,27 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  rut: MyString
-  name: MyString
-  business_name: MyString
-  draft: MyString
-  address: MyString
-  phone_one: MyString
-  phone_two: MyString
-  email: MyString
+  rut: 10611056-5
   web: MyString
   kind: MyString
   observation: MyString
 
 two:
-  rut: MyString
+  rut: 22384934-2
   name: MyString
   business_name: MyString
   draft: MyString
   address: MyString
-  phone_one: MyString
-  phone_two: MyString
-  email: MyString
+  phone_one: 12312312
+  phone_two: 21233212
+  email: email@email.com
   web: MyString
   kind: MyString
   observation: MyString
