@@ -2,10 +2,117 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    Descripcion
-    </div>
+    <%= @product.name %>
+  </div>
 
-    <div class="panel-body">
-      <%= @product.description %>
-    </div>
+  <table class="table">
+    <thead>
+      <th>
+	Codigo
+      </th>
+
+      <th>
+	Nombre
+      </th>
+
+      <th>
+	ISP
+      </th>
+
+      <th>
+	BE
+      </th>
+
+      <th>
+	Presentacion
+      </th>
+
+      <th>
+	Precio Compra
+      </th>
+
+      <th>
+	Precio Venta
+      </th>
+
+      <th>
+	Stock
+      </th>
+
+      <th>
+	Stock minimo
+      </th>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>
+	  <%= @product.code %>
+	</td>
+
+	<td>
+	  <%= @product.name %>
+	</td>
+
+	<td>
+	  <%= @product.isp %>
+	</td>
+
+	<td>
+	  <%= @product.be %>
+	</td>
+
+	<td>
+	  <%= @product.presentation.name %>
+	</td>
+
+	<td>
+	  <%= @product.purchase_price %>
+	</td>
+
+	<td>
+	  <%= @product.sale_price %>
+	</td>
+
+	<td>
+	  <%= @product.inventory.stock %>
+	</td>
+
+	<td>
+	  <%= @product.inventory.minimum_stock %>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Descripcion
+  </div>
+
+  <div class="panel-body">
+    <%= @product.description %>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Principios activos
+  </div>
+
+  <div class="panel-body">
+    <ul>
+      <% @product.principles.each do |p| %>
+	<li>
+	  <%= link_to(p.name, principle_path(p)) %>
+	</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div align="right">
+  <%= render 'partials/products/edit_link', product: @product %>
+  <%= render 'partials/products/delete_link', product: @product %>
 </div>
