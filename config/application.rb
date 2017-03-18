@@ -13,5 +13,7 @@ module Farmacia
     # -- all .rb files in that directory are automatically loaded.
 
     config.logger = Logger.new(STDOUT)
+
+    config.i18n.default_locale = 'es'
   end
 end
