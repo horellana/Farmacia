@@ -11,12 +11,12 @@ class Inventory < ApplicationRecord
   validates :product, presence: true
   validates :office, presence: true
 
-  def total
-    stock * product.sale_price
+  scope :low_stock, ->() do
+    select('product_id').where('stock <= minimum_stock')
   end
 
-  def self.low_stock
-    select('product_id').where('stock <= minimum_stock')
+  def total
+    stock * product.sale_price
   end
 
   def increase_stock(n=1)
