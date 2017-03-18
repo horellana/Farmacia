@@ -2,6 +2,7 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :client, required: false
   belongs_to :box_movement
+  belongs_to :payment_method, inverse_of: :transactionns
 
   has_many :details, class_name: 'TransactionDetail', autosave: true
   has_one :cart
