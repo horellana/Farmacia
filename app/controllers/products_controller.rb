@@ -44,6 +44,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to @product
     else
+      new_product(@product)
       render :edit
     end
   end
@@ -95,8 +96,7 @@ class ProductsController < ApplicationController
     return product
   end
 
-  def new_product
-    product = Product.new
+  def new_product(product=Product.new)
     product.provider ||= Provider.new
     product.category ||= Category.new
     product.laboratory ||= Laboratory.new
