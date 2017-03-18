@@ -1,6 +1,6 @@
 class LowStockController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :admin_only
+  before_action :authenticate_user!
+  before_action :admin_only
 
   def index
     @products = Product.low_stock
