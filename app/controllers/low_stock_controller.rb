@@ -1,4 +1,7 @@
 class LowStockController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :admin_only
+
   def index
     @products = Product.low_stock
     if @products.length <= 0
