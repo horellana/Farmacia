@@ -59,3 +59,6 @@ gem 'rails_12factor'
 gem 'rut_chileno'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+gem 'rails-i18n', '~> 5.0.0'
+gem 'devise-i18n'
