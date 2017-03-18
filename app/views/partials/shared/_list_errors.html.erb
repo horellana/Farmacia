@@ -1,9 +1,9 @@
-<% if model.errors.any? %>
+<% if object.errors.any? %>
   <div class="alert alert-danger">
-    <%= pluralize(model.errors.count, "errors") %>
+    <%= pluralize(object.errors.count, "errors") %>
 
     <ul>
-      <% model.errors.full_messages.each do |message| %>
+      <% object.errors.full_messages.each do |message| %>
 	<li>
 	  <%= message %>
 	</li>
