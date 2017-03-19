@@ -56,8 +56,8 @@ class ProductsController < ApplicationController
 
   private
 
-  def default_product()
-    @product = Product.new
+  def default_product
+    @product ||= Product.new
     @product.provider ||= Provider.new
     @product.category ||= Category.new
     @product.laboratory ||= Laboratory.new
