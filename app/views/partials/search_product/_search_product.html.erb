@@ -16,7 +16,7 @@
 
 <script>
  $(document).ready(function() {
-   $('#product_name').keyup(function() {
+   $('#product_name').change(function() {
      var input = this;
      var query = $(input).val();
 
@@ -32,12 +32,10 @@
 	   url: "<%= search_products_path %>",
 	   method: "GET",
 	   data: { product_name: query_now },
-	   success: function(data) {
-	     eval(data);
-	   }
+	   success: eval
 	 });
        },
-       500);
+       100)
    });
  });
 </script>
