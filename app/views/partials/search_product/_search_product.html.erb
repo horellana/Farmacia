@@ -15,7 +15,29 @@
 </div>
 
 <script>
- $('#product_name').onChange(function() {
-   
+ $(document).ready(function() {
+   $('#product_name').keyup(function() {
+     var input = this;
+     var query = $(input).val();
+
+     setTimeout(
+       function() {
+	 var query_now = $(input).val();
+
+	 if (query !== query_now) {
+	   return;
+	 }
+
+	 $.ajax({
+	   url: "<%= search_products_path %>",
+	   method: "GET",
+	   data: { product_name: query_now },
+	   success: function(data) {
+	     eval(data);
+	   }
+	 });
+       },
+       500);
+   });
  });
 </script>
