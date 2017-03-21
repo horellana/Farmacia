@@ -71,8 +71,8 @@ class ProductsController < ApplicationController
     @product.description = params[:product][:description]
     @product.sale_price = params[:product][:sale_price]
     @product.purchase_price = params[:product][:purchase_price]
-    @product.be = params[:product_be]
-    @product.isp = params[:product_isp]
+    @product.be = params[:product][:be] == '1' ? true : false
+    @product.isp = params[:product][:isp]
     @product.discount = params[:product][:discount].to_i
   end
 
