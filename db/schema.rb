@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318213932) do
+ActiveRecord::Schema.define(version: 20170319233531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,8 +107,8 @@ ActiveRecord::Schema.define(version: 20170318213932) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "address"
-    t.time     "hour_in"
-    t.time     "hour_out"
+    t.datetime "hour_in"
+    t.datetime "hour_out"
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -149,8 +149,6 @@ ActiveRecord::Schema.define(version: 20170318213932) do
     t.integer  "provider_id"
     t.integer  "sale_price"
     t.integer  "purchase_price"
-    t.integer  "stock"
-    t.integer  "minimum_stock"
     t.string   "be"
     t.string   "isp"
     t.integer  "category_id"
