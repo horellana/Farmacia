@@ -16,13 +16,18 @@
 	    <div class="panel-body">Infromacion
 
 	      <p>
+		<%= f.label :Codigo %><br>
+		<%= f.text_field :code %>
+	      </p>
+
+	      <p>
 		<%= f.label :nombre %><br>
 		<%= f.text_field :name %>
 	      </p>
 
 	      <p>
 		<%= f.label(:isp, "Instituto de Salud Pública de Chile") %>
-		<%= f.text_field(:isp) %>
+		<%= f.text_field :isp %>
 	      </p>
 
 	      <p>
