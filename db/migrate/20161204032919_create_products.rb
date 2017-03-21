@@ -9,7 +9,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :minimum_stock
       t.string :exempt
       t.integer :commission
-      t.string :be
+      t.boolean :be
       t.string :isp
       t.references :category, foreign_key: true
       t.integer :discount
