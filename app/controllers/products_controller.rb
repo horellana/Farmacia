@@ -68,6 +68,7 @@ class ProductsController < ApplicationController
 
   def set_attributes_from_form
     @product.name = params[:product][:name]
+    @product.code = params[:product][:code]
     @product.description = params[:product][:description]
     @product.sale_price = params[:product][:sale_price]
     @product.purchase_price = params[:product][:purchase_price]
