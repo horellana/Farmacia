@@ -36,6 +36,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
+    UpdateHistoricPricesService.new(@product, params).call
     FillProductService.new(@product, params).call
 
     if @product.save
