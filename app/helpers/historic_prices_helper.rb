@@ -1,0 +1,2 @@
+module HistoricPricesHelper
+end

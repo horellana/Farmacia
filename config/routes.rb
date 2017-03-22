@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'price_history/index'
+  get 'historic_prices/index'
 
   get 'inventories/index'
 
