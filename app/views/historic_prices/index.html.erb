@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>
+ Codigo
+      </th>
+
+      <th>
+	Nombre
+      </th>
+
+      <th>
+	Presentacion
+      </th>
+
+      <th>
+  Precio anterior
+      </th>
+
+      <th>
+  Precio nuevo
+      </th>
+
+      <th>
+  Fecha modificacion
+      </th>
+
+    </thead>
+    <tbody>
+      <% @historic.each do |hi| %>
+      <tr>
+        <td>
+        <%=  hi.product.code %>
+        </td>
+
+        <td>
+        <%= hi.product.name  %>
+        </td>
+
+       <td>
+        <%= hi.product.presentation %>
+        </td>
+
+        <td>
+      <%=  hi.priceold  %>
+        </td>
+
+        <td>
+        <%=  hi.pricelast %>
+        </td>
+
+        <td>
+          <%= hi.change %>
+        </td>
+
+      <%end%>
+    </tr>
+  </tbody>
+  </table>
+  </div>
