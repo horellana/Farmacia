@@ -24,8 +24,6 @@ class OfficesController < ApplicationController
                          sii_code: params[:office][:sii_code],
                          phone: params[:office][:phone],
                          description: params[:office][:description],
-                         # hour_in: params[:office][:hour_in],
-                         # hour_out: params[:office][:hour_out],
                         )
 
     hora_entrada = params[:office]['hour_in(4i)']

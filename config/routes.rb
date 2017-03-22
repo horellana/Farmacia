@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :principles
   resources :presentations
+  resources :wastes
   resources :clients
   resources :laboratories
   resources :offices
