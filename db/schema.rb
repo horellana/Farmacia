@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319233531) do
+ActiveRecord::Schema.define(version: 20170322160219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -261,6 +261,15 @@ ActiveRecord::Schema.define(version: 20170319233531) do
     t.index ["rut"], name: "index_users_on_rut", unique: true, using: :btree
   end
 
+  create_table "wastes", force: :cascade do |t|
+    t.integer  "amount"
+    t.text     "description"
+    t.string   "motive"
+    t.datetime "date"
+    t.integer  "inventories_id"
+    t.index ["inventories_id"], name: "index_wastes_on_inventories_id", using: :btree
+  end
+
   add_foreign_key "box_movements", "boxes"
   add_foreign_key "box_movements", "users"
   add_foreign_key "cart_items", "carts"
@@ -287,4 +296,5 @@ ActiveRecord::Schema.define(version: 20170319233531) do
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "job_titles"
   add_foreign_key "users", "offices"
+  add_foreign_key "wastes", "inventories", column: "inventories_id"
 end
