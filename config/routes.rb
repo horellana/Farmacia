@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'price_history/index'
+
   get 'inventories/index'
 
   get 'low_stock/index'
