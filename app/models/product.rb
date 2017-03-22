@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   has_one :inventory, autosave: true, dependent: :delete, inverse_of: :product
   accepts_nested_attributes_for :inventory
 
-
+  validates :code, uniqueness: {case_sensitive: false ,message: "ya esta registrado"}
   validates :code, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :sale_price, numericality: { only_integer: true }
   validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
