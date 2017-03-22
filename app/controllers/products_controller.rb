@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   autocomplete :product, :name
 
   def new
-    default_product
+    @product = Product.default_product
   end
 
   def index
@@ -18,10 +18,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-    default_product
+    @product = Product.default_product
 
-    set_attributes_from_form
-    set_relations_from_form
+    FillProductService.new(@product, params).call
 
     if @product.save
       redirect_to @product
@@ -37,13 +36,12 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
 
-    set_attributes_from_form
-    set_relations_from_form
+    FillProductService.new(@product, params).call
 
     if @product.save
       redirect_to @product
     else
-      default_product
+      @product = Product.default_product
       render :edit
     end
   end
@@ -52,40 +50,5 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
     redirect_to root_path, notice: 'Producto eliminado correctamente'
-  end
-
-  private
-
-  def default_product
-    @product ||= Product.new
-    @product.provider ||= Provider.new
-    @product.category ||= Category.new
-    @product.laboratory ||= Laboratory.new
-    @product.presentation ||= Presentation.new
-    @product.inventory ||= Inventory.new
-  end
-
-
-  def set_attributes_from_form
-    @product.name = params[:product][:name]
-    @product.code = params[:product][:code]
-    @product.description = params[:product][:description]
-    @product.sale_price = params[:product][:sale_price]
-    @product.purchase_price = params[:product][:purchase_price]
-    @product.be = params[:product][:be] == '1' ? true : false
-    @product.isp = params[:product][:isp]
-    @product.discount = params[:product][:discount].to_i
-  end
-
-  def set_relations_from_form
-    @product.principles = Principle.from_string(params[:product][:principles_string])
-    @product.provider = Provider.find_by(name: params[:product][:provider_attributes][:name])
-    @product.presentation = Presentation.find_by(name: params[:product][:presentation_attributes][:name])
-    @product.category = Category.find_by(description: params[:product][:category_attributes][:description])
-    @product.laboratory = Laboratory.find_by(name: params[:product][:laboratory_attributes][:name])
-
-    @product
-      .inventory
-      .update(params[:product][:inventory_attributes].permit(:stock, :minimum_stock))
   end
 end
