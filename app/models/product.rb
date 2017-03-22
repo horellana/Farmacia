@@ -17,18 +17,18 @@ class Product < ApplicationRecord
 
   has_one :inventory, autosave: true, dependent: :delete, inverse_of: :product
   accepts_nested_attributes_for :inventory
-  
+
 
   validates :code, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-    validates :sale_price, numericality: { only_integer: true }
+  validates :sale_price, numericality: { only_integer: true }
   validates :name, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :sale_price, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-    validates :code, numericality: { only_integer: true }
+  validates :code, numericality: { only_integer: true }
   validates :purchase_price, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-    validates :purchase_price, numericality: { only_integer: true }
+  validates :purchase_price, numericality: { only_integer: true }
   validates :isp, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :discount, presence: {case_sensitive: false ,message: "no puede estar vacio"}
-    validates :discount, numericality: { only_integer: true }
+  validates :discount, numericality: { only_integer: true }
 
   validates :category, presence: {case_sensitive: false ,message: "no puede estar vacio"}
   validates :principles, presence: {case_sensitive: false ,message: "no puede estar vacio"}
@@ -93,5 +93,14 @@ class Product < ApplicationRecord
 
   def principles_string
     principles.map(&:name).join('-')
+  end
+
+  def self.default_product(product=self.new)
+    product.provider ||= Provider.new
+    product.category ||= Category.new
+    product.laboratory ||= Laboratory.new
+    product.presentation ||= Presentation.new
+    product.inventory ||= Inventory.new
+    return product
   end
 end
