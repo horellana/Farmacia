@@ -23,9 +23,9 @@ default: &default
 
 development:
   <<: *default
-  username: postgres
-  database: postgres
-  password: postgres
+  username: farmacia
+  database: farmacia
+  password: farmacia
   host: localhost
   port: 5432
 
@@ -59,9 +59,9 @@ development:
 
 test:
   <<: *default
-  username: postgres
-  database: postgres
-  password: postgres
+  username: farmacia_test
+  database: farmacia_test
+  password: farmacia_test
   host: localhost
   port: 5432
 

@@ -10,7 +10,6 @@ class FillProductService
     return @product
   end
 
-
   private
 
   def set_attributes_from_form

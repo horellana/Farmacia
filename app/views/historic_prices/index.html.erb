@@ -5,7 +5,7 @@
   <table class="table">
     <thead>
       <th>
- Principio activo
+ Codigo
       </th>
 
       <th>
@@ -17,35 +17,44 @@
       </th>
 
       <th>
-  Precio por unidad
+  Precio anterior
       </th>
 
       <th>
-  BE
-  </th>
+  Precio nuevo
+      </th>
+
+      <th>
+  Fecha modificacion
+      </th>
+
     </thead>
     <tbody>
-      <% @products.each do |pr| %>
+      <% @historic.each do |hi| %>
       <tr>
         <td>
-        <%=  pr.principles.first.name %>
+        <%=  hi.product.code %>
         </td>
 
         <td>
-        <%= pr.name  %>
+        <%= hi.product.name  %>
         </td>
 
        <td>
-        <%= pr.presentation.name %>
+        <%= hi.product.presentation.name %>
         </td>
 
         <td>
-      <%=  pr.sale_price  %>
+      <%=  hi.priceold  %>
         </td>
 
         <td>
-        <%=  pr.be %>
-      </td>
+        <%=  hi.pricelast %>
+        </td>
+
+        <td>
+          <%= hi.change %>
+        </td>
 
       <%end%>
     </tr>

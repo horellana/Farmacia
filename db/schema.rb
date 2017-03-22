@@ -80,11 +80,11 @@ ActiveRecord::Schema.define(version: 20170322163524) do
   end
 
   create_table "historic_prices", force: :cascade do |t|
-    t.integer  "products_id"
+    t.integer  "product_id"
     t.integer  "priceold"
     t.integer  "pricelast"
     t.datetime "change"
-    t.index ["products_id"], name: "index_historic_prices_on_products_id", using: :btree
+    t.index ["product_id"], name: "index_historic_prices_on_product_id", using: :btree
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20170322163524) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "address"
-    t.datetime "hour_in"
-    t.datetime "hour_out"
+    t.time     "hour_in"
+    t.time     "hour_out"
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20170322163524) do
     t.integer  "provider_id"
     t.integer  "sale_price"
     t.integer  "purchase_price"
-    t.string   "be"
+    t.boolean  "be"
     t.string   "isp"
     t.integer  "category_id"
     t.integer  "discount"
@@ -283,7 +283,7 @@ ActiveRecord::Schema.define(version: 20170322163524) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "transactions"
-  add_foreign_key "historic_prices", "products", column: "products_id"
+  add_foreign_key "historic_prices", "products"
   add_foreign_key "inventories", "offices"
   add_foreign_key "inventories", "products"
   add_foreign_key "presentation_details", "presentations"
