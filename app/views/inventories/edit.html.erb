@@ -1,0 +1,137 @@
+<%= render 'partials/shared/list_errors', object: @product %>
+
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    Crear producto
+  </div>
+
+
+  <div class="panel-body">
+    <%= form_for @product do |f| %>
+
+      <div class="col-md-4">
+	<div class="panel-group">
+	  <div class="panel panel-default">
+	    <div class="panel-body">Infromacion
+
+	      <p>
+		<%= f.label :Codigo %><br>
+		<%= f.text_field :code %>
+	      </p>
+
+	      <p>
+		<%= f.label :nombre %><br>
+		<%= f.text_field :name %>
+	      </p>
+
+	      <p>
+		<%= f.label(:isp, "Instituto de Salud Pública de Chile") %>
+		<%= f.text_field :isp %>
+	      </p>
+
+	      <p>
+		<%= f.label :descripcion %><br>
+		<%= f.text_area :description %>
+	      </p>
+
+	      <p>
+		<%= label_tag(:product_be, "Es bio equivalente") %>
+		<%= check_box_tag(:product_be) %>
+	      </p>
+
+	    </div>
+	  </div>
+	</div>
+      </div>
+
+      <div class="col-md-4">
+	<div class="panel panel-default">
+	  <div class="panel-body">Dinero
+
+	    <p>
+	      <%= f.label :descuento %><br>
+	      <%= f.text_field :discount %>
+	    </p>
+
+	    <p>
+	      <%= f.label :precio_de_compra %><br>
+	      <%= f.text_field :purchase_price %>
+	    </p>
+
+	    <p>
+	      <%= f.label :precio_de_venta %><br>
+	      <%= f.text_field :sale_price %>
+	    </p>
+
+	    <%= f.fields_for :inventory do |ff| %>
+	      <p>
+		<%= label_tag :stock %>
+		<br>
+		<%= ff.number_field :stock %>
+	      </p>
+
+	      <p>
+		<%= label_tag :stock_minimo %>
+		<br>
+		<%= ff.number_field :minimum_stock %>
+	      </p>
+	    <% end %>
+	  </div>
+	</div>
+      </div>
+
+
+
+
+
+      <div class="col-md-3">
+	<div class="panel panel-default">
+	  <div class="panel-body">Categorias
+
+	    <p>
+	      <%= f.fields_for :category do |ff| %>
+		<%= label_tag :categoria %>
+		<%= ff.text_field :description %>
+	      <% end %>
+	    </p>
+	    <p>
+	      <%= f.fields_for :presentation do |ff| %>
+		<%= label_tag :presentacion %>
+		<%= ff.text_field :name %>
+	      <% end %>
+	    </p>
+	    <p>
+	      <%= label_tag :principios_activos %>
+	      <%= f.text_field :principles_string %>
+
+	      <%#= f.fields_for :principles do |ff| %>
+		<%#= label_tag :principios_activos %>
+		<%#= ff.text_field :name %>
+	      <%# end %>
+	    </p>
+
+	    <p>
+	      <%= f.fields_for :laboratory do |ff| %>
+		<%= label_tag :laboratorio %>
+		<%= ff.text_field :name %>
+	      <% end %>
+	    </p>
+
+	    <p>
+	      <%= f.fields_for :provider do |ff| %>
+		<%= label_tag :proveedor %>
+		<%= ff.text_field :name %>
+	      <% end %>
+	    </p>
+	  </div>
+	</div>
+      </div>
+
+      <p>
+	<%= f.submit %>
+      </p>
+  </div>
+
+</div>
+    <% end %>
