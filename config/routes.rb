@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'historic_prices/index'
-
+  
   get 'inventories/index'
 
   get 'low_stock/index'
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   resources :categories do
     get :autocomplete_category_description, on: :collection
   end
-  
+
   resources :laboratories do
     get :autocomplete_laboratory_name, on: :collection
   end
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
   resources :providers do
     get :autocomplete_provider_name, on: :collection
   end
-  
+
   resources :offices do
     get :autocomplete_office_address, on: :collection
   end
