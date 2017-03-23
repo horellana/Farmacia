@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'historic_prices/index'
-  
+
   get 'inventories/index'
 
   get 'low_stock/index'
@@ -64,19 +64,8 @@ Rails.application.routes.draw do
     get :autocomplete_office_address, on: :collection
   end
 
-  get 'search_product/index'
-  get 'search_presentation/index'
-  get 'search_category/index'
-  get 'search_provider/index'
-  get 'search_client/index'
-  get 'search_principle/index'
-  get 'search_laboratory/index'
-  get 'search_office/index'
-
-
-
   get 'search/users', to: 'search_users#index', as: 'search_users'
-  get 'search/products', to: 'search_product#index', as: 'search_products'
+  get 'search/products', to: 'search_products#index', as: 'search_products'
   get 'search/presentations', to: 'search_presentation#index', as: 'search_presentations'
   get 'search/categories', to: 'search_category#index', as: 'search_categories'
   get 'search/providers', to: 'search_provider#index', as: 'search_providers'
@@ -84,8 +73,6 @@ Rails.application.routes.draw do
   get 'search/principles', to: 'search_principle#index', as: 'search_principles'
   get 'search/laboratories', to: 'search_laboratory#index', as: 'search_laboratories'
   get 'search/offices', to: 'search_office#index', as: 'search_offices'
-
-
 
   resources :users
 
