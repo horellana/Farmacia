@@ -78,7 +78,11 @@
         </td>
 
         <td>
-        <%=  inv.product.be %>
+          <% if inv.product.be %>
+          Si
+          <% else %>
+          No
+          <% end %>
         </td>
 
       <%end%>
