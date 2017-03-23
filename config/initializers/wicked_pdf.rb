@@ -11,7 +11,7 @@
 WickedPdf.config = {
   exe_path: '/usr/local/bin/wkhtmltopdf'
 
-  Mime::Type.register "application/pdf", :pdf
+#  Mime::Type.register "application/pdf", :pdf
 
   # Path to the wkhtmltopdf executable: This usually isn't needed if using
   # one of the wkhtmltopdf-binary family of gems.
