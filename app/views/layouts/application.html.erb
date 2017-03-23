@@ -26,63 +26,71 @@
 	      <%= link_to 'Venta', new_cart_path %>
 	    </li>
 
+    <li>
+     <% if box_open? %>
+				<%= link_to 'Cerrar Caja', box_movement_path(current_box_movement) %>
+			<% else %>
+  			<%= link_to 'Abrir Caja', new_box_movement_path %>
+		  <% end %>
+    </li>
 
-	    <li role="presentation" class="dropdown">
-	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">
-		Productos
-	      </a>
-	      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-		<% if current_user.admin? %>
-		  <li>
-		    <%= link_to 'Crear producto', new_product_path %>
-		  </li>
-		<% end %>
-
-		<li>
-		  <%= link_to 'Buscar Producto', products_path %>
-		</li>
-
-		<li class="divider"></li>
-
-		<% if current_user.admin? %>
-		  <li> <%= link_to 'Crear Principio activo', new_principle_path %>   </li>
-		<% end %>
-		<li> <%= link_to 'Buscar Principio activo', principles_path %>   </li>
-
-		<li class="divider"></li>
-		<% if current_user.admin? %>
-		  <li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
-		<% end %>
-		<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
-
-		<li class="divider"></li>
-		<% if current_user.admin? %>
-		  <li> <%= link_to 'Crear Laboratorio', new_laboratory_path %>   </li>
-		<% end %>
-		<li> <%= link_to 'Buscar Laboratorio', laboratories_path %>   </li>
-
-		<li class="divider"></li>
-		<% if current_user.admin? %>
-		  <li> <%= link_to 'Crear presentacion', new_presentation_path %>   </li>
-		<% end %>
-		<li> <%= link_to 'Buscar presentacion', presentations_path %>   </li>
-			    </li>
-	      </ul>
+	  <li role="presentation" class="dropdown">
+	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">Productos  </a>
+	 		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+					<% if current_user.admin? %>
+					<li>  <%= link_to 'Crear producto', new_product_path %>  </li>
+					<% end %>
+					<li> <%= link_to 'Buscar Producto', products_path %> </li>
+			<li class="divider"></li>
+			    <% if current_user.admin? %>
+					  <li> <%= link_to 'Crear Principio activo', new_principle_path %>   </li>
+					<% end %>
+					<li> <%= link_to 'Buscar Principio activo', principles_path %>   </li>
+	
+			<li class="divider"></li>
+					<% if current_user.admin? %>
+					  <li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
+					<% end %>
+					<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
+	
+			<li class="divider"></li>
+					<% if current_user.admin? %>
+					  <li> <%= link_to 'Crear Laboratorio', new_laboratory_path %>   </li>
+					<% end %>
+					<li> <%= link_to 'Buscar Laboratorio', laboratories_path %>   </li>
+	
+			<li class="divider"></li>
+					<% if current_user.admin? %>
+					  <li> <%= link_to 'Crear presentacion', new_presentation_path %>   </li>
+					<% end %>
+						<li> <%= link_to 'Buscar presentacion', presentations_path %>   </li>
+			</li>
+	  </ul>
     </li>
     </li>
 
+
+
+  <% if current_user.admin? %>
     <li role="presentation" class="dropdown">
-      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">
-	Proveedor
-      </a>
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">	Proveedor   </a>
       <ul class="dropdown-menu">
-	<% if current_user.admin? %>
-			  <li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
-			<% end %>
-			<li> <%= link_to 'Buscar proveedor', providers_path %>   </li>
-      </ul>
-
+			 		 <li> <%= link_to 'Crear proveedor', new_provider_path %>   </li>
+			  		<li> <%= link_to 'Buscar proveedor', providers_path %>   </li>
+				</ul>
      </li>
+	<% end %>
+
+  <% if current_user.admin? %>
+    <li role="presentation" class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">	Merma   </a>
+      <ul class="dropdown-menu">
+			 		 <li> <%= link_to 'Crear Merma', new_waste_path %>   </li>
+			  		<li> <%= link_to 'Buscar Merma', wastes_path %>   </li>
+				</ul>
+     </li>
+	<% end %>
+
 
     <li role="presentation" class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Clientes	</a>
@@ -92,8 +100,6 @@
 
       </ul>
     </li>
-
-
     <li role="presentation" class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Sucursal	</a>
 	      <ul class="dropdown-menu">
@@ -102,30 +108,18 @@
       </ul>
     </li>
 
-
-
-    <li>
-      <% if box_open? %>
-	<%= link_to 'Cerrar Caja', box_movement_path(current_box_movement) %>
-      <% else %>
-	<%= link_to 'Abrir Caja', new_box_movement_path %>
-      <% end %>
-    </li>
-
-
     <% if current_user.admin? %>
       <li role="presentation" class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Usuarios
-	</a>
-
-	<ul class="dropdown-menu">
-	  <li>
-	    <%= link_to 'Lista usuarios', users_path %>
-	  </li>
-	  <li>
-	    <%= link_to  'Crear usuario', new_user_path %>
-	  </li>
-	</ul>
+		<a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#"> Usuarios </a>
+				
+				<ul class="dropdown-menu">
+						  <li>
+						    <%= link_to 'Lista usuarios', users_path %>
+						  </li>
+						  <li>
+						    <%= link_to  'Crear usuario', new_user_path %>
+						  </li>
+				</ul>	
       </li>
 
       <li role="presentation" class="dropdown">
@@ -137,6 +131,7 @@
 	  <li>
 	   <%= link_to 'Historico ventas',   transactions_path %>
 	  </li>
+
     <li>
 	   <%= link_to 'Historico precios',  historic_prices_index_path %>
 	  </li>
@@ -168,15 +163,6 @@
 	</li>
     <% end %>
 
-    <!--
-	 <li> <%= link_to 'Inventario','#'  %>   </li>
-	 <li> <%= link_to 'Merma', '#' %>   </li>
-	 <li> <%= link_to 'Lista z del dia', '#'  %>   </li>
-	 <li> <%= link_to 'Historico precios',   '#'%>   </li>
-	 <li> <%= link_to 'Historico proveedores', '#' %>   </li>
-	 </ul>
-	 </li>
-       -->
 
 	  <% end %>
 	</ul>
@@ -184,7 +170,7 @@
 
       </div>
 
-      <div class="navbar-right">
+  <div class="navbar-right">
 	<ul class="nav navbar-nav">
 	  <% if user_signed_in? %>
 	    <li role="presentation" class="dropdown">
