@@ -159,7 +159,7 @@
 	      <%= link_to 'Reporte Bajo Stock', low_stock_index_path %>
 	    </li>
       <li>
-	      <%= link_to 'Inventario', inventories_index_path %>
+	      <%= link_to 'Inventario', inventories_index_path(@inventories, format: :pdf) %>
 	    </li>
       <li>
 	      <%= link_to 'Lista precios', products_path %>
