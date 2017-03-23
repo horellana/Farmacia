@@ -70,7 +70,7 @@
 		<% if current_user.admin? %>
 		  <li>  <%= link_to 'Crear producto', new_product_path %>  </li>
 		<% end %>
-		<li> <%= link_to 'Buscar Producto', products_path %> </li>
+		<li> <%= link_to 'Buscar Producto', search_products_path %> </li>
 		<li class="divider"></li>
 		<% if current_user.admin? %>
 		  <li> <%= link_to 'Crear Principio activo', new_principle_path %>   </li>
