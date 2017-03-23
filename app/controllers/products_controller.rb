@@ -11,6 +11,12 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "Bajo stock"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   def show

@@ -1,4 +1,3 @@
-<% if @products.length > 0 %>
 <div class="panel panel-default">
   <div class="panel-heading">
     Reporte stock bajo
@@ -54,5 +53,3 @@
     </tbody>
   </table>
 </div>
-<% end %>
-<%= link_to 'Transformar a PDF', low_stock_index_path(@products, format: :pdf), class: 'btn btn-success' %>
