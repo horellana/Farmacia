@@ -63,7 +63,7 @@ test:
   database: farmacia_test
   password: farmacia_test
   host: localhost
-  port: 5432
+  port: 5433
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -88,6 +88,6 @@ production:
   <<: *default
   port: 5432
   host: localhost
-  database: Farmacia_production
-  username: Farmacia
+  database: farmacia_prod
+  username: farmacia_prod
   password: <%= ENV['FARMACIA_DATABASE_PASSWORD'] %>

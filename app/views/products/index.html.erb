@@ -5,7 +5,7 @@
   <table class="table">
     <thead>
       <th>
- Principio activo
+	Principio activo
       </th>
 
       <th>
@@ -17,38 +17,38 @@
       </th>
 
       <th>
-  Precio por unidad
+	Precio por unidad
       </th>
 
       <th>
-  BE
-  </th>
+	BE
+      </th>
     </thead>
     <tbody>
       <% @products.each do |pr| %>
-      <tr>
-        <td>
-        <%=  pr.principles.first.name %>
-        </td>
+	<tr>
+	  <td>
+	    <%=  pr.principles.first.name %>
+	  </td>
 
-        <td>
-        <%= pr.name  %>
-        </td>
+	  <td>
+	    <%= pr.name  %>
+	  </td>
 
-       <td>
-        <%= pr.presentation.name %>
-        </td>
+	  <td>
+	    <%= pr.presentation.name %>
+	  </td>
 
-        <td>
-      <%=  pr.sale_price  %>
-        </td>
+	  <td>
+	    <%=  pr.sale_price  %>
+	  </td>
 
-        <td>
-        <%=  pr.be %>
-      </td>
+	  <td>
+	    <%=  pr.be %>
+	  </td>
 
       <%end%>
-    </tr>
-  </tbody>
+	</tr>
+    </tbody>
   </table>
-  </div>
+</div>

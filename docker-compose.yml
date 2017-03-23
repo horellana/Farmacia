@@ -5,11 +5,22 @@ services:
     image: postgres:latest
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_DB: farmacia
+      POSTGRES_USER: farmacia
+      POSTGRES_PASSWORD: farmacia
+      FARMACIA_DATABASE_PASSWORD: farmacia
 
   postgres_test:
     image: postgres:latest
     ports:
       - "5433:5432"
+    environment:
+      POSTGRES_DB: farmacia_test
+      POSTGRES_USER: farmacia_test
+      POSTGRES_PASSWORD: farmacia_test
+      FARMACIA_DATABASE_PASSWORD: farmacia_test
+
 
   postgres_prod:
     image: postgres:latest
