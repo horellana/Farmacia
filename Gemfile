@@ -57,6 +57,8 @@ gem 'pundit'
 gem 'rails-jquery-autocomplete'
 gem 'rails_12factor'
 gem 'rut_chileno'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
