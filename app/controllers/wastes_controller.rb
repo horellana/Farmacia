@@ -15,9 +15,9 @@ class WastesController < ApplicationController
   end
 
   def create
-    
     @waste = Waste.new
-    @waste.product = Product.find_by(code: @params[:waste][:product_attributes][:code])
+    @waste.product = Product.find_by(code: params[:product_code])
+    @waste.office = Office.find_by(address: params[:office_address])
     if @waste.save
       redirect_to @waste
     else
