@@ -4,6 +4,12 @@ class Waste < ApplicationRecord
   accepts_nested_attributes_for :product
   
   
+  def stock
+    inventory.stock
+  end
 
+  def merma
+    stock - amount
+  end
 
 end

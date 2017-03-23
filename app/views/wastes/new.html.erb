@@ -12,7 +12,18 @@
 	<div class="panel-group">
 	  <div class="panel panel-default">
 	    <div class="panel-body">
-
+	    	
+	    	
+	    <p>
+	    	  <%= label_tag :Producto_name %><br>
+	   	  <%= text_field_tag :product_code %>
+	    </p>
+	    
+	    	<p>
+	    	  <%= label_tag :Sucursal %><br>
+	   	  <%= text_field_tag :office_address %>
+	    </p>
+	    
 	      <p>
 		<%= f.label :amount %><br>
 		<%= f.number_field :amount %>
@@ -39,6 +50,7 @@
 		<%= label_tag :stock %>
 		<br>
 		<%= ff.number_field :stock %>
+		
 	      </p>
 
 	    <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322163524) do
+ActiveRecord::Schema.define(version: 20170323180321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20170322163524) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "office_id"
+    t.index ["office_id"], name: "index_boxes_on_office_id", using: :btree
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -275,11 +277,14 @@ ActiveRecord::Schema.define(version: 20170322163524) do
     t.string   "motive"
     t.datetime "date"
     t.integer  "inventories_id"
+    t.integer  "product_id"
     t.index ["inventories_id"], name: "index_wastes_on_inventories_id", using: :btree
+    t.index ["product_id"], name: "index_wastes_on_product_id", using: :btree
   end
 
   add_foreign_key "box_movements", "boxes"
   add_foreign_key "box_movements", "users"
+  add_foreign_key "boxes", "offices"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "transactions"
@@ -306,4 +311,5 @@ ActiveRecord::Schema.define(version: 20170322163524) do
   add_foreign_key "users", "job_titles"
   add_foreign_key "users", "offices"
   add_foreign_key "wastes", "inventories", column: "inventories_id"
+  add_foreign_key "wastes", "products"
 end
