@@ -2,9 +2,20 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <%= form_for @box_movement, url: { action: :create } do |f| %>
+    
+    <p>
+      <%= form_for @box_movement, url: { action: :create } do |f| %>
       <%= f.label(:monto_apertura, 'Monto apertura (En pesos)') %>
       <%= f.number_field(:start_amount) %>
+    </p>
+      
+	  <p>
+  	  <%= f.fields_for :office do |ff| %>
+     	<%= label_tag :Sucursal %>
+     	<%= ff.text_field :address %>
+	   <% end %>
+	  </p>
+      
       <%= f.submit 'Abrir caja' %>
     <% end %>
   </div>
