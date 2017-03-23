@@ -27,6 +27,7 @@
     <tbody>
       <% @products.each do |pr| %>
 	<tr>
+
 	  <td>
 	    <%=  pr.principles.first.name %>
 	  </td>
@@ -44,11 +45,16 @@
 	  </td>
 
 	  <td>
-	    <%=  pr.be %>
+	    <% if pr.be %>
+	      Si
+	    <% else %>
+	      No
+	    <%end %>
 	  </td>
-
-      <%end%>
+      <% end %>
 	</tr>
     </tbody>
   </table>
 </div>
+
+<%= link_to 'Transformar a PDF', products_path(@products, format: :pdf), class: 'btn btn-success' %>

@@ -36,6 +36,7 @@
 
 	    <li role="presentation" class="dropdown">
 	      <a class="dropdown-toggle" data-toggle="dropdown" role="button"  href="#">Productos  </a>
+	      <<<<<<< HEAD
 	      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 		<% if current_user.admin? %>
 		  <li>  <%= link_to 'Crear producto', new_product_path %>  </li>
@@ -66,6 +67,38 @@
 		<li> <%= link_to 'Buscar presentacion', presentations_path %>   </li>
 	    </li>
 	      </ul>
+	      =======
+	      <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+		<% if current_user.admin? %>
+		  <li>  <%= link_to 'Crear producto', new_product_path %>  </li>
+		<% end %>
+		<li> <%= link_to 'Buscar Producto', products_path %> </li>
+		<li class="divider"></li>
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear Principio activo', new_principle_path %>   </li>
+		<% end %>
+		<li> <%= link_to 'Buscar Principio activo', principles_path %>   </li>
+
+		<li class="divider"></li>
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear Categoria', new_category_path %>   </li>
+		<% end %>
+		<li> <%= link_to 'Buscar Categoria', categories_path %>   </li>
+
+		<li class="divider"></li>
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear Laboratorio', new_laboratory_path %>   </li>
+		<% end %>
+		<li> <%= link_to 'Buscar Laboratorio', laboratories_path %>   </li>
+
+		<li class="divider"></li>
+		<% if current_user.admin? %>
+		  <li> <%= link_to 'Crear presentacion', new_presentation_path %>   </li>
+		<% end %>
+		<li> <%= link_to 'Buscar presentacion', presentations_path %>   </li>
+    </li>
+	      </ul>
+	      >>>>>>> 36636c82a45a2c5cbcb124220ef18f1932642b8d
     </li>
     </li>
 
