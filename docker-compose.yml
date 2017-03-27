@@ -1,7 +1,19 @@
 version: "2"
 
 services:
-  postgres:
+  farmacia:
+    build: .
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: secret
+      RAILS_MAX_THREADS: 9
+      DATABASE_URL: 'postgres://farmacia:farmacia@postgres:5432'
+    ports:
+      - "3000:3000"
+    links:
+      - postgres
+
+  postgres_dev:
     image: postgres:latest
     ports:
       - "5432:5432"
@@ -21,13 +33,11 @@ services:
       POSTGRES_PASSWORD: farmacia_test
       FARMACIA_DATABASE_PASSWORD: farmacia_test
 
-
-  postgres_prod:
+  postgres:
     image: postgres:latest
     ports:
-      - "5434:5432"
-    # environment:
-    #   POSTGRES_DB: Farmacia_production
-    #   POSTGRES_USER: Farmacia
-    #   POSTGRES_PASSWORD: postgres
-    #   FARMACIA_DATABASE_PASSWORD: postgres
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: farmacia
+      POSTGRES_USER: farmacia
+      POSTGRES_PASSWORD: farmacia

@@ -86,8 +86,9 @@ test:
 #
 production:
   <<: *default
-  port: 5432
-  host: localhost
-  database: farmacia_prod
-  username: farmacia_prod
-  password: <%= ENV['FARMACIA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # port: 5434
+  # host: localhost
+  # database: farmacia_prod
+  # username: farmacia_prod
+  # password: <%= ENV['FARMACIA_DATABASE_PASSWORD'] %>
