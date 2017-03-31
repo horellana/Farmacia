@@ -7,9 +7,14 @@ class Waste < ApplicationRecord
   def stock
     inventory.stock
   end
-
-  def merma
-    stock - amount
+  
+  def decrease_stock(n=1)
+    inventory.decrease_stock(n)
   end
+
+  def increase_stock(n=1)
+    inventory.increase_stock(n)
+  end
+
 
 end
