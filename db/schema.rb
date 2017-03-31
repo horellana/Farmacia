@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170323180321) do
+ActiveRecord::Schema.define(version: 20170331145010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -278,7 +278,9 @@ ActiveRecord::Schema.define(version: 20170323180321) do
     t.datetime "date"
     t.integer  "inventories_id"
     t.integer  "product_id"
+    t.integer  "office_id"
     t.index ["inventories_id"], name: "index_wastes_on_inventories_id", using: :btree
+    t.index ["office_id"], name: "index_wastes_on_office_id", using: :btree
     t.index ["product_id"], name: "index_wastes_on_product_id", using: :btree
   end
 
@@ -311,5 +313,6 @@ ActiveRecord::Schema.define(version: 20170323180321) do
   add_foreign_key "users", "job_titles"
   add_foreign_key "users", "offices"
   add_foreign_key "wastes", "inventories", column: "inventories_id"
+  add_foreign_key "wastes", "offices"
   add_foreign_key "wastes", "products"
 end
