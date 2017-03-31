@@ -1,6 +1,9 @@
 class Waste < ApplicationRecord
      
   belongs_to :product, inverse_of: :wastes
+  belongs_to :office, inverse_of: :wastes
+  belongs_to :inventory, inverse_of: :wastes
+
   accepts_nested_attributes_for :product
   
   
