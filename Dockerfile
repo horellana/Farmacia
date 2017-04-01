@@ -1,9 +1,13 @@
-FROM ruby:2.4.1
+FROM phusion/passenger-ruby23:latest
+
+ENV HOME /root
+
+CMD ["/sbin/my_init"]
 
 RUN apt-get update
 RUN apt-get install -y build-essential curl libpq-dev nodejs postgresql-client
 
-ENV APP_HOME /farmacia
+ENV APP_HOME /home/app
 
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
