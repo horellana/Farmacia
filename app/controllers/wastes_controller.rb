@@ -18,6 +18,12 @@ class WastesController < ApplicationController
     @waste = Waste.new
     @waste.product = Product.find_by(code: params[:product_code])
     @waste.office = Office.find_by(address: params[:office_address])
+    
+    @waste
+      .inventory
+      .update(@params[:waste][:inventory_attributes].permit(:stock))
+    
+    
     if @waste.save
       redirect_to @waste
     else
