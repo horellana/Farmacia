@@ -13,6 +13,9 @@ services:
     links:
       - postgres
 
+  nginx:
+    image: nginx:latest
+
   postgres_dev:
     image: postgres:latest
     ports:

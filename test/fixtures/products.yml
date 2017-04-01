@@ -22,7 +22,6 @@ ibuprofeno:
   provider: two
   sale_price: 666
   purchase_price: 1
-  # presentation: two
   be: true
   isp: MyString
   category: two
@@ -68,7 +67,6 @@ ibuprofeno:
   provider: two
   sale_price: 5000
   purchase_price: 1
-  # presentation: two
   be: true
   isp: MyString
   category: two
