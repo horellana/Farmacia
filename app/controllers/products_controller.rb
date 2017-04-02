@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to @product
     else
-      @product = Product.default_product
+      Product.default_product(@product)
       render :edit
     end
   end
