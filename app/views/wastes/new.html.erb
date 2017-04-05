@@ -9,73 +9,66 @@
 
   <div class="panel-body">
     <%= form_for @waste do |f| %>
-	<div class="panel-group">
-	  <div class="panel panel-default">
-	    <div class="panel-body">
-	    	
-	    	
-	    	
-    <div class="col-md-4">
+      <div class="panel-group">
 	<div class="panel panel-default">
 	  <div class="panel-body">
-         <p>
-	    	  <%= label_tag :Producto_name %><br>
-	   	  <%= text_field_tag :product_code %>
-	    </p>
-	    
-	    	<p>
-	    	  <%= label_tag :Sucursal %><br>
-	   	  <%= text_field_tag :office_address %>
-	    </p>
-	    
-	      <%= f.fields_for :inventory do |ff| %>
-	      <p>
-		<%= label_tag :stock %>
-		<br>
-		<%= ff.number_field :stock %>
-	      </p>
-	    <% end %>
-	    
-	      <p>
-		<%= f.label :amount %><br>
-		<%= f.number_field :amount %>
-	      </p>
+
+
+
+	    <div class="col-md-4">
+	      <div class="panel panel-default">
+		<div class="panel-body">
+		  <p>
+		    <%= label_tag :codigo_producto %>
+		    <br>
+		    <%= text_field_tag :product_code %>
+		  </p>
+
+		  <p>
+		    <%= label_tag :Sucursal %><br>
+		    <%= text_field_tag :office_address %>
+		  </p>
+
+		  <p>
+		    <%= f.label :amount %><br>
+		    <%= f.number_field :amount %>
+		  </p>
+
+		</div>
+	      </div>
+	    </div>
+
+	    <div class="col-md-4">
+	      <div class="panel panel-default">
+		<div class="panel-body">
+		  <p>
+		    <%= f.label :description %><br>
+		    <%= f.text_field :description %>
+		  </p>
+
+
+		  <p>
+		    <%= f.label :motive %><br>
+		    <%= f.text_field :motive %>
+		  </p>
+
+		  <p>
+		    <%= f.label :date %><br>
+		    <%= f.datetime_field :date %>
+		  </p>
+
+
+
+
+		</div>
+	      </div>
+	    </div>
+
+
 
 	  </div>
-	 </div>
-     </div>
-
-    <div class="col-md-4">
-	<div class="panel panel-default">
-	  <div class="panel-body">
-           <p>
-		<%= f.label :description %><br>
-		<%= f.text_field :description %>
-	      </p>
-
-
-	      <p>
-		<%= f.label :motive %><br>
-		<%= f.text_field :motive %>
-	      </p>
-
-	    <p>
-	      <%= f.label :date %><br>
-	      <%= f.datetime_field :date %>
-	    </p>
-
-	  
-
-
-	  </div>
-	 </div>
-     </div>      
-	    
-
-	     
+	</div>
       </div>
-    </div>
-  </div>
 
 
       <p>
