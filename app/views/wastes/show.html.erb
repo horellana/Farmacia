@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Merma
+  </div>
+
+  <table class="table">
+    <thead>
+      <th>
+	#
+      </th>
+
+      <th>
+	Producto
+      </th>
+
+      <th>
+	Cantidad
+      </th>
+
+      <th>
+	Razon
+      </th>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>
+	  <%= @waste.id %>
+	</td>
+
+	<td>
+	  <%= @waste.product.name %>
+	</td>
+
+	<td>
+	  <%= @waste.amount %>
+	</td>
+
+	<td>
+	  <%= @waste.motive %>
+	</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
