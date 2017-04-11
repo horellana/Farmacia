@@ -13,7 +13,7 @@
       <div class="col-md-4">
 	<div class="panel-group">
 	  <div class="panel panel-default">
-	    <div class="panel-body">Infromacion
+	    <div class="panel-body">Informacion
 
 	      <p>
 		<%= f.label :Codigo %><br>
@@ -114,14 +114,15 @@
 	    <p>
 	      <%= f.fields_for :laboratory do |ff| %>
 		<%= label_tag :laboratorio %>
-		<%= ff.text_field :name %>
+		<%= ff.autocomplete_field :name, autocomplete_laboratory_name_laboratories_path %>
+		<%#= ff.text_field :name %>
 	      <% end %>
 	    </p>
 
 	    <p>
 	      <%= f.fields_for :provider do |ff| %>
 		<%= label_tag :proveedor %>
-		<%= ff.text_field :name %>
+		<%= ff.autocomplete_field :name, autocomplete_provider_name_providers_path %>
 	      <% end %>
 	    </p>
 	  </div>
