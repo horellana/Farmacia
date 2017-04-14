@@ -16,26 +16,31 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
 
     post products_path,
-         params: { product: { name: 'foobar',
-                              sale_price: 9999,
-                              purchase_price: 555,
-                              exempt: 'si',
-                              commission: 5,
-                              discount: 22,
-                              description: 'descripcion'
-                               },
+         params:
+           { product: { code: '999220',
+                        name: 'new_product_name',
+                        isp: 'new_product_isp',
+                        description: 'new_product_description',
+                        be: "0",
+                        discount: 50,
+                        purchase_price: 100,
+                        sale_price: 200,
+                        inventory_attributes:
+                          { stock: 5,
+                            minimum_stock: 5 },
+                        category_attributes:
+                          { description: categories(:one).description },
+                        presentation_attributes:
+                          { name: presentations(:one).name },
+                        laboratory_attributes:
+                          { name: laboratories(:one).name },
+                        provider_attributes:
+                          { name: providers(:one).name },
+                        principles_string: 'paracetamol' } }
 
-                   stock: 5,
-                   minimum_stock: 2,
-                   provider_name: providers(:one).name,
-                   medicinal_ingredient_name: medicinal_ingredients(:one).name,
-                   presentation_kind: presentations(:one).kind,
-                   product_be: '1',
-                   product_isp: '1',
-                   category_description: categories(:one).description }
 
-    assert_response :redirect
-    assert_redirected_to product_path(3)
+    # assert_response :redirect
+    assert_redirected_to product_path(Product.last)
   end
 
   test 'funciona el autocompletar' do

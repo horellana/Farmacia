@@ -1,6 +1,7 @@
 class FillProductService
-  def initialize(product, params)
+  def initialize(product, office, params)
     @product = product
+    @office = office
     @params = params
   end
 
@@ -24,7 +25,7 @@ class FillProductService
   end
 
   def set_relations_from_form
-    @product.principles = Principle.from_string(@params[:product][:principles_string])
+    @product.principles << Principle.from_string(@params[:product][:principles_string])
 
     @product.provider = Provider.find_by(name: @params[:product][:provider_attributes][:name])
 
@@ -37,5 +38,7 @@ class FillProductService
     @product
       .inventory
       .update(@params[:product][:inventory_attributes].permit(:stock, :minimum_stock))
+
+    @product.inventory.office = @office
   end
 end
