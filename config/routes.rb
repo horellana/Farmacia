@@ -15,11 +15,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'
 
-  resources :categories
-  resources :principles
   resources :wastes
   resources :clients
   resources :offices
+
   resources :transactions do
     get 'ticket'
   end
