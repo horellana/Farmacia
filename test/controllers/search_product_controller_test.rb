@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SearchProductControllerTest < ActionDispatch::IntegrationTest
   test "no funciona sin iniciar sesion" do
-    get search_product_index_url, xhr: true
+    get search_products_path, xhr: true
     assert_response :unauthorized
   end
 
@@ -11,17 +11,8 @@ class SearchProductControllerTest < ActionDispatch::IntegrationTest
 
     sign_in user
 
-    get search_product_index_url,
-        params: {search_product_field: 'pa'},
-        xhr: true
-
-    assert_response :success
-
-    assert_match /Paracetamol/, @response.body,
-                 'encuentra productos sin tener el nombre completo'
-
-    get search_product_index_url,
-        params: {search_product_field: 'ibuprofeno'},
+    get search_products_path,
+        params: {product_name: 'Ibuprofeno'},
         xhr: true
 
     assert_match /Ibuprofeno/, @response.body,

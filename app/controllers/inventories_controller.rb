@@ -1,4 +1,6 @@
 class InventoriesController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @inventories = Inventory.all
     if @inventories.length <= 0

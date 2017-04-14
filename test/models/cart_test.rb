@@ -11,58 +11,45 @@ class CartTest < ActiveSupport::TestCase
   test 'Se pueden agregar productos a un carro' do
     cart = Cart.create
 
+    original_stock = paracetamol.stock
     cart.add(paracetamol, 1)
 
     assert_equal cart.items.length, 1
     assert_equal paracetamol, cart.items.first.product
-    assert_equal 6, paracetamol.stock
+    assert_equal original_stock - 1, paracetamol.stock
     assert_equal 1, cart.items.first.quantity
     assert cart.items.first.persisted?
 
     cart.add(paracetamol, 1)
 
     assert_equal cart.items.length, 1
-    assert_equal 5, paracetamol.stock
+    assert_equal original_stock - 2, paracetamol.stock
     assert_equal 2, cart.items.first.quantity
-    assert_equal 5, cart.items.first.product.stock
+    assert_equal original_stock - 2, cart.items.first.product.stock
     assert cart.items.first.persisted?
   end
 
   test 'Calcula el precio correctamente' do
     cart = Cart.create
-    cart.add products(:paracetamol)
-    assert_equal products(:paracetamol).price, cart.total
+    cart.add(products(:paracetamol), 1)
+    assert_equal products(:paracetamol).net_price, cart.total
   end
 
   test 'Al eliminar un carro de compras, sin realizar una venta, el stock de productos no se corrompe' do
     cart = Cart.create!
 
+    original_stock = products(:paracetamol).stock
+
     product = products(:paracetamol)
 
-    assert_equal 7, product.stock
-
-    original = product.stock
-
-    cart.add(paracetamol)
-    cart.add(paracetamol)
-    cart.add(paracetamol)
-    cart.add(paracetamol)
-    cart.add(paracetamol)
+    cart.add(paracetamol, 1)
+    cart.add(paracetamol, 1)
+    cart.add(paracetamol, 1)
+    cart.add(paracetamol, 1)
+    cart.add(paracetamol, 1)
 
     cart.drop
 
-    assert_equal original, paracetamol.stock
-  end
-
-  test 'No se pueden agregar productos al carro si el stock es cero' do
-    product = products(:paracetamol)
-    product.inventory.stock = 0
-    product.save!
-
-    cart = Cart.create
-    cart.add(product)
-
-    assert_equal 0, product.stock
-    assert_equal 0, cart.items.first.quantity
+    assert_equal original_stock, paracetamol.stock
   end
 end

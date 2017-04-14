@@ -9,7 +9,7 @@ class Transaction < ApplicationRecord
 
   validates_with TransactionValidator
 
-  before_save :default_values
+  after_initialize :default_values
 
   def total
     details.map { |d| d.net_price * d.quantity }.inject(0, :+)
@@ -32,5 +32,6 @@ class Transaction < ApplicationRecord
 
   def default_values
     self.iva ||= 0.19
+    self.payed_amount ||= 0
   end
 end

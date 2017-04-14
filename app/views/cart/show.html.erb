@@ -60,7 +60,9 @@
 	<br>
 
 	<%= label_tag 'Tipo de pago' %>
-	<%= select_tag(:typo_pago,
+	<%= select_tag(:tipo_pago,
+		       options_for_select(PaymentMethod.all.map { |pm| [pm.description, pm.id] })) %>
+	<%#= select_tag(:typo_pago,
 		       options_for_select([['Efectivo', 1], ['Redcompra', 2]])) %>
 
 	<br>
