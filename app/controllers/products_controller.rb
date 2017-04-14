@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.default_product
 
-    FillProductService.new(@product, params).call
+    FillProductService.new(@product, current_office, params).call
 
     if @product.save
       redirect_to @product
@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     UpdateHistoricPricesService.new(@product, params).call
-    FillProductService.new(@product, params).call
+    FillProductService.new(@product, current_office, params).call
 
     if @product.save
       redirect_to @product

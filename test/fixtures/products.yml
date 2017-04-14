@@ -60,18 +60,3 @@ tylenol:
   code: '000000000'
   presentation: one
   laboratory: one
-
-ibuprofeno:
-  id: 5
-  name: aspirina
-  provider: two
-  sale_price: 5000
-  purchase_price: 1
-  be: true
-  isp: MyString
-  category: two
-  discount: 1
-  description: 'Si es bayer es bueno'
-  code: '9999999999'
-  presentation: one
-  laboratory: one

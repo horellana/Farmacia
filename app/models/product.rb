@@ -3,7 +3,6 @@ class Product < ApplicationRecord
   has_many :wastes
   has_many :principle_details
   has_many :principles, through: :principle_details, inverse_of: :products
-  accepts_nested_attributes_for :principle_details
 
   belongs_to :presentation
   accepts_nested_attributes_for :presentation
