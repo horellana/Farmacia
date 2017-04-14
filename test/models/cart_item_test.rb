@@ -7,14 +7,15 @@ class CartItemTest < ActiveSupport::TestCase
 
     product = products(:paracetamol)
 
-    item.product = product
+    original_stock = product.stock
 
+    item.product = product
     item.increase_quantity
 
     assert_equal 3, item.quantity,
                  'Se aumenta la cantidad de productos a vender'
 
-    assert_equal 6, product.stock,
+    assert_equal original_stock - 1, product.stock,
                  'El stock del producto disminuye'
   end
 
@@ -25,10 +26,12 @@ class CartItemTest < ActiveSupport::TestCase
     product = products(:paracetamol)
     item.product = product
 
+    original_stock = product.stock
+
     item.decrease_quantity
 
     assert_equal 1, item.quantity
-    assert_equal 8, product.stock
+    assert_equal original_stock + 1, product.stock
   end
 
   test 'El item se elimina si su cantidad es cero' do
@@ -44,15 +47,14 @@ class CartItemTest < ActiveSupport::TestCase
   end
 
   test 'Al eliminar un item se reestablece el stock del producto' do
-    cart = Cart.create
-
     item = CartItem.create
-    item.cart = cart
-    product = products(:paracetamol)
-    item.product = product
+    item.cart = Cart.create
+    item.product = products(:paracetamol)
+
+    original_stock = item.product.stock
 
     item.drop
 
-    assert_equal 7, product.stock
+    assert_equal original_stock, products(:paracetamol).stock
   end
 end

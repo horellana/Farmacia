@@ -1,10 +1,7 @@
 class NameValidator < ActiveModel::Validator
   def validate(record)
-    if solo_numeros(record.name)
+    if !record.name.nil? && solo_numeros(record.name)
       record.errors[:nombre] << 'no puede tener solo numeros'
-
-    # elsif record.lastname && solo_numeros(record.lastname)
-    #   record.errors[:nombre] << 'no puede tener solo numeros'
     end
   end
 

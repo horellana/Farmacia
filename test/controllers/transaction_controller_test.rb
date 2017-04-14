@@ -14,10 +14,11 @@ class TransactionControllerTest < ActionDispatch::IntegrationTest
     cart_id = session[:cart_id]
 
     post cart_cart_item_index_path(cart_id),
-         params: { search_product_field: products(:ibuprofeno).name },
+         params: { search_product_field: products(:ibuprofeno).name,
+                   product_quantity: 1 },
          xhr: true
 
-    post transactions_path
+    post transactions_path, params: { tipo_pago: PaymentMethod.first.id, monto_pago: 10000 }
 
     follow_redirect!
 

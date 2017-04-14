@@ -23,6 +23,7 @@ class CartItem < ApplicationRecord
 
     if save
       product.increase_stock(n)
+      product.save
       destroy! if self.quantity <= 0
     else
       self.quantity += n

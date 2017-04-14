@@ -16,10 +16,10 @@ class TransactionsController < ApplicationController
                                    cart: @cart,
                                    box_movement: BoxMovement.last
 
-    puts "monto_pago = #{params[:monto_pago].to_i}"
     monto_pago = params[:monto_pago].to_i
 
     @transaction.payed_amount = monto_pago
+    @transaction.payment_method = PaymentMethod.find params['tipo_pago']
 
     @cart.items.each do |item|
       @transaction.add_product(item.product, item.quantity)
@@ -29,7 +29,8 @@ class TransactionsController < ApplicationController
       clean_cart
       return redirect_to @transaction
     else
-      flash[:alert] = @transaction.errors[:payed_amount].to_sentence
+      flash[:alert] = @transaction.errors
+      # flash[:alert] = @transaction.errors[:payed_amount].to_sentence
       return redirect_back(fallback_location: new_cart_path)
     end
 

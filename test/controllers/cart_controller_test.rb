@@ -35,8 +35,8 @@ class CartControllerTest < ActionDispatch::IntegrationTest
     original = session[:cart_id]
 
     cart = Cart.find session[:cart_id]
-    cart.add(paracetamol)
-    cart.add(paracetamol)
+    cart.add(paracetamol, 1)
+    cart.add(paracetamol, 1)
 
     delete cart_path(cart)
 
@@ -53,8 +53,8 @@ class CartControllerTest < ActionDispatch::IntegrationTest
     original = paracetamol.stock
 
     cart = Cart.find session[:cart_id]
-    cart.add(paracetamol)
-    cart.add(paracetamol)
+    cart.add(paracetamol, 1)
+    cart.add(paracetamol, 1)
 
     delete cart_path(cart)
 
