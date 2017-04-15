@@ -15,5 +15,9 @@ class ActiveSupport::TestCase
     Product.find_by name: 'Paracetamol'
   end
 
+  def open_box
+    post box_movements_path, params: { box_movement: { bstart_amount: 5000 } }
+  end
+
   # Add more helper methods to be used by all tests here...
 end
