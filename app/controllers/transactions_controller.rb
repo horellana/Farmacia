@@ -29,8 +29,7 @@ class TransactionsController < ApplicationController
       clean_cart
       return redirect_to @transaction
     else
-      flash[:alert] = @transaction.errors
-      # flash[:alert] = @transaction.errors[:payed_amount].to_sentence
+      flash[:alert] = @transaction.errors[:payed_amount].to_sentence
       return redirect_back(fallback_location: new_cart_path)
     end
 
