@@ -50,7 +50,7 @@ class PresentationsController < ApplicationController
 
 
   private
-  def dose_params
+  def presentation_params
     params.require(:presentation).permit(:name)
   end
 end
