@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) << :rut
   end
 
+  def box_open?
+    Box.get_box.active
+  end
+
   def current_office
     current_user.office
   end

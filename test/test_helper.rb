@@ -16,7 +16,8 @@ class ActiveSupport::TestCase
   end
 
   def open_box
-    post box_movements_path, params: { box_movement: { bstart_amount: 5000 } }
+    puts "===== ABRIENDO CAJA ====="
+    post box_movements_path, params: { box_movement: { start_amount: 5000 } }
   end
 
   # Add more helper methods to be used by all tests here...

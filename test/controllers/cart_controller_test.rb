@@ -18,18 +18,33 @@ class CartControllerTest < ActionDispatch::IntegrationTest
     assert_match(/Falta abrir la caja/, @response.body)
   end
 
-  test 'Al ingresar a la vista de ventas se crea un carro de compras' do
+  test 'No se crea un carro de compras si es que la caja no esta abierta' do
     user = users(:one)
     sign_in(user)
 
     get new_cart_path
+
     assert_response :redirect
-    assert session[:cart_id]
+    assert_redirected_to root_path
+    assert_not session[:cart_id]
+  end
+
+  test 'Al ingresar a la vista de ventas se crea un carro de compras' do
+    user = users(:one)
+    sign_in(user)
+
+    open_box
+    get new_cart_path
+
+    assert_response :redirect
+    assert_redirected_to cart_path(session[:cart_id])
   end
 
   test 'Se puede eliminar el carro de compras' do
     user = users(:one)
     sign_in user
+
+    open_box
     get new_cart_path
 
     original = session[:cart_id]
@@ -48,6 +63,7 @@ class CartControllerTest < ActionDispatch::IntegrationTest
     user = users(:one)
     sign_in user
 
+    open_box
     get new_cart_path
 
     original = paracetamol.stock
