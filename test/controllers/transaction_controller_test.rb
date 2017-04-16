@@ -9,6 +9,8 @@ class TransactionControllerTest < ActionDispatch::IntegrationTest
 
   test 'Al crear una transaccion se limpia el carro de compras' do
     sign_in users(:one)
+
+    open_box
     get new_cart_path
 
     cart_id = session[:cart_id]
