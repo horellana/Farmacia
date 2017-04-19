@@ -1,0 +1,21 @@
+<%= label_tag 'Tarjeta' %>
+
+<br>
+<br>
+
+<%= label_tag 'Tipo tarjeta' %>
+
+<%= select_tag :tipo_tarjeta, options_for_select([
+  ['Debito', 1],
+  ['Credito', 2],
+  ['Cheque', 3]]) %>
+
+
+<br>
+<br>
+
+<%= label_tag 'Monto a pagar' %>
+
+<br>
+
+<%= number_field_tag :payment_amount %>

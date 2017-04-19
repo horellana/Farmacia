@@ -52,23 +52,22 @@
       <br>
       <br>
 
-      <%= form_for(:transaction, url: '/transactions', remote: true) do %>
-	<%= label_tag 'Monto pago (en pesos)' %>
-	<%= number_field_tag :monto_pago %>
-
+      <%= form_for(:transaction, url: new_sale_path, method: :get) do %>
+	<% cache do %>
+	  <h3>
+	    Tipo de pago
+	  </h3>
+	  <br>
+	  <% for payment_method in PaymentMethod.all %>
+	    <%= label_tag payment_method.description, payment_method.description %>
+	    <%= check_box_tag payment_method.description %>
+	    <br>
+	  <% end %>
+	<% end %>
 	<br>
 	<br>
 
-	<%= label_tag 'Tipo de pago' %>
-	<%= select_tag(:tipo_pago,
-		       options_for_select(PaymentMethod.all.map { |pm| [pm.description, pm.id] })) %>
-	<%#= select_tag(:typo_pago,
-		       options_for_select([['Efectivo', 1], ['Redcompra', 2]])) %>
-
-	<br>
-	<br>
-
-	<%= submit_tag('Vender', class: 'btn btn-success') %>
+	<%= submit_tag 'Venta', class: 'btn btn-success' %>
 	<%= link_to 'Cotizacion', quotations_index_path, class: 'btn btn-success' %>
       <% end %>
 

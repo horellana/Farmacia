@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Venta
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag do %>
+      <% for payment_method in @payment_methods %>
+	<%= render 'partials/payment_methods/payment_method', payment_method: payment_method, cached: true %>
+	<br>
+	<br>
+      <% end %>
+
+      <br>
+
+      <%= submit_tag 'Vender', class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

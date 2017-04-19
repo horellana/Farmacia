@@ -1,0 +1,7 @@
+<% if payment_method.description == 'Efectivo' %>
+  <%= render 'partials/payment_methods/cash', payment_method: payment_method %>
+<% end %>
+
+<% if payment_method.description == 'Tarjeta' %>
+  <%= render 'partials/payment_methods/tarjeta', payment_method: payment_method %>
+<% end %>

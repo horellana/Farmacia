@@ -14,4 +14,8 @@ module ApplicationHelper
   def can_sell?
     box_open? && cart?
   end
+
+  def payment_method_options
+    PaymentMethod.all.map { |pm| [pm.description, pm.id] }
+  end
 end
