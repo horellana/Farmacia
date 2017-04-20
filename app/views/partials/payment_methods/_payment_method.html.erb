@@ -1,7 +1,25 @@
-<% if payment_method.description == 'Efectivo' %>
-  <%= render 'partials/payment_methods/cash', payment_method: payment_method %>
+<% if payment_method.description == 'Cheque' %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render 'partials/payment_methods/cheque', payment_method: payment_method %>
+    </div>
+  </div>
 <% end %>
 
+
+<% if payment_method.description == 'Efectivo' %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render 'partials/payment_methods/cash', payment_method: payment_method %>
+    </div>
+  </div>
+<% end %>
+
+
 <% if payment_method.description == 'Tarjeta' %>
-  <%= render 'partials/payment_methods/tarjeta', payment_method: payment_method %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= render 'partials/payment_methods/tarjeta', payment_method: payment_method %>
+    </div>
+  </div>
 <% end %>

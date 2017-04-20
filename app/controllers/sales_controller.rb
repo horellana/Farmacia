@@ -1,5 +1,7 @@
 # coding: utf-8
 class SalesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @payment_methods = []
 
@@ -10,6 +12,12 @@ class SalesController < ApplicationController
     if params[:Tarjeta]
       @payment_methods.append(PaymentMethod.find_by description: 'Tarjeta')
     end
+
+    if params[:Cheque]
+      @payment_methods.append(PaymentMethod.find_by description: 'Cheque')
+    end
+
+    puts(@payment_methods.length)
   end
 
   def create
