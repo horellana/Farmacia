@@ -24,9 +24,7 @@ class WastesController < ApplicationController
 
     @waste.inventory = Inventory.find_by product: @waste.product,
                                          office: @waste.office
-
     @waste.inventory.decrease_stock(@waste.amount)
-
     # @waste
     #   .inventory
     #   .update(@params[:waste][:inventory_attributes].permit(:stock))

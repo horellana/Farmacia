@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331151843) do
+ActiveRecord::Schema.define(version: 20170419003632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aggregates", force: :cascade do |t|
+    t.integer  "stock"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "inventory_id"
+    t.index ["inventory_id"], name: "index_aggregates_on_inventory_id", using: :btree
+  end
 
   create_table "box_movements", force: :cascade do |t|
     t.integer  "box_id"
@@ -286,6 +294,7 @@ ActiveRecord::Schema.define(version: 20170331151843) do
     t.index ["product_id"], name: "index_wastes_on_product_id", using: :btree
   end
 
+  add_foreign_key "aggregates", "inventories"
   add_foreign_key "box_movements", "boxes"
   add_foreign_key "box_movements", "users"
   add_foreign_key "boxes", "offices"

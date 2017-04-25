@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :wastes
   resources :clients
   resources :offices
-
+  resources :aggregates
   resources :transactions do
     get 'ticket'
   end

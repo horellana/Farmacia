@@ -92,13 +92,14 @@
 	    <p>
 	      <%= f.fields_for :category do |ff| %>
 		<%= label_tag :categoria %>
-		<%= ff.text_field :description %>
+		<%= ff.autocomplete_field :description, autocomplete_category_description_categories_path %>
+		<%#= ff.text_field :name %>
 	      <% end %>
 	    </p>
 	    <p>
 	      <%= f.fields_for :presentation do |ff| %>
 		<%= label_tag :presentacion %>
-		<%= ff.text_field :name %>
+		<%= ff.autocomplete_field :name, autocomplete_presentation_name_presentations_path %>
 	      <% end %>
 	    </p>
 	    <p>
