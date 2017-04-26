@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419003632) do
+ActiveRecord::Schema.define(version: 20170421042248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,8 +131,18 @@ ActiveRecord::Schema.define(version: 20170419003632) do
 
   create_table "payment_methods", force: :cascade do |t|
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "transaction_id"
+    t.index ["transaction_id"], name: "index_payment_methods_on_transaction_id", using: :btree
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "transaction_id"
+    t.integer "payment_method_id"
+    t.index ["payment_method_id"], name: "index_payments_on_payment_method_id", using: :btree
+    t.index ["transaction_id"], name: "index_payments_on_transaction_id", using: :btree
   end
 
   create_table "presentation_details", force: :cascade do |t|
@@ -235,16 +245,16 @@ ActiveRecord::Schema.define(version: 20170419003632) do
     t.float    "iva"
     t.integer  "discount"
     t.integer  "total_amount"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "client_id"
     t.integer  "user_id"
     t.integer  "box_movement_id"
     t.integer  "payed_amount"
-    t.integer  "payment_method_id"
+    t.integer  "payments_id"
     t.index ["box_movement_id"], name: "index_transactions_on_box_movement_id", using: :btree
     t.index ["client_id"], name: "index_transactions_on_client_id", using: :btree
-    t.index ["payment_method_id"], name: "index_transactions_on_payment_method_id", using: :btree
+    t.index ["payments_id"], name: "index_transactions_on_payments_id", using: :btree
     t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
 
@@ -304,6 +314,9 @@ ActiveRecord::Schema.define(version: 20170419003632) do
   add_foreign_key "historic_prices", "products"
   add_foreign_key "inventories", "offices"
   add_foreign_key "inventories", "products"
+  add_foreign_key "payment_methods", "transactions"
+  add_foreign_key "payments", "payment_methods"
+  add_foreign_key "payments", "transactions"
   add_foreign_key "presentation_details", "presentations"
   add_foreign_key "presentation_details", "products"
   add_foreign_key "presentations", "products"
@@ -319,7 +332,7 @@ ActiveRecord::Schema.define(version: 20170419003632) do
   add_foreign_key "transaction_details", "users"
   add_foreign_key "transactions", "box_movements"
   add_foreign_key "transactions", "clients"
-  add_foreign_key "transactions", "payment_methods"
+  add_foreign_key "transactions", "payments", column: "payments_id"
   add_foreign_key "transactions", "users"
   add_foreign_key "users", "job_titles"
   add_foreign_key "users", "offices"

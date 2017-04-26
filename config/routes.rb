@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get :tickets, to: 'tickets#show', as: :ticket
+
   get 'historic_prices/index'
 
   get 'inventories/index'
@@ -19,9 +21,13 @@ Rails.application.routes.draw do
   resources :clients
   resources :offices
   resources :aggregates
+  resources :sales
+
+  resources :tickets
+
   resources :transactions do
-    get 'ticket'
   end
+
   resources :box_movements
 
   resources :clients do

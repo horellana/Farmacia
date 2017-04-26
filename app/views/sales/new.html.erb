@@ -1,0 +1,22 @@
+<% if @transaction %>
+  <%= render 'partials/shared/list_errors', object: @transaction %>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Venta
+  </div>
+
+  <div class="panel-body">
+    <%= form_tag sales_path, method: :create do %>
+      <% for payment_method in @payment_methods %>
+	<%= render 'partials/payment_methods/payment_method', payment_method: payment_method %>
+	<%= hidden_field_tag payment_method.description %>
+      <% end %>
+
+      <br>
+
+      <%= submit_tag 'Vender', class: 'btn btn-default' %>
+    <% end %>
+  </div>
+</div>

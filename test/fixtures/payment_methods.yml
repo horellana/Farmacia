@@ -4,4 +4,7 @@ one:
   description: Efectivo
 
 two:
-  description: Redcompra
+  description: Tarjeta
+
+three:
+  description: Cheque
