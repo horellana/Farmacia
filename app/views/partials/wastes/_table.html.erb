@@ -1,0 +1,36 @@
+<table class="table">
+  <thead>
+    <th>
+      Producto
+    </th>
+
+    <th>
+      Cantidad
+    </th>
+
+    <th>
+      Descripcion
+    </th>
+    
+    <th>
+      Motivo
+    </th>
+    
+    <th>
+      Sucursal
+    </th>
+    
+    <th>
+      Fecha
+    </th>
+
+
+
+</thead>
+  <tbody>
+    <% for waste in wastes do %>
+	    <%= render 'partials/wastes/table/row', waste: waste %>
+    <% end %>
+  </tbody>
+</table>
+
