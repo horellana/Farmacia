@@ -6,6 +6,10 @@ class Waste < ApplicationRecord
 
   accepts_nested_attributes_for :product
 
+  scope :match_product_id, ->(product_id) do
+    where('product_id ilike ?', "%#{product_id}%")
+  end
+
 
   def stock
     inventory.stock
@@ -18,4 +22,5 @@ class Waste < ApplicationRecord
   def increase_stock(n=1)
     inventory.increase_stock(n)
   end
+
 end

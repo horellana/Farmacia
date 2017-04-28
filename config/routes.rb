@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'
 
-  resources :wastes
   resources :clients
   resources :offices
   resources :aggregates
@@ -65,6 +64,10 @@ Rails.application.routes.draw do
   resources :offices do
     get :autocomplete_office_address, on: :collection
   end
+  
+  resources :wastes do
+    get :autocomplete_waste_product_id, on: :collection
+  end
 
   get 'search/users', to: 'search_users#index', as: 'search_users'
   get 'search/products', to: 'search_products#index', as: 'search_products'
@@ -75,6 +78,8 @@ Rails.application.routes.draw do
   get 'search/principles', to: 'search_principle#index', as: 'search_principles'
   get 'search/laboratories', to: 'search_laboratory#index', as: 'search_laboratories'
   get 'search/offices', to: 'search_office#index', as: 'search_offices'
+  get 'search/wastes', to: 'search_waste#index', as: 'search_wastes'
+
 
   resources :users
 

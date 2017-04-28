@@ -43,7 +43,6 @@
     <%= form_tag(cart_path(@cart), method: 'put', remote: true) do %>
       <%= hidden_field_tag(:search_product_field, product.name) %>
       <%= button_tag '', type: 'submit', class: 'glyphicon glyphicon-ok' %>
-      <%#= submit_tag('Agregar a la venta', class: 'btn btn-default') %>
     <% end %>
   </td>
 </tr>
