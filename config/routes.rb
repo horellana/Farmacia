@@ -12,16 +12,11 @@ Rails.application.routes.draw do
   get 'foo/login'
   get 'foo/index'
 
-  # resources :cotizaciones
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'farmacia#index'
 
-  resources :clients
-  resources :offices
   resources :aggregates
   resources :sales
-
+  resources :wastes
   resources :tickets
 
   resources :transactions do
@@ -39,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :products do
     get :autocomplete_product_name, on: :collection
+    get :autocomplete_product_code, on: :collection
   end
 
   resources :presentations do
@@ -65,8 +61,8 @@ Rails.application.routes.draw do
     get :autocomplete_office_address, on: :collection
   end
   
-  resources :wastes do
-    get :autocomplete_waste_product_id, on: :collection
+  resources :aggregates do
+    get :autocomplete_aggregates_product_code, on: :collection
   end
 
   get 'search/users', to: 'search_users#index', as: 'search_users'
@@ -79,6 +75,7 @@ Rails.application.routes.draw do
   get 'search/laboratories', to: 'search_laboratory#index', as: 'search_laboratories'
   get 'search/offices', to: 'search_office#index', as: 'search_offices'
   get 'search/wastes', to: 'search_waste#index', as: 'search_wastes'
+  get 'search/aggregates', to: 'search_aggregate#index', as: 'search_aggregates'
 
 
   resources :users

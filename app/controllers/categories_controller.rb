@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   autocomplete :Category, :name
   before_action :authenticate_user!
-
   before_action :admin_only, except: [:index, :show]
 
   def new

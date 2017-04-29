@@ -21,12 +21,14 @@
 		  <p>
 		    <%= label_tag :codigo_producto %>
 		    <br>
-		    <%= text_field_tag :product_code %>
-		  </p>
+		    
+		    <%= autocomplete_field_tag :product_code, '', autocomplete_product_code_products_path %>
+		    
+		   </p>
 
 		  <p>
 		    <%= label_tag :Sucursal %><br>
-		    <%= text_field_tag :office_address %>
+		   	<%= autocomplete_field_tag :offce_address, '', autocomplete_office_address_offices_path %>
 		  </p>
 
 		  <p>

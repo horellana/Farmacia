@@ -1,6 +1,7 @@
 class WastesController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only
+  autocomplete :waste, :code
 
   def new
     @waste = Waste.new
@@ -21,9 +22,15 @@ class WastesController < ApplicationController
 
     @waste.amount = params[:waste][:amount]
     @waste.motive = params[:waste][:motive]
-
+  
     @waste.inventory = Inventory.find_by product: @waste.product,
                                          office: @waste.office
+  
+  
+    if not @waste.valid?
+      return render :new
+    end
+    
     @waste.inventory.decrease_stock(@waste.amount)
     # @waste
     #   .inventory

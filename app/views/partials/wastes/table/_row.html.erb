@@ -1,7 +1,7 @@
 <tr>
 
   <td>
-    <%= waste.product.name %>
+    <%= waste.product.code %>
   </td>
 
   <td>
@@ -20,18 +20,13 @@
     <%= waste.office_id %>
   </td>
 
-  <td>
-    <%= waste.data %>
-  </td>
 
     <td>
-      <%= link_to 'Editar', edit_provider_path(provider) %>
+      <%= link_to 'Editar', edit_waste_path(waste) %>
     </td>
 
-    <td><%= link_to 'Eliminar', provider_path(provider),
-	method: :delete,
-	data: { confirm: 'Estas Seguro?' } %>
+    <td>
+      <%= link_to 'Eliminar', waste_path(waste), method: :delete  %>
     </td>
-  <% end %>
 </tr>
 

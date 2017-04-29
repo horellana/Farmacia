@@ -1,7 +1,6 @@
 class ClientsController < ApplicationController
   autocomplete :client, :name
   autocomplete :client, :rut
-
   before_action :authenticate_user!
 
   def new

@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   before_action :admin_only, except: [:index, :show, :autocomplete_product_name]
 
   autocomplete :product, :name
+  autocomplete :product, :code
 
   def new
     @product = Product.default_product

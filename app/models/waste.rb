@@ -1,15 +1,20 @@
 class Waste < ApplicationRecord
-
   belongs_to :product, inverse_of: :wastes
   belongs_to :office, inverse_of: :wastes
   belongs_to :inventory, inverse_of: :wastes
 
   accepts_nested_attributes_for :product
 
-  scope :match_product_id, ->(product_id) do
-    where('product_id ilike ?', "%#{product_id}%")
-  end
+  validates :amount, presence: true
+  validates :amount, numericality: true
+  
+  validates :office, presence: true
+  validates :inventory, presence: true
+  validates :product, presence: true
 
+  scope :match_code, ->(code) do
+    joins(:product).where(products: { code: code })
+  end
 
   def stock
     inventory.stock
@@ -22,5 +27,4 @@ class Waste < ApplicationRecord
   def increase_stock(n=1)
     inventory.increase_stock(n)
   end
-
 end

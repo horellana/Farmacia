@@ -1,7 +1,6 @@
 class ProvidersController < ApplicationController
   autocomplete :provider, :name
   before_action :authenticate_user!
-
   before_action :admin_only, except: [:index, :show]
 
   def new

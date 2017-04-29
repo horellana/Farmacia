@@ -5,7 +5,7 @@
 
   <div class="panel-body">
     <%= form_tag(search_wastes_path, method: :get, remote: true) do %>
-      <%= autocomplete_field_tag :search_waste_field, '', autocomplete_waste_product_id_wastes_path %>
+      <%= autocomplete_field_tag :search_waste_field, '', autocomplete_product_code_products_path %>
       <%= submit_tag('Buscar', class: 'btn btn-default') %>
     <% end %>
     
@@ -14,3 +14,5 @@
     </div>
   </div>
 </div>
+
+
