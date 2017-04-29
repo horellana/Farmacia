@@ -60,18 +60,3 @@ tylenol:
   code: '000000000'
   presentation: one
   laboratory: one
-
-avemaria:
-  id: 5
-  name: tylenol
-  provider: one
-  sale_price: 2500
-  purchase_price: 1
-  be: true
-  isp: MyString
-  category: one
-  discount: 1
-  description: 'foo'
-  code: '100000000'
-  presentation: one
-  laboratory: one
