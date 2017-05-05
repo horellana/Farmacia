@@ -12,6 +12,7 @@ class Waste < ApplicationRecord
   validates :inventory, presence: true
   validates :product, presence: true
 
+
   scope :match_code, ->(code) do
     joins(:product).where(products: { code: code })
   end

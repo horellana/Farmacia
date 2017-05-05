@@ -13,6 +13,7 @@
   </head>
 
   <body>
+  	
     <div class="navbar navbar-default navbar-fixed-top navbar-collapse">
       <div class="navbar-brand">
 	<%= link_to 'Farmacia', root_path %>
@@ -195,37 +196,29 @@
 	</ul>
 
       </div>
+	
+	     <div class="navbar-right">
+		<ul class="nav navbar-nav">
+		  <% if user_signed_in? %>
+		    <li role="presentation" class="dropdown">
+		      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+			 <%= link_to current_user.rut, user_path(current_user) %>
+		      </a>
+	
+		      <ul class="dropdown-menu">
+				<li>  <%= link_to 'Perfil', user_path(current_user) %></li>
+				<li role="separator" class="divider"></li>
+				<li>  <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %> </li>
+		      </ul>
+		    </li>
+		  <% else %>
+		    <li>
+		      <%= link_to 'Iniciar sesion', new_user_session_path %>
+		    </li>
+		  <% end %>
+		 </ul>
+	    </div>
 
-      <div class="navbar-right">
-	<ul class="nav navbar-nav">
-	  <% if user_signed_in? %>
-	    <li role="presentation" class="dropdown">
-	      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-		 <%= link_to current_user.rut, user_path(current_user) %>
-	      </a>
-
-	      <ul class="dropdown-menu">
-		<li>
-		  <%= link_to 'Perfil', user_path(current_user) %>
-		  <%#= link_to 'Perfil', edit_user_registration_path(current_user) %>
-		</li>
-
-
-		<li role="separator" class="divider">
-		</li>
-
-		<li>
-		  <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete %>
-		</li>
-	      </ul>
-	    </li>
-	  <% else %>
-	    <li>
-	      <%= link_to 'Iniciar sesion', new_user_session_path %>
-	    </li>
-	  <% end %>
-	</ul>
-      </div>
     </div>
 
     <div class="container">
@@ -247,5 +240,7 @@
 
       <%= yield %>
     </div>
+    
+    
   </body>
 </html>
