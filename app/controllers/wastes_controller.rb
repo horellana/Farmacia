@@ -22,20 +22,16 @@ class WastesController < ApplicationController
 
     @waste.amount = params[:waste][:amount]
     @waste.motive = params[:waste][:motive]
-  
+
     @waste.inventory = Inventory.find_by product: @waste.product,
                                          office: @waste.office
-  
-  
+
+
     if not @waste.valid?
       return render :new
     end
-    
-    @waste.inventory.decrease_stock(@waste.amount)
-    # @waste
-    #   .inventory
-    #   .update(@params[:waste][:inventory_attributes].permit(:stock))
 
+    @waste.inventory.decrease_stock(@waste.amount)
 
     if @waste.save
       redirect_to @waste

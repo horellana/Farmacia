@@ -11,15 +11,15 @@
     <th>
       Descripcion
     </th>
-    
+
     <th>
       Motivo
     </th>
-    
+
     <th>
       Sucursal
     </th>
-    
+
     <th>
       Fecha
     </th>
@@ -28,9 +28,8 @@
 
 </thead>
   <tbody>
-    <div id="search_wastes_result">
-      
-    </div>
+    <% wastes.each do |waste| %>
+      <%= render 'partials/wastes/table/row', waste: waste %>
+    <% end %>
   </tbody>
 </table>
-
