@@ -44,24 +44,14 @@
 	      <div class="panel panel-default">
 		<div class="panel-body">
 		  <p>
-		    <%= f.label :description %><br>
-		    <%= f.text_field :description %>
-		  </p>
-
-
-		  <p>
 		    <%= f.label :motive %><br>
 		    <%= f.text_field :motive %>
 		  </p>
 
 		  <p>
 		    <%= f.label :date %><br>
-		    <%= f.date_field :date, :default => DateTime.now  %>
+		    <%= f.date_field :date, default: DateTime.now, value: DateTime.now.strftime("%e/%m/%Y")  %>
 		  </p>
-
-
-
-
 		</div>
 	      </div>
 	    </div>
