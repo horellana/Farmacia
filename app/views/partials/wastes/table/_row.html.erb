@@ -9,28 +9,23 @@
   </td>
 
   <td>
-    <%= waste.description %>
-  </td>
-
-  <td>
     <%= waste.motive %>
   </td>
 
   <td>
     <%= waste.office_id %>
   </td>
-  
+
   <td>
-    <%= waste.date %>
+    <%= waste.date.strftime('%e/%m/%Y') %>
   </td>
 
 
-    <td>
-      <%= link_to 'Editar', edit_waste_path(waste) %>
-    </td>
+  <td>
+    <%= link_to 'Editar', edit_waste_path(waste) %>
+  </td>
 
-    <td>
-      <%= link_to 'Eliminar', waste_path(waste), method: :delete  %>
-    </td>
+  <td>
+    <%= link_to 'Eliminar', waste_path(waste), method: :delete  %>
+  </td>
 </tr>
-

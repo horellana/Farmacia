@@ -27,6 +27,14 @@ class WastesController < ApplicationController
                                          office: @waste.office
 
 
+    begin
+      date = DateTime.parse(params[:waste][:date])
+      @waste.date = date
+    rescue ArgumentError
+      return render :new, alert: 'Fecha invalida'
+    end
+
+
     if not @waste.valid?
       return render :new
     end

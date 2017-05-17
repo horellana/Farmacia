@@ -7,11 +7,12 @@ class Waste < ApplicationRecord
 
   validates :amount, presence: true
   validates :amount, numericality: true
-  
+
   validates :office, presence: true
   validates :inventory, presence: true
   validates :product, presence: true
 
+  before_save :set_date
 
   scope :match_code, ->(code) do
     joins(:product).where(products: { code: code })
@@ -27,5 +28,11 @@ class Waste < ApplicationRecord
 
   def increase_stock(n=1)
     inventory.increase_stock(n)
+  end
+
+  private
+
+  def set_date
+    self.date ||= Time.now
   end
 end
